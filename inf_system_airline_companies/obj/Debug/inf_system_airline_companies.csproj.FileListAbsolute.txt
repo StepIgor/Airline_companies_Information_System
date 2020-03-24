@@ -1,0 +1,27 @@
+C:\Users\Igor\source\repos\inf_system_airline_companies\inf_system_airline_companies\bin\Debug\inf_system_airline_companies.exe.config
+C:\Users\Igor\source\repos\inf_system_airline_companies\inf_system_airline_companies\bin\Debug\inf_system_airline_companies.exe
+C:\Users\Igor\source\repos\inf_system_airline_companies\inf_system_airline_companies\bin\Debug\inf_system_airline_companies.pdb
+C:\Users\Igor\source\repos\inf_system_airline_companies\inf_system_airline_companies\obj\Debug\inf_system_airline_companies.Form1.resources
+C:\Users\Igor\source\repos\inf_system_airline_companies\inf_system_airline_companies\obj\Debug\inf_system_airline_companies.Properties.Resources.resources
+C:\Users\Igor\source\repos\inf_system_airline_companies\inf_system_airline_companies\obj\Debug\inf_system_airline_companies.csproj.GenerateResource.cache
+C:\Users\Igor\source\repos\inf_system_airline_companies\inf_system_airline_companies\obj\Debug\inf_system_airline_companies.csproj.CoreCompileInputs.cache
+C:\Users\Igor\source\repos\inf_system_airline_companies\inf_system_airline_companies\obj\Debug\inf_system_airline_companies.exe
+C:\Users\Igor\source\repos\inf_system_airline_companies\inf_system_airline_companies\obj\Debug\inf_system_airline_companies.pdb
+\\fa.ru\dfs\STUDENTS\Факультет ПМиИТ\ПИ18-2\Степанов Игорь Евгеньевич - 181418\С#\inf_system_airline_companies_beta\inf_system_airline_companies\bin\Debug\inf_system_airline_companies.exe.config
+\\fa.ru\dfs\STUDENTS\Факультет ПМиИТ\ПИ18-2\Степанов Игорь Евгеньевич - 181418\С#\inf_system_airline_companies_beta\inf_system_airline_companies\obj\Debug\inf_system_airline_companies.exe
+\\fa.ru\dfs\STUDENTS\Факультет ПМиИТ\ПИ18-2\Степанов Игорь Евгеньевич - 181418\С#\inf_system_airline_companies_beta\inf_system_airline_companies\obj\Debug\inf_system_airline_companies.pdb
+\\fa.ru\dfs\STUDENTS\Факультет ПМиИТ\ПИ18-2\Степанов Игорь Евгеньевич - 181418\С#\inf_system_airline_companies_beta\inf_system_airline_companies\bin\Debug\inf_system_airline_companies.exe
+\\fa.ru\dfs\STUDENTS\Факультет ПМиИТ\ПИ18-2\Степанов Игорь Евгеньевич - 181418\С#\inf_system_airline_companies_beta\inf_system_airline_companies\bin\Debug\inf_system_airline_companies.pdb
+\\fa.ru\dfs\STUDENTS\Факультет ПМиИТ\ПИ18-2\Степанов Игорь Евгеньевич - 181418\С#\inf_system_airline_companies_beta\inf_system_airline_companies\obj\Debug\inf_system_airline_companies.csprojResolveAssemblyReference.cache
+\\fa.ru\dfs\STUDENTS\Факультет ПМиИТ\ПИ18-2\Степанов Игорь Евгеньевич - 181418\С#\inf_system_airline_companies_beta\inf_system_airline_companies\obj\Debug\inf_system_airline_companies.Form1.resources
+\\fa.ru\dfs\STUDENTS\Факультет ПМиИТ\ПИ18-2\Степанов Игорь Евгеньевич - 181418\С#\inf_system_airline_companies_beta\inf_system_airline_companies\obj\Debug\inf_system_airline_companies.Properties.Resources.resources
+\\fa.ru\dfs\STUDENTS\Факультет ПМиИТ\ПИ18-2\Степанов Игорь Евгеньевич - 181418\С#\inf_system_airline_companies_beta\inf_system_airline_companies\obj\Debug\inf_system_airline_companies.csproj.GenerateResource.Cache
+C:\Users\Igor\source\repos\inf_system_airline_companies\inf_system_airline_companies\obj\Debug\inf_system_airline_companies.law_information.resources
+C:\Users\Igor\source\repos\inf_system_airline_companies\inf_system_airline_companies\obj\Debug\inf_system_airline_companies.about_form.resources
+\\fa.ru\dfs\STUDENTS\Факультет ПМиИТ\ПИ18-2\Степанов Игорь Евгеньевич - 181418\С#\inf_system_airline_companies_beta\inf_system_airline_companies\obj\Debug\inf_system_airline_companies.about_form.resources
+\\fa.ru\dfs\STUDENTS\Факультет ПМиИТ\ПИ18-2\Степанов Игорь Евгеньевич - 181418\С#\inf_system_airline_companies_beta\inf_system_airline_companies\obj\Debug\inf_system_airline_companies.law_information.resources
+\\fa.ru\dfs\STUDENTS\Факультет ПМиИТ\ПИ18-2\Степанов Игорь Евгеньевич - 181418\С#\inf_system_airline_companies_beta\inf_system_airline_companies\obj\Debug\inf_system_airline_companies.planes_in_comp.resources
+C:\Users\Igor\source\repos\inf_system_airline_companies\inf_system_airline_companies\obj\Debug\inf_system_airline_companies.planes_in_comp.resources
+C:\Users\Igor\source\repos\inf_system_airline_companies\inf_system_airline_companies\obj\Debug\inf_system_airline_companies.csprojAssemblyReference.cache
+C:\Users\Igor\source\repos\inf_system_airline_companies\inf_system_airline_companies\obj\Debug\inf_system_airline_companies.add_or_edit_company.resources
+C:\Users\Igor\source\repos\inf_system_airline_companies\inf_system_airline_companies\obj\Debug\inf_system_airline_companies.add_or_edit_plane.resources

@@ -1,0 +1,243 @@
+﻿<?xml version="1.0"?>
+<ArrayOfCompany xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Company>
+    <name>Аэрофлот</name>
+    <full_name>ПАО «Аэрофлот — российские авиалинии»</full_name>
+    <year_of_foundation>05.03.1932</year_of_foundation>
+    <tax_number>7712040126</tax_number>
+    <certificate>1 от 22.05.1992</certificate>
+    <ceo>Виталий Савельев</ceo>
+    <type>Пассажирская</type>
+    <cost>106000000</cost>
+    <location>Москва, Россия</location>
+    <description>Российское государственно-частное авиатранспортное предприятие, образованное из одного из государственных социалистических предприятий советского Аэрофлота, осуществлявшего полёты и коммерческую деятельность на международных воздушных линиях. Выполняет внутренние и международные рейсы из московского аэропорта Шереметьево и аэропорта Красноярск.</description>
+    <number_of_employees>30300</number_of_employees>
+    <phone_number>+7 (495) 223-55-55</phone_number>
+    <site>aeroflot.ru</site>
+	<destination_points>
+		<string>Анапа, Россия</string>
+		<string>Архангельск, Россия</string>
+		<string>Токио, Япония</string>
+	</destination_points>
+    <planes>
+      <Plane>
+        <name>Airbus A320-200</name>
+        <count>78</count>
+        <cost>710000000</cost>
+        <speed>840</speed>
+        <type>Пассажирский</type>
+        <volume>158</volume>
+        <distance>4900</distance>
+        <payload_capacity>0</payload_capacity>
+      </Plane>
+      <Plane>
+        <name>Boeing 737-800</name>
+        <count>47</count>
+        <cost>780000000</cost>
+        <speed>828</speed>
+        <type>Пассажирский</type>
+        <volume>130</volume>
+        <distance>5648</distance>
+        <payload_capacity>0</payload_capacity>
+      </Plane>
+      <Plane>
+        <name>Sukhoi Superjet-100-95</name>
+        <count>54</count>
+        <cost>350000000</cost>
+        <speed>820</speed>
+        <type>Пассажирский</type>
+        <volume>108</volume>
+        <distance>4600</distance>
+        <payload_capacity>0</payload_capacity>
+      </Plane>
+    </planes>
+  </Company>
+  <Company>
+    <name>American</name>
+    <full_name>American Airlines, Inc</full_name>
+    <year_of_foundation>12.09.1926</year_of_foundation>
+    <tax_number>43-28830291</tax_number>
+    <certificate>23 от 19.07.1964</certificate>
+    <ceo>Дуг Паркер</ceo>
+    <type>Пассажирская</type>
+    <cost>35000000000</cost>
+    <location>Форт-Уэрт, США</location>
+    <description>Крупнейшая авиакомпания в мире по общему количеству пассажиро-километров, размеру пассажирского флота, доходу, пассажиропотоку и количеству обслуживаемых направлений. American, вместе со своими региональными партнерами, обладает обширной международной и внутренней сетью маршрутов и выполняет в среднем более 6200 рейсов в день в 356 пунктов назначения в более чем 50 странах.</description>
+    <number_of_employees>123000</number_of_employees>
+    <phone_number>+7 (800) 433-73-00</phone_number>
+    <site>aa.com</site>
+	<destination_points>
+		<string>Вашингтон, США</string>
+		<string>Бразилиа, Бразилия</string>
+		<string>Нью-Йорк, США</string>
+	</destination_points>
+    <planes>
+      <Plane>
+        <name>Airbus A319-100</name>
+        <count>125</count>
+        <cost>700000000</cost>
+        <speed>830</speed>
+        <type>Пассажирский</type>
+        <volume>128</volume>
+        <distance>4800</distance>
+        <payload_capacity>0</payload_capacity>
+      </Plane>
+      <Plane>
+        <name>Boeing 737-800</name>
+        <count>47</count>
+        <cost>780000000</cost>
+        <speed>828</speed>
+        <type>Пассажирский</type>
+        <volume>130</volume>
+        <distance>5648</distance>
+        <payload_capacity>0</payload_capacity>
+      </Plane>
+      <Plane>
+        <name>McDonnell Douglas MD-83</name>
+        <count>28</count>
+        <cost>410000000</cost>
+        <speed>820</speed>
+        <type>Пассажирский</type>
+        <volume>140</volume>
+        <distance>4600</distance>
+        <payload_capacity>0</payload_capacity>
+      </Plane>
+    </planes>
+  </Company>
+  <Company>
+    <name>Emirates</name>
+    <full_name>Emirates Airlines</full_name>
+    <year_of_foundation>01.03.1985</year_of_foundation>
+    <tax_number>28392 3825100023</tax_number>
+    <certificate>95 от 31.12.1985</certificate>
+    <ceo>Тим Кларк</ceo>
+    <type>Пассажирская</type>
+    <cost>0</cost>
+    <location>Дубай, ОАЭ</location>
+    <description>Одна из крупнейших мировых авиакомпаний, базируется в Дубае (ОАЭ). Создана в 1985 году высшим руководством эмирата Дубай для развития туризма и инфраструктуры Арабских Эмиратов. Является дочерней структурой The Emirates Group. Это крупнейшая авиакомпания Ближнего Востока, выполняющая более 3600 рейсов в неделю, в более чем 150 пунктов назначения в 80 странах мира на шести континентах.</description>
+    <number_of_employees>63000</number_of_employees>
+    <phone_number>+8 (800) 555-19-19</phone_number>
+    <site>emirates.com</site>
+	<destination_points>
+		<string>Вашингтон, США</string>
+		<string>Москва, Россия</string>
+		<string>Пекин, Китай</string>
+	</destination_points>
+    <planes>
+      <Plane>
+        <name>Airbus A380-800</name>
+        <count>115</count>
+        <cost>4890000000</cost>
+        <speed>830</speed>
+        <type>Пассажирский</type>
+        <volume>489</volume>
+        <distance>15000</distance>
+        <payload_capacity>0</payload_capacity>
+      </Plane>
+      <Plane>
+        <name>Airbus ACJ319</name>
+        <count>1</count>
+        <cost>710000000</cost>
+        <speed>838</speed>
+        <type>Пассажирский</type>
+        <volume>350</volume>
+        <distance>4800</distance>
+        <payload_capacity>0</payload_capacity>
+      </Plane>
+      <Plane>
+        <name>Boeing 777-300ER</name>
+        <count>155</count>
+        <cost>2690000000</cost>
+        <speed>905</speed>
+        <type>Пассажирский</type>
+        <volume>428</volume>
+        <distance>17500</distance>
+        <payload_capacity>0</payload_capacity>
+      </Plane>
+    </planes>
+  </Company>
+  <Company>
+    <name>Волга-Днепр</name>
+    <full_name>Волга-Днепр</full_name>
+    <year_of_foundation>14.11.1990</year_of_foundation>
+    <tax_number>7729128472</tax_number>
+    <certificate>43 от 03.02.1991</certificate>
+    <ceo>Алексей Исайкин</ceo>
+    <type>Грузовая</type>
+    <cost>33000000</cost>
+    <location>Ульяновск, Россия</location>
+    <description>Авиакомпания специализируется на авиаперевозках сверхтяжёлых и негабаритных грузов самолётами Ил-76ТД-90ВД и Ан-124-100. Входит в международную группу компаний «Волга-Днепр».</description>
+    <number_of_employees>1500</number_of_employees>
+    <phone_number>+7 (842) 259-00-59</phone_number>
+    <site>volga-dnepr.com</site>
+	<destination_points>
+		<string>Самара, Россия</string>
+		<string>Москва, Россия</string>
+		<string>Сургут, Россия</string>
+	</destination_points>
+    <planes>
+      <Plane>
+        <name>Ил-76ТД-90ВД</name>
+        <count>5</count>
+        <cost>5000000000</cost>
+        <speed>770</speed>
+        <type>Грузовой</type>
+        <volume>400</volume>
+        <distance>4200</distance>
+        <payload_capacity>6000</payload_capacity>
+      </Plane>
+      <Plane>
+        <name>Ан-124-100 «Руслан»</name>
+        <count>12</count>
+        <cost>3000000000</cost>
+        <speed>865</speed>
+        <type>Грузовой</type>
+        <volume>1050</volume>
+        <distance>4800</distance>
+        <payload_capacity>80000</payload_capacity>
+      </Plane>
+    </planes>
+  </Company>
+  <Company>
+    <name>АЛРОСА</name>
+    <full_name>Авиакомпания АЛРОСА</full_name>
+    <year_of_foundation>29.08.1995</year_of_foundation>
+    <tax_number>7029128472</tax_number>
+    <certificate>96 от 03.05.1996</certificate>
+    <ceo>Сергей Иванов</ceo>
+    <type>Смешанная</type>
+    <cost>29000000</cost>
+    <location>Мирный, Россия</location>
+    <description>Российская авиакомпания, осуществляющая региональные перевозки в Якутии, регулярные и чартерные перевозки по России, чартерные международные перевозки в страны СНГ, Азии и Европы, грузовые перевозки и специальные авиационные работы. Базируется в Якутии в аэропортах Мирный и Полярный (город Удачный).</description>
+    <number_of_employees>1200</number_of_employees>
+    <phone_number>+7 (800) 234-49-24</phone_number>
+    <site>alrosa.aero</site>
+	<destination_points>
+		<string>Самара, Россия</string>
+		<string>Москва, Россия</string>
+		<string>Санкт-Петербург, Россия</string>
+	</destination_points>
+    <planes>
+      <Plane>
+        <name>Ту-154</name>
+        <count>1</count>
+        <cost>5000000</cost>
+        <speed>900</speed>
+        <type>Пассажирский</type>
+        <volume>164</volume>
+        <distance>4000</distance>
+        <payload_capacity>0</payload_capacity>
+      </Plane>
+      <Plane>
+        <name>ИЛ-76</name>
+        <count>2</count>
+        <cost>5000000000</cost>
+        <speed>800</speed>
+        <type>Грузовой</type>
+        <volume>1200</volume>
+        <distance>4200</distance>
+        <payload_capacity>40000</payload_capacity>
+      </Plane>
+    </planes>
+  </Company>
+</ArrayOfCompany>
