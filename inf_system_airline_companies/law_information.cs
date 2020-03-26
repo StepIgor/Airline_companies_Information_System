@@ -46,5 +46,77 @@ namespace inf_system_airline_companies
 
             destination_listbox.DataSource = companies_list[gridforcomp.SelectedRows[0].Index].destination_points;
         }
+
+        private void destination_listbox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (companies_list[gridforcomp.SelectedRows[0].Index].destination_points.Count > 0 && destination_listbox.SelectedIndex != -1)
+            {
+                edit_dest_point_but.Enabled = true;
+                del_dest_point_but.Enabled = true;
+            }
+        }
+
+        private void del_dest_point_but_Click(object sender, EventArgs e)
+        {
+            if (destination_listbox.SelectedIndex == -1)
+            {
+                del_dest_point_but.Enabled = false;
+                edit_dest_point_but.Enabled = false;
+                return;
+            }
+
+            if (companies_list[gridforcomp.SelectedRows[0].Index].destination_points.Count > 0)
+            {
+                if (MessageBox.Show("Удалить выделенный пункт назначения?","Требуется подтверждение",MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    companies_list[gridforcomp.SelectedRows[0].Index].destination_points.Remove(companies_list[gridforcomp.SelectedRows[0].Index].destination_points[destination_listbox.SelectedIndex]);
+
+                    destination_listbox.DataSource = null;
+                    destination_listbox.DataSource = companies_list[gridforcomp.SelectedRows[0].Index].destination_points;
+
+                    del_dest_point_but.Enabled = false;
+                    edit_dest_point_but.Enabled = false;
+                }
+            } else
+            {
+                del_dest_point_but.Enabled = false;
+                edit_dest_point_but.Enabled = false;
+            }
+        }
+
+        private void edit_dest_point_but_Click(object sender, EventArgs e)
+        {
+            if (destination_listbox.SelectedIndex == -1)
+            {
+                del_dest_point_but.Enabled = false;
+                edit_dest_point_but.Enabled = false;
+                return;
+            }
+
+            if (companies_list[gridforcomp.SelectedRows[0].Index].destination_points.Count > 0 && destination_listbox.SelectedIndex != -1)
+            {
+                add_or_edit_dest_point edit_form = new add_or_edit_dest_point(companies_list[gridforcomp.SelectedRows[0].Index].destination_points, destination_listbox.SelectedIndex, true);
+
+                edit_form.ShowDialog();
+            }
+            else
+            {
+                del_dest_point_but.Enabled = false;
+                edit_dest_point_but.Enabled = false;
+            }
+        }
+
+        private void law_information_Activated(object sender, EventArgs e)
+        {
+            destination_listbox.DataSource = null;
+            destination_listbox.DataSource = companies_list[gridforcomp.SelectedRows[0].Index].destination_points;
+        }
+
+        private void add_dest_point_but_Click(object sender, EventArgs e)
+        {
+            add_or_edit_dest_point edit_form = new add_or_edit_dest_point(companies_list[gridforcomp.SelectedRows[0].Index].destination_points, destination_listbox.SelectedIndex, false);
+
+            edit_form.ShowDialog();
+        }
     }
 }

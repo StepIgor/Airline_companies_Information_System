@@ -150,7 +150,7 @@ namespace inf_system_airline_companies
         {
             Form new_law_info_form = new law_information(companies_list, gridforcomp);
 
-            new_law_info_form.Show();
+            new_law_info_form.ShowDialog();
 
         }
 
@@ -158,7 +158,7 @@ namespace inf_system_airline_companies
         {
             Form about_form = new about_form();
 
-            about_form.Show();
+            about_form.ShowDialog();
         }
 
         private void details_open_planes_form_Click(object sender, EventArgs e)

@@ -31,6 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(law_information));
             this.lawinf_tabcontrol = new System.Windows.Forms.TabControl();
             this.destination_tab = new System.Windows.Forms.TabPage();
+            this.del_dest_point_but = new System.Windows.Forms.Button();
+            this.edit_dest_point_but = new System.Windows.Forms.Button();
+            this.add_dest_point_but = new System.Windows.Forms.Button();
             this.destination_listbox = new System.Windows.Forms.ListBox();
             this.lawinf_maintab = new System.Windows.Forms.TabPage();
             this.lawinf_change_compcost_but = new System.Windows.Forms.Button();
@@ -46,9 +49,6 @@
             this.lawinf_tax_num = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.add_dest_point_but = new System.Windows.Forms.Button();
-            this.edit_dest_point_but = new System.Windows.Forms.Button();
-            this.del_dest_point_but = new System.Windows.Forms.Button();
             this.lawinf_tabcontrol.SuspendLayout();
             this.destination_tab.SuspendLayout();
             this.lawinf_maintab.SuspendLayout();
@@ -81,6 +81,38 @@
             this.destination_tab.Text = "Пункты назначения";
             this.destination_tab.UseVisualStyleBackColor = true;
             // 
+            // del_dest_point_but
+            // 
+            this.del_dest_point_but.Enabled = false;
+            this.del_dest_point_but.Location = new System.Drawing.Point(372, 65);
+            this.del_dest_point_but.Name = "del_dest_point_but";
+            this.del_dest_point_but.Size = new System.Drawing.Size(95, 23);
+            this.del_dest_point_but.TabIndex = 1;
+            this.del_dest_point_but.Text = "Удалить";
+            this.del_dest_point_but.UseVisualStyleBackColor = true;
+            this.del_dest_point_but.Click += new System.EventHandler(this.del_dest_point_but_Click);
+            // 
+            // edit_dest_point_but
+            // 
+            this.edit_dest_point_but.Enabled = false;
+            this.edit_dest_point_but.Location = new System.Drawing.Point(372, 36);
+            this.edit_dest_point_but.Name = "edit_dest_point_but";
+            this.edit_dest_point_but.Size = new System.Drawing.Size(95, 23);
+            this.edit_dest_point_but.TabIndex = 1;
+            this.edit_dest_point_but.Text = "Изменить";
+            this.edit_dest_point_but.UseVisualStyleBackColor = true;
+            this.edit_dest_point_but.Click += new System.EventHandler(this.edit_dest_point_but_Click);
+            // 
+            // add_dest_point_but
+            // 
+            this.add_dest_point_but.Location = new System.Drawing.Point(373, 7);
+            this.add_dest_point_but.Name = "add_dest_point_but";
+            this.add_dest_point_but.Size = new System.Drawing.Size(95, 23);
+            this.add_dest_point_but.TabIndex = 1;
+            this.add_dest_point_but.Text = "Добавить";
+            this.add_dest_point_but.UseVisualStyleBackColor = true;
+            this.add_dest_point_but.Click += new System.EventHandler(this.add_dest_point_but_Click);
+            // 
             // destination_listbox
             // 
             this.destination_listbox.FormattingEnabled = true;
@@ -88,6 +120,7 @@
             this.destination_listbox.Name = "destination_listbox";
             this.destination_listbox.Size = new System.Drawing.Size(357, 173);
             this.destination_listbox.TabIndex = 0;
+            this.destination_listbox.SelectedIndexChanged += new System.EventHandler(this.destination_listbox_SelectedIndexChanged);
             // 
             // lawinf_maintab
             // 
@@ -233,33 +266,6 @@
             this.label3.TabIndex = 1;
             this.label3.Text = "Номер налогообложения";
             // 
-            // add_dest_point_but
-            // 
-            this.add_dest_point_but.Location = new System.Drawing.Point(373, 7);
-            this.add_dest_point_but.Name = "add_dest_point_but";
-            this.add_dest_point_but.Size = new System.Drawing.Size(95, 23);
-            this.add_dest_point_but.TabIndex = 1;
-            this.add_dest_point_but.Text = "Добавить";
-            this.add_dest_point_but.UseVisualStyleBackColor = true;
-            // 
-            // edit_dest_point_but
-            // 
-            this.edit_dest_point_but.Location = new System.Drawing.Point(372, 36);
-            this.edit_dest_point_but.Name = "edit_dest_point_but";
-            this.edit_dest_point_but.Size = new System.Drawing.Size(95, 23);
-            this.edit_dest_point_but.TabIndex = 1;
-            this.edit_dest_point_but.Text = "Изменить";
-            this.edit_dest_point_but.UseVisualStyleBackColor = true;
-            // 
-            // del_dest_point_but
-            // 
-            this.del_dest_point_but.Location = new System.Drawing.Point(372, 65);
-            this.del_dest_point_but.Name = "del_dest_point_but";
-            this.del_dest_point_but.Size = new System.Drawing.Size(95, 23);
-            this.del_dest_point_but.TabIndex = 1;
-            this.del_dest_point_but.Text = "Удалить";
-            this.del_dest_point_but.UseVisualStyleBackColor = true;
-            // 
             // law_information
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -273,6 +279,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Юридическая информация";
             this.TopMost = true;
+            this.Activated += new System.EventHandler(this.law_information_Activated);
             this.Load += new System.EventHandler(this.law_information_Load);
             this.lawinf_tabcontrol.ResumeLayout(false);
             this.destination_tab.ResumeLayout(false);

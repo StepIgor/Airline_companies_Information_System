@@ -58,6 +58,12 @@
     <Compile Include="add_or_edit_company.Designer.cs">
       <DependentUpon>add_or_edit_company.cs</DependentUpon>
     </Compile>
+    <Compile Include="add_or_edit_dest_point.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="add_or_edit_dest_point.Designer.cs">
+      <DependentUpon>add_or_edit_dest_point.cs</DependentUpon>
+    </Compile>
     <Compile Include="add_or_edit_plane.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +95,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="add_or_edit_company.resx">
       <DependentUpon>add_or_edit_company.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="add_or_edit_dest_point.resx">
+      <DependentUpon>add_or_edit_dest_point.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="add_or_edit_plane.resx">
       <DependentUpon>add_or_edit_plane.cs</DependentUpon>

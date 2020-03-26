@@ -83,7 +83,7 @@ namespace inf_system_airline_companies
         {
             if (MessageBox.Show("Вы действительно хотите удалить самолёт?", "Удалить", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                companies_list[gridforcomp.SelectedRows[0].Index].planes.Remove(companies_list[gridforcomp.SelectedRows[0].Index].planes[gridforplanes.SelectedRows[0].Index]);
+                companies_list[row_selected].planes.Remove(companies_list[row_selected].planes[gridforplanes.SelectedRows[0].Index]);
                 planeBindingSource.ResetBindings(false);
                 hide_details_info();
             }
@@ -91,13 +91,13 @@ namespace inf_system_airline_companies
 
         private void edit_plane_Click(object sender, EventArgs e)
         {
-            add_or_edit_plane new_form = new add_or_edit_plane(companies_list[gridforcomp.SelectedRows[0].Index].planes, gridforplanes, planeBindingSource, true);
+            add_or_edit_plane new_form = new add_or_edit_plane(companies_list[row_selected].planes, gridforplanes, planeBindingSource, true);
             new_form.ShowDialog();
         }
 
         private void add_plane_Click(object sender, EventArgs e)
         {
-            add_or_edit_plane new_form = new add_or_edit_plane(companies_list[gridforcomp.SelectedRows[0].Index].planes, gridforplanes, planeBindingSource, false);
+            add_or_edit_plane new_form = new add_or_edit_plane(companies_list[row_selected].planes, gridforplanes, planeBindingSource, false);
             new_form.ShowDialog();
         }
 
