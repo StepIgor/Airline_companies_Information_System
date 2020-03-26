@@ -306,6 +306,7 @@
             this.Name = "planes_in_comp";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "??? | Самолёты компании";
+            this.Activated += new System.EventHandler(this.planes_in_comp_Activated);
             this.Load += new System.EventHandler(this.planes_in_comp_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridforplanes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.planeBindingSource)).EndInit();

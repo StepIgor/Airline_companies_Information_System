@@ -100,5 +100,10 @@ namespace inf_system_airline_companies
             add_or_edit_plane new_form = new add_or_edit_plane(companies_list[gridforcomp.SelectedRows[0].Index].planes, gridforplanes, planeBindingSource, false);
             new_form.ShowDialog();
         }
+
+        private void planes_in_comp_Activated(object sender, EventArgs e)
+        {
+            gridforplanes_CellClick(gridforplanes, null);
+        }
     }
 }
