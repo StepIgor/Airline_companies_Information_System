@@ -56,6 +56,7 @@ namespace inf_system_airline_companies
                 main_label.Text = "Введите основную информацию о новой компании. Остальные элементы можно добавить, зайдя в соответствующие разделы программы.";
                 this.Text = "Добавить новую компанию";
                 add_now.Text = "Добавить компанию";
+                monthCalendar1.MaxDate = DateTime.Now;
             }
         }
 
@@ -139,6 +140,7 @@ namespace inf_system_airline_companies
             } else
             {
                 Company new_comp = new Company(company_name.Text, company_full_name.Text, monthCalendar1.SelectionRange.Start.ToShortDateString(),"(не указано)","(не указано)", ceo_name.Text, type_of_comp.Text,0, city.Text + ", " + country.Text, description.Text,0, phone_num.Text, website.Text);
+                new_comp.destination_points = new List<string>();
                 companies_list.Add(new_comp);
                 new_comp = null;
             }

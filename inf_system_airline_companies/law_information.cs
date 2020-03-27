@@ -153,5 +153,12 @@ namespace inf_system_airline_companies
 
             new_form.ShowDialog();
         }
+
+        private void lawinf_change_cert_Click(object sender, EventArgs e)
+        {
+            change_certificate new_form = new change_certificate(companies_list[gridforcomp.SelectedRows[0].Index]);
+
+            new_form.ShowDialog();
+        }
     }
 }

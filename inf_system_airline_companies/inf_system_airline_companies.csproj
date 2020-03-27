@@ -70,6 +70,12 @@
     <Compile Include="add_or_edit_plane.Designer.cs">
       <DependentUpon>add_or_edit_plane.cs</DependentUpon>
     </Compile>
+    <Compile Include="change_certificate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="change_certificate.Designer.cs">
+      <DependentUpon>change_certificate.cs</DependentUpon>
+    </Compile>
     <Compile Include="change_law_number_details.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="add_or_edit_plane.resx">
       <DependentUpon>add_or_edit_plane.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="change_certificate.resx">
+      <DependentUpon>change_certificate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="change_law_number_details.resx">
       <DependentUpon>change_law_number_details.cs</DependentUpon>

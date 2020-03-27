@@ -220,6 +220,7 @@
             this.lawinf_change_cert.TabIndex = 3;
             this.lawinf_change_cert.Text = "Изменить";
             this.lawinf_change_cert.UseVisualStyleBackColor = true;
+            this.lawinf_change_cert.Click += new System.EventHandler(this.lawinf_change_cert_Click);
             // 
             // lawinf_change_tax
             // 
