@@ -110,6 +110,20 @@ namespace inf_system_airline_companies
         {
             destination_listbox.DataSource = null;
             destination_listbox.DataSource = companies_list[gridforcomp.SelectedRows[0].Index].destination_points;
+
+            lawinf_count_empl.Text = companies_list[gridforcomp.SelectedRows[0].Index].number_of_employees.ToString("N0", CultureInfo.GetCultureInfo("ru-RU")) + " чел.";
+            if (companies_list[gridforcomp.SelectedRows[0].Index].cost == 0)
+            {
+                lawinf_comp_cost.Text = "Во владении государства (0 руб.)";
+            }
+            else
+            {
+                lawinf_comp_cost.Text = companies_list[gridforcomp.SelectedRows[0].Index].cost.ToString("N0", CultureInfo.GetCultureInfo("ru-RU")) + " руб.";
+            }
+
+
+            lawinf_tax_num.Text = companies_list[gridforcomp.SelectedRows[0].Index].tax_number.ToString();
+            lawinf_cert_inf.Text = companies_list[gridforcomp.SelectedRows[0].Index].certificate;
         }
 
         private void add_dest_point_but_Click(object sender, EventArgs e)
@@ -117,6 +131,27 @@ namespace inf_system_airline_companies
             add_or_edit_dest_point edit_form = new add_or_edit_dest_point(companies_list[gridforcomp.SelectedRows[0].Index].destination_points, destination_listbox.SelectedIndex, false);
 
             edit_form.ShowDialog();
+        }
+
+        private void lawinf_changecount_but_Click(object sender, EventArgs e)
+        {
+            change_law_number_details new_form = new change_law_number_details(companies_list[gridforcomp.SelectedRows[0].Index],"employees");
+
+            new_form.ShowDialog();
+        }
+
+        private void lawinf_change_compcost_but_Click(object sender, EventArgs e)
+        {
+            change_law_number_details new_form = new change_law_number_details(companies_list[gridforcomp.SelectedRows[0].Index], "cost");
+
+            new_form.ShowDialog();
+        }
+
+        private void lawinf_change_tax_Click(object sender, EventArgs e)
+        {
+            change_law_number_details new_form = new change_law_number_details(companies_list[gridforcomp.SelectedRows[0].Index], "tax");
+
+            new_form.ShowDialog();
         }
     }
 }

@@ -146,6 +146,7 @@
             this.lawinf_change_compcost_but.TabIndex = 1;
             this.lawinf_change_compcost_but.Text = "Изменить";
             this.lawinf_change_compcost_but.UseVisualStyleBackColor = true;
+            this.lawinf_change_compcost_but.Click += new System.EventHandler(this.lawinf_change_compcost_but_Click);
             // 
             // lawinf_changecount_but
             // 
@@ -155,6 +156,7 @@
             this.lawinf_changecount_but.TabIndex = 1;
             this.lawinf_changecount_but.Text = "Изменить";
             this.lawinf_changecount_but.UseVisualStyleBackColor = true;
+            this.lawinf_changecount_but.Click += new System.EventHandler(this.lawinf_changecount_but_Click);
             // 
             // label2
             // 
@@ -227,6 +229,7 @@
             this.lawinf_change_tax.TabIndex = 3;
             this.lawinf_change_tax.Text = "Изменить";
             this.lawinf_change_tax.UseVisualStyleBackColor = true;
+            this.lawinf_change_tax.Click += new System.EventHandler(this.lawinf_change_tax_Click);
             // 
             // lawinf_cert_inf
             // 
