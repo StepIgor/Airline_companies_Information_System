@@ -113,7 +113,7 @@
             this.gridforcomp.ReadOnly = true;
             this.gridforcomp.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.gridforcomp.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridforcomp.Size = new System.Drawing.Size(906, 595);
+            this.gridforcomp.Size = new System.Drawing.Size(556, 538);
             this.gridforcomp.StandardTab = true;
             this.gridforcomp.TabIndex = 3;
             this.gridforcomp.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridforcomp_CellClick);
@@ -131,7 +131,7 @@
             this.detailslabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.detailslabel.AutoSize = true;
             this.detailslabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.detailslabel.Location = new System.Drawing.Point(925, 33);
+            this.detailslabel.Location = new System.Drawing.Point(575, 33);
             this.detailslabel.Name = "detailslabel";
             this.detailslabel.Size = new System.Drawing.Size(162, 25);
             this.detailslabel.TabIndex = 2;
@@ -159,17 +159,16 @@
             this.detailsgroup.Controls.Add(this.details_cat_full_name);
             this.detailsgroup.Controls.Add(this.details_company_name);
             this.detailsgroup.Controls.Add(this.tipforfirstselection);
-            this.detailsgroup.Location = new System.Drawing.Point(930, 61);
+            this.detailsgroup.Location = new System.Drawing.Point(580, 61);
             this.detailsgroup.Name = "detailsgroup";
-            this.detailsgroup.Size = new System.Drawing.Size(292, 671);
+            this.detailsgroup.Size = new System.Drawing.Size(292, 614);
             this.detailsgroup.TabIndex = 1;
             this.detailsgroup.TabStop = false;
             // 
             // details_open_law_info
             // 
-            this.details_open_law_info.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.details_open_law_info.Location = new System.Drawing.Point(14, 524);
+            this.details_open_law_info.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.details_open_law_info.Location = new System.Drawing.Point(14, 467);
             this.details_open_law_info.Name = "details_open_law_info";
             this.details_open_law_info.Size = new System.Drawing.Size(259, 28);
             this.details_open_law_info.TabIndex = 6;
@@ -180,8 +179,9 @@
             // 
             // details_web_img
             // 
+            this.details_web_img.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.details_web_img.Image = ((System.Drawing.Image)(resources.GetObject("details_web_img.Image")));
-            this.details_web_img.Location = new System.Drawing.Point(14, 485);
+            this.details_web_img.Location = new System.Drawing.Point(14, 428);
             this.details_web_img.Name = "details_web_img";
             this.details_web_img.Size = new System.Drawing.Size(26, 24);
             this.details_web_img.TabIndex = 5;
@@ -190,8 +190,9 @@
             // 
             // details_phone_img
             // 
+            this.details_phone_img.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.details_phone_img.Image = ((System.Drawing.Image)(resources.GetObject("details_phone_img.Image")));
-            this.details_phone_img.Location = new System.Drawing.Point(14, 461);
+            this.details_phone_img.Location = new System.Drawing.Point(14, 404);
             this.details_phone_img.Name = "details_phone_img";
             this.details_phone_img.Size = new System.Drawing.Size(26, 24);
             this.details_phone_img.TabIndex = 5;
@@ -201,7 +202,7 @@
             // details_open_planes_form
             // 
             this.details_open_planes_form.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.details_open_planes_form.Location = new System.Drawing.Point(14, 604);
+            this.details_open_planes_form.Location = new System.Drawing.Point(14, 547);
             this.details_open_planes_form.Name = "details_open_planes_form";
             this.details_open_planes_form.Size = new System.Drawing.Size(259, 47);
             this.details_open_planes_form.TabIndex = 4;
@@ -214,7 +215,7 @@
             // 
             this.details_ceo_name.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.details_ceo_name.Location = new System.Drawing.Point(138, 224);
+            this.details_ceo_name.Location = new System.Drawing.Point(138, 215);
             this.details_ceo_name.Name = "details_ceo_name";
             this.details_ceo_name.Size = new System.Drawing.Size(135, 28);
             this.details_ceo_name.TabIndex = 3;
@@ -224,7 +225,7 @@
             // 
             this.details_planes_count.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.details_planes_count.Location = new System.Drawing.Point(138, 588);
+            this.details_planes_count.Location = new System.Drawing.Point(138, 531);
             this.details_planes_count.Name = "details_planes_count";
             this.details_planes_count.Size = new System.Drawing.Size(135, 13);
             this.details_planes_count.TabIndex = 3;
@@ -235,7 +236,7 @@
             // 
             this.details_year_of_found.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.details_year_of_found.Location = new System.Drawing.Point(138, 201);
+            this.details_year_of_found.Location = new System.Drawing.Point(138, 189);
             this.details_year_of_found.Name = "details_year_of_found";
             this.details_year_of_found.Size = new System.Drawing.Size(135, 13);
             this.details_year_of_found.TabIndex = 3;
@@ -245,11 +246,11 @@
             // 
             this.details_description.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.details_description.Location = new System.Drawing.Point(11, 278);
+            this.details_description.Location = new System.Drawing.Point(11, 262);
             this.details_description.Margin = new System.Windows.Forms.Padding(0, 15, 0, 0);
             this.details_description.Name = "details_description";
             this.details_description.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.details_description.Size = new System.Drawing.Size(275, 162);
+            this.details_description.Size = new System.Drawing.Size(275, 142);
             this.details_description.TabIndex = 3;
             this.details_description.Visible = false;
             // 
@@ -257,7 +258,7 @@
             // 
             this.details_full_name.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.details_full_name.Location = new System.Drawing.Point(138, 164);
+            this.details_full_name.Location = new System.Drawing.Point(138, 143);
             this.details_full_name.Name = "details_full_name";
             this.details_full_name.Size = new System.Drawing.Size(148, 37);
             this.details_full_name.TabIndex = 3;
@@ -265,10 +266,11 @@
             // 
             // details_site
             // 
+            this.details_site.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.details_site.Cursor = System.Windows.Forms.Cursors.Hand;
             this.details_site.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.details_site.ForeColor = System.Drawing.Color.Blue;
-            this.details_site.Location = new System.Drawing.Point(46, 485);
+            this.details_site.Location = new System.Drawing.Point(46, 428);
             this.details_site.Name = "details_site";
             this.details_site.Size = new System.Drawing.Size(235, 24);
             this.details_site.TabIndex = 2;
@@ -278,10 +280,11 @@
             // 
             // details_phone
             // 
+            this.details_phone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.details_phone.Cursor = System.Windows.Forms.Cursors.Hand;
             this.details_phone.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.details_phone.ForeColor = System.Drawing.Color.Blue;
-            this.details_phone.Location = new System.Drawing.Point(46, 461);
+            this.details_phone.Location = new System.Drawing.Point(46, 404);
             this.details_phone.Name = "details_phone";
             this.details_phone.Size = new System.Drawing.Size(238, 24);
             this.details_phone.TabIndex = 2;
@@ -293,7 +296,7 @@
             // 
             this.details_cat_description.AutoSize = true;
             this.details_cat_description.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.details_cat_description.Location = new System.Drawing.Point(11, 265);
+            this.details_cat_description.Location = new System.Drawing.Point(11, 247);
             this.details_cat_description.Name = "details_cat_description";
             this.details_cat_description.Size = new System.Drawing.Size(69, 13);
             this.details_cat_description.TabIndex = 2;
@@ -304,7 +307,7 @@
             // 
             this.details_cat_ceo.AutoSize = true;
             this.details_cat_ceo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.details_cat_ceo.Location = new System.Drawing.Point(11, 224);
+            this.details_cat_ceo.Location = new System.Drawing.Point(11, 215);
             this.details_cat_ceo.Name = "details_cat_ceo";
             this.details_cat_ceo.Size = new System.Drawing.Size(69, 13);
             this.details_cat_ceo.TabIndex = 2;
@@ -315,7 +318,7 @@
             // 
             this.details_cat_year.AutoSize = true;
             this.details_cat_year.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.details_cat_year.Location = new System.Drawing.Point(11, 201);
+            this.details_cat_year.Location = new System.Drawing.Point(11, 189);
             this.details_cat_year.Name = "details_cat_year";
             this.details_cat_year.Size = new System.Drawing.Size(108, 13);
             this.details_cat_year.TabIndex = 2;
@@ -327,7 +330,7 @@
             this.details_cat_planes_count.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.details_cat_planes_count.AutoSize = true;
             this.details_cat_planes_count.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.details_cat_planes_count.Location = new System.Drawing.Point(11, 588);
+            this.details_cat_planes_count.Location = new System.Drawing.Point(11, 531);
             this.details_cat_planes_count.Name = "details_cat_planes_count";
             this.details_cat_planes_count.Size = new System.Drawing.Size(111, 13);
             this.details_cat_planes_count.TabIndex = 2;
@@ -338,7 +341,7 @@
             // 
             this.details_cat_full_name.AutoSize = true;
             this.details_cat_full_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.details_cat_full_name.Location = new System.Drawing.Point(11, 164);
+            this.details_cat_full_name.Location = new System.Drawing.Point(11, 143);
             this.details_cat_full_name.Name = "details_cat_full_name";
             this.details_cat_full_name.Size = new System.Drawing.Size(115, 13);
             this.details_cat_full_name.TabIndex = 2;
@@ -366,7 +369,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tipforfirstselection.Location = new System.Drawing.Point(6, 16);
             this.tipforfirstselection.Name = "tipforfirstselection";
-            this.tipforfirstselection.Size = new System.Drawing.Size(280, 652);
+            this.tipforfirstselection.Size = new System.Drawing.Size(280, 595);
             this.tipforfirstselection.TabIndex = 0;
             this.tipforfirstselection.Text = "Для просмотра подробностей выберите компанию из списка слева";
             this.tipforfirstselection.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -378,7 +381,7 @@
             this.информацияToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1234, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(884, 24);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -457,7 +460,7 @@
             this.groupBox1.Controls.Add(this.del_comp_but);
             this.groupBox1.Controls.Add(this.edit_comp_but);
             this.groupBox1.Controls.Add(this.add_comp_but);
-            this.groupBox1.Location = new System.Drawing.Point(18, 673);
+            this.groupBox1.Location = new System.Drawing.Point(18, 616);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(281, 59);
             this.groupBox1.TabIndex = 5;
@@ -500,9 +503,9 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Location = new System.Drawing.Point(305, 673);
+            this.groupBox2.Location = new System.Drawing.Point(305, 616);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(619, 59);
+            this.groupBox2.Size = new System.Drawing.Size(269, 59);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Фильтрация";
@@ -532,7 +535,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1234, 744);
+            this.ClientSize = new System.Drawing.Size(884, 687);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.detailsgroup);
@@ -542,7 +545,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(640, 750);
+            this.MinimumSize = new System.Drawing.Size(900, 726);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ИСС \"Авиатранспортные компании\"";
