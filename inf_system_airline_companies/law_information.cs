@@ -67,9 +67,11 @@ namespace inf_system_airline_companies
 
             if (companies_list[gridforcomp.SelectedRows[0].Index].destination_points.Count > 0)
             {
+                int saved_index = destination_listbox.SelectedIndex;
                 if (MessageBox.Show("Удалить выделенный пункт назначения?","Требуется подтверждение",MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    companies_list[gridforcomp.SelectedRows[0].Index].destination_points.Remove(companies_list[gridforcomp.SelectedRows[0].Index].destination_points[destination_listbox.SelectedIndex]);
+
+                    companies_list[gridforcomp.SelectedRows[0].Index].destination_points.Remove(companies_list[gridforcomp.SelectedRows[0].Index].destination_points[saved_index]);
 
                     destination_listbox.DataSource = null;
                     destination_listbox.DataSource = companies_list[gridforcomp.SelectedRows[0].Index].destination_points;
