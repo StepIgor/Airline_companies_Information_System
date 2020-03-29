@@ -190,6 +190,32 @@ namespace inf_system_airline_companies
             add_or_edit_company add_or_edit = new add_or_edit_company(companies_list, gridforcomp, companyBindingSource, false);
             add_or_edit.ShowDialog();
         }
+
+        private void сохранитьКакToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try{
+                if (save_as_dialog.ShowDialog() != DialogResult.Cancel)
+                {
+                    XmlSerializer xmlsrl = new XmlSerializer(typeof(Company[]));
+
+                    using (FileStream fs = new FileStream(save_as_dialog.FileName, FileMode.Create))
+                    {
+                        xmlsrl.Serialize(fs, companies_list.ToArray());
+                    }
+
+
+                }
+                else
+                {
+                    return;
+                }
+            } catch (Exception)
+            {
+                MessageBox.Show("Ошибка при записи данных.");
+                return;
+            }
+            
+        }
     }
 
     public class Plane
