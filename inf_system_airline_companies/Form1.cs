@@ -29,6 +29,8 @@ namespace inf_system_airline_companies
             companies_list = new List<Company>(companies);
 
             companyBindingSource.DataSource = companies_list;
+
+            refresh_title();
         }
 
         private void gridforcomp_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -175,6 +177,7 @@ namespace inf_system_airline_companies
                 companies_list.Remove(companies_list[gridforcomp.SelectedRows[0].Index]);
                 companyBindingSource.ResetBindings(false);
                 hide_details_info();
+                Program.anything_was_changed = true;
             }
         }
 
@@ -203,7 +206,9 @@ namespace inf_system_airline_companies
                         xmlsrl.Serialize(fs, companies_list.ToArray());
                     }
 
-
+                    Program.opened_file = save_as_dialog.FileName;
+                    refresh_title();
+                    Program.anything_was_changed = false;
                 }
                 else
                 {
@@ -215,6 +220,94 @@ namespace inf_system_airline_companies
                 return;
             }
             
+        }
+
+        private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Program.anything_was_changed == true)
+                {
+                    if (MessageBox.Show("Имеются несохраненные изменения. Продолжить без сохранения?", "Вы уверены?", MessageBoxButtons.YesNo) == DialogResult.No)
+                    {
+                        return;
+                    }
+                }
+
+                if (load_file_dialog.ShowDialog() != DialogResult.Cancel)
+                {
+                    XmlSerializer xmlsrl = new XmlSerializer(typeof(Company[]));
+
+                    using (FileStream fs = new FileStream(load_file_dialog.FileName, FileMode.Open))
+                    {
+                        companies = (Company[])xmlsrl.Deserialize(fs);
+                    }
+
+                    companies_list = new List<Company>(companies);
+
+                    companyBindingSource.DataSource = companies_list;
+
+                    companyBindingSource.ResetBindings(false);
+
+                    Program.opened_file = load_file_dialog.FileName;
+
+                    refresh_title();
+
+                    Program.anything_was_changed = false;
+                }
+
+            } catch (Exception)
+            {
+                MessageBox.Show("Ошибка при чтении данных.");
+                return;
+            }
+        }
+
+        private void refresh_title()
+        {
+            if (Program.opened_file == "<sample>")
+            {
+                this.Text = "ИСС \"Авиатранспортные компании\" - Образец";
+            } else if (Program.opened_file == "<new>")
+            {
+                this.Text = "ИСС \"Авиатранспортные компании\" - Новый файл";
+            } else
+            {
+                this.Text = "ИСС \"Авиатранспортные компании\" - " + Program.opened_file;
+            }
+        }
+
+        private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Program.opened_file == "<sample>")
+            {
+                MessageBox.Show("Файл-образец защищен от записи. Используйте пункт \"Сохранить как\".","Предупреждение");
+                return;
+            } else
+            {
+
+            }
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (Program.anything_was_changed == true)
+            {
+                if (MessageBox.Show("Имеются несохраненные изменения. Вы уверены, что хотите закрыть программу без сохранения?", "Внимание", MessageBoxButtons.YesNo) == DialogResult.No)
+                {
+                    e.Cancel = true;
+                }
+            }
+        }
+
+        private void details_phone_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(details_phone.Text);
+        }
+
+        private void details_site_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(details_site.Text);
         }
     }
 

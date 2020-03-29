@@ -68,6 +68,7 @@ namespace inf_system_airline_companies
 
 
                 cmp.number_of_employees = int.Parse(textBox1.Text);
+                Program.anything_was_changed = true;
                 this.Close();
             } else if (name_of_elem == "cost")
             {
@@ -85,6 +86,7 @@ namespace inf_system_airline_companies
 
 
                 cmp.cost = long.Parse(textBox1.Text);
+                Program.anything_was_changed = true;
                 this.Close();
             } else if (name_of_elem == "tax")
             {
@@ -95,6 +97,7 @@ namespace inf_system_airline_companies
                 }
 
                 cmp.tax_number = textBox1.Text;
+                Program.anything_was_changed = true;
                 this.Close();
             }
         }

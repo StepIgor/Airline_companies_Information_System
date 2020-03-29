@@ -86,6 +86,7 @@ namespace inf_system_airline_companies
                 companies_list[row_selected].planes.Remove(companies_list[row_selected].planes[gridforplanes.SelectedRows[0].Index]);
                 planeBindingSource.ResetBindings(false);
                 hide_details_info();
+                Program.anything_was_changed = true;
             }
         }
 

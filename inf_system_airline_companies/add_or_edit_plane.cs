@@ -202,6 +202,7 @@ namespace inf_system_airline_companies
             }
 
             bndsrc.ResetBindings(false);
+            Program.anything_was_changed = true;
             this.Close();
         }
 

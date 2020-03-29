@@ -78,6 +78,8 @@ namespace inf_system_airline_companies
 
                     del_dest_point_but.Enabled = false;
                     edit_dest_point_but.Enabled = false;
+
+                    Program.anything_was_changed = true;
                 }
             } else
             {

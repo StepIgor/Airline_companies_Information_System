@@ -52,6 +52,7 @@ namespace inf_system_airline_companies
 
             cmp.certificate = textBox1.Text + " от " + Convert.ToString(monthCalendar1.SelectionStart.ToShortDateString());
 
+            Program.anything_was_changed = true;
             this.Close();
         }
     }

@@ -67,6 +67,7 @@ namespace inf_system_airline_companies
                 dest_list.Add(city.Text + ", " + country.Text);
             }
 
+            Program.anything_was_changed = true;
             this.Close();
         }
     }

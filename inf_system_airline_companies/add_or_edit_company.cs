@@ -146,6 +146,7 @@ namespace inf_system_airline_companies
             }
 
             this.Close();
+            Program.anything_was_changed = true;
             bndsrc.ResetBindings(false);
         }
     }

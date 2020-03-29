@@ -73,6 +73,7 @@
             this.add_comp_but = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.save_as_dialog = new System.Windows.Forms.SaveFileDialog();
+            this.load_file_dialog = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.gridforcomp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).BeginInit();
             this.detailsgroup.SuspendLayout();
@@ -299,6 +300,7 @@
             this.details_site.Text = "difres.ru";
             this.details_site.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.details_site.Visible = false;
+            this.details_site.Click += new System.EventHandler(this.details_site_Click);
             // 
             // details_phone
             // 
@@ -313,6 +315,7 @@
             this.details_phone.Text = "+7 777 777 77 77";
             this.details_phone.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.details_phone.Visible = false;
+            this.details_phone.Click += new System.EventHandler(this.details_phone_Click);
             // 
             // details_cat_description
             // 
@@ -436,6 +439,7 @@
             this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
             this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
             this.сохранитьToolStripMenuItem.Text = "Сохранить";
+            this.сохранитьToolStripMenuItem.Click += new System.EventHandler(this.сохранитьToolStripMenuItem_Click);
             // 
             // сохранитьКакToolStripMenuItem
             // 
@@ -454,6 +458,7 @@
             this.открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
             this.открытьToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
             this.открытьToolStripMenuItem.Text = "Открыть";
+            this.открытьToolStripMenuItem.Click += new System.EventHandler(this.открытьToolStripMenuItem_Click);
             // 
             // информацияToolStripMenuItem
             // 
@@ -539,6 +544,12 @@
             this.save_as_dialog.Filter = "XML-файлы (*.xml)|*.xml";
             this.save_as_dialog.Title = "Сохранить файл как...";
             // 
+            // load_file_dialog
+            // 
+            this.load_file_dialog.DefaultExt = "xml";
+            this.load_file_dialog.Filter = "XML-Файлы|*.xml";
+            this.load_file_dialog.Title = "Открыть файл с данными";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -557,6 +568,7 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ИСС \"Авиатранспортные компании\"";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridforcomp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).EndInit();
@@ -617,6 +629,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem открытьToolStripMenuItem;
         private System.Windows.Forms.SaveFileDialog save_as_dialog;
+        private System.Windows.Forms.OpenFileDialog load_file_dialog;
     }
 }
 
