@@ -16,6 +16,7 @@ namespace inf_system_airline_companies
 
         Company[] companies;
         List<Company> companies_list;
+        Boolean bad_load = false;
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -67,6 +68,7 @@ namespace inf_system_airline_companies
             } catch (Exception)
             {
                 MessageBox.Show("При открытии файла произошла ошибка. Вероятно, данные повреждены. Будет создан новый файл.", "Ошибка!");
+                bad_load = true;
                 создатьНовыйФайлToolStripMenuItem_Click(создатьНовыйФайлToolStripMenuItem, null);
             }
 
@@ -453,7 +455,7 @@ namespace inf_system_airline_companies
                 }
             }
 
-            if (Program.opened_file != "<sample>" && Program.opened_file != "<new>")
+            if (Program.opened_file != "<sample>" && Program.opened_file != "<new>" && bad_load != true)
             {
                 if (Registry.CurrentUser.OpenSubKey(@"Software\Airline_Inf_System") == null)
                 {
@@ -470,6 +472,7 @@ namespace inf_system_airline_companies
             companyBindingSource.ResetBindings(false);
 
             Program.opened_file = "<new>";
+            bad_load = false;
 
             refresh_title();
             hide_details_info();
