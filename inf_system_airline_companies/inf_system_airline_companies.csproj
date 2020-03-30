@@ -141,6 +141,9 @@
     <EmbeddedResource Include="login.resx">
       <DependentUpon>login.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="open_file_stage.resx">
+      <DependentUpon>open_file_stage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="planes_in_comp.resx">
       <DependentUpon>planes_in_comp.cs</DependentUpon>
     </EmbeddedResource>
@@ -174,6 +177,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Debug\img\login_img.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\img\about_logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

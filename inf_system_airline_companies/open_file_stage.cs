@@ -16,5 +16,10 @@ namespace inf_system_airline_companies
         {
             InitializeComponent();
         }
+
+        private void open_file_stage_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

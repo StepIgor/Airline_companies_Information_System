@@ -44,3 +44,4 @@ C:\Users\Igor\Documents\GitHub\Airline_companies_Information_System\inf_system_a
 C:\Users\Igor\Documents\GitHub\Airline_companies_Information_System\inf_system_airline_companies\obj\Debug\inf_system_airline_companies.change_law_number_details.resources
 C:\Users\Igor\Documents\GitHub\Airline_companies_Information_System\inf_system_airline_companies\obj\Debug\inf_system_airline_companies.change_certificate.resources
 C:\Users\Igor\Documents\GitHub\Airline_companies_Information_System\inf_system_airline_companies\obj\Debug\inf_system_airline_companies.login.resources
+C:\Users\Igor\Documents\GitHub\Airline_companies_Information_System\inf_system_airline_companies\obj\Debug\inf_system_airline_companies.open_file_stage.resources
