@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 using System.IO;
+using Microsoft.Win32;
 
 namespace inf_system_airline_companies
 {
@@ -52,6 +53,13 @@ namespace inf_system_airline_companies
                     companies_list = new List<Company>(companies);
 
                     companyBindingSource.DataSource = companies_list;
+
+                    if (Registry.CurrentUser.OpenSubKey(@"Software/Airline_Inf_System") == null)
+                    {
+                        Registry.CurrentUser.CreateSubKey(@"Software/Airline_Inf_System", true);
+                    }
+
+                    Registry.CurrentUser.OpenSubKey(@"Software/Airline_Inf_System").SetValue("last_opened", Program.opened_file);
                 }
 
                 refresh_title();
@@ -291,6 +299,14 @@ namespace inf_system_airline_companies
                     hide_details_info();
 
                     Program.anything_was_changed = false;
+
+
+                    if (Registry.CurrentUser.OpenSubKey(@"Software/Airline_Inf_System") == null)
+                    {
+                        Registry.CurrentUser.CreateSubKey(@"Software/Airline_Inf_System", true);
+                    }
+
+                    Registry.CurrentUser.OpenSubKey(@"Software/Airline_Inf_System").SetValue("last_opened", Program.opened_file);
                 }
 
             } catch (Exception)
@@ -354,6 +370,16 @@ namespace inf_system_airline_companies
                     e.Cancel = true;
                 }
             }
+
+            if (Program.opened_file != "<sample>" && Program.opened_file != "<new>")
+            {
+                if (Registry.CurrentUser.OpenSubKey(@"Software/Airline_Inf_System") == null)
+                {
+                    Registry.CurrentUser.CreateSubKey(@"Software/Airline_Inf_System", true);
+                }
+
+                Registry.CurrentUser.OpenSubKey(@"Software/Airline_Inf_System").SetValue("last_opened", Program.opened_file);
+            }
         }
 
         private void details_phone_Click(object sender, EventArgs e)
@@ -374,6 +400,16 @@ namespace inf_system_airline_companies
                 {
                     return;
                 }
+            }
+
+            if (Program.opened_file != "<sample>" && Program.opened_file != "<new>")
+            {
+                if (Registry.CurrentUser.OpenSubKey(@"Software/Airline_Inf_System") == null)
+                {
+                    Registry.CurrentUser.CreateSubKey(@"Software/Airline_Inf_System", true);
+                }
+
+                Registry.CurrentUser.OpenSubKey(@"Software/Airline_Inf_System").SetValue("last_opened", Program.opened_file);
             }
 
             try
@@ -415,6 +451,16 @@ namespace inf_system_airline_companies
                 {
                     return;
                 }
+            }
+
+            if (Program.opened_file != "<sample>" && Program.opened_file != "<new>")
+            {
+                if (Registry.CurrentUser.OpenSubKey(@"Software/Airline_Inf_System") == null)
+                {
+                    Registry.CurrentUser.CreateSubKey(@"Software/Airline_Inf_System", true);
+                }
+
+                Registry.CurrentUser.OpenSubKey(@"Software/Airline_Inf_System").SetValue("last_opened", Program.opened_file);
             }
 
             Program.anything_was_changed = false;

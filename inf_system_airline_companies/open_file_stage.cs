@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Win32;
 
 namespace inf_system_airline_companies
 {
@@ -35,7 +36,15 @@ namespace inf_system_airline_companies
                 Program.opened_file = file_name.Text;
             } else if(last_opened_radio.Checked == true)
             {
-                Program.opened_file = last_opened_radio.Text;
+                if (System.IO.File.Exists(last_opened_radio.Text))
+                {
+                    Program.opened_file = last_opened_radio.Text;
+                } else
+                {
+                    MessageBox.Show("Данного файла уже не существует по указанному пути.");
+                    return;
+                }
+                
             }
 
             Form1 new_form = new Form1();
@@ -66,6 +75,18 @@ namespace inf_system_airline_companies
             } else
             {
                 select_file_but.Enabled = false;
+            }
+        }
+
+        private void open_file_stage_Load(object sender, EventArgs e)
+        {
+            if (Registry.CurrentUser.OpenSubKey(@"Software\Airline_Inf_System") != null && Registry.CurrentUser.OpenSubKey(@"Software\Airline_Inf_System").GetValue("last_opened") != null)
+            {
+                last_opened_radio.Text = Registry.CurrentUser.OpenSubKey(@"Software\Airline_Inf_System").GetValue("last_opened").ToString();
+                last_opened_radio.Enabled = true;
+            } else
+            {
+                last_opened_radio.Text = "Вы еще не открывали файлы";
             }
         }
     }
