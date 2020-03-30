@@ -42,6 +42,8 @@
             this.start_but = new System.Windows.Forms.Button();
             this.file_name = new System.Windows.Forms.TextBox();
             this.select_file_but = new System.Windows.Forms.Button();
+            this.open_demo = new System.Windows.Forms.RadioButton();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -103,8 +105,7 @@
             this.last_opened_radio.Location = new System.Drawing.Point(16, 175);
             this.last_opened_radio.Name = "last_opened_radio";
             this.last_opened_radio.Size = new System.Drawing.Size(85, 17);
-            this.last_opened_radio.TabIndex = 5;
-            this.last_opened_radio.TabStop = true;
+            this.last_opened_radio.TabIndex = 1;
             this.last_opened_radio.Text = "radioButton1";
             this.last_opened_radio.UseVisualStyleBackColor = true;
             // 
@@ -120,14 +121,13 @@
             // select_my_file
             // 
             this.select_my_file.AutoSize = true;
-            this.select_my_file.Enabled = false;
             this.select_my_file.Location = new System.Drawing.Point(16, 256);
             this.select_my_file.Name = "select_my_file";
             this.select_my_file.Size = new System.Drawing.Size(197, 17);
-            this.select_my_file.TabIndex = 5;
-            this.select_my_file.TabStop = true;
+            this.select_my_file.TabIndex = 2;
             this.select_my_file.Text = "Выбрать свой файл для открытия";
             this.select_my_file.UseVisualStyleBackColor = true;
+            this.select_my_file.CheckedChanged += new System.EventHandler(this.select_my_file_CheckedChanged);
             // 
             // label5
             // 
@@ -141,12 +141,10 @@
             // create_new_file
             // 
             this.create_new_file.AutoSize = true;
-            this.create_new_file.Enabled = false;
             this.create_new_file.Location = new System.Drawing.Point(16, 347);
             this.create_new_file.Name = "create_new_file";
             this.create_new_file.Size = new System.Drawing.Size(131, 17);
-            this.create_new_file.TabIndex = 5;
-            this.create_new_file.TabStop = true;
+            this.create_new_file.TabIndex = 4;
             this.create_new_file.Text = "Создать новый файл";
             this.create_new_file.UseVisualStyleBackColor = true;
             // 
@@ -158,22 +156,45 @@
             this.start_but.TabIndex = 6;
             this.start_but.Text = "Начать работу";
             this.start_but.UseVisualStyleBackColor = true;
+            this.start_but.Click += new System.EventHandler(this.start_but_Click);
             // 
             // file_name
             // 
             this.file_name.Location = new System.Drawing.Point(16, 280);
             this.file_name.Name = "file_name";
+            this.file_name.ReadOnly = true;
             this.file_name.Size = new System.Drawing.Size(371, 20);
             this.file_name.TabIndex = 7;
             // 
             // select_file_but
             // 
+            this.select_file_but.Enabled = false;
             this.select_file_but.Location = new System.Drawing.Point(393, 280);
             this.select_file_but.Name = "select_file_but";
             this.select_file_but.Size = new System.Drawing.Size(75, 23);
-            this.select_file_but.TabIndex = 8;
+            this.select_file_but.TabIndex = 3;
             this.select_file_but.Text = "Выбрать...";
             this.select_file_but.UseVisualStyleBackColor = true;
+            this.select_file_but.Click += new System.EventHandler(this.select_file_but_Click);
+            // 
+            // open_demo
+            // 
+            this.open_demo.AutoSize = true;
+            this.open_demo.Checked = true;
+            this.open_demo.Location = new System.Drawing.Point(309, 347);
+            this.open_demo.Name = "open_demo";
+            this.open_demo.Size = new System.Drawing.Size(143, 17);
+            this.open_demo.TabIndex = 5;
+            this.open_demo.TabStop = true;
+            this.open_demo.Text = "Открыть файл-образец";
+            this.open_demo.UseVisualStyleBackColor = true;
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.DefaultExt = "xml";
+            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.Filter = "XML-Файлы|*.xml";
+            this.openFileDialog1.Title = "Выбрать свой файл";
             // 
             // open_file_stage
             // 
@@ -183,6 +204,7 @@
             this.Controls.Add(this.select_file_but);
             this.Controls.Add(this.file_name);
             this.Controls.Add(this.start_but);
+            this.Controls.Add(this.open_demo);
             this.Controls.Add(this.create_new_file);
             this.Controls.Add(this.select_my_file);
             this.Controls.Add(this.last_opened_radio);
@@ -222,5 +244,7 @@
         private System.Windows.Forms.Button start_but;
         private System.Windows.Forms.TextBox file_name;
         private System.Windows.Forms.Button select_file_but;
+        private System.Windows.Forms.RadioButton open_demo;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

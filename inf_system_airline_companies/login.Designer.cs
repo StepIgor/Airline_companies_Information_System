@@ -78,7 +78,7 @@
             this.user.Location = new System.Drawing.Point(15, 227);
             this.user.Name = "user";
             this.user.Size = new System.Drawing.Size(457, 21);
-            this.user.TabIndex = 3;
+            this.user.TabIndex = 1;
             this.user.SelectedIndexChanged += new System.EventHandler(this.user_SelectedIndexChanged);
             // 
             // label3
@@ -97,14 +97,14 @@
             this.password.Name = "password";
             this.password.PasswordChar = '*';
             this.password.Size = new System.Drawing.Size(457, 20);
-            this.password.TabIndex = 5;
+            this.password.TabIndex = 2;
             // 
             // enter
             // 
             this.enter.Location = new System.Drawing.Point(110, 362);
             this.enter.Name = "enter";
             this.enter.Size = new System.Drawing.Size(280, 60);
-            this.enter.TabIndex = 6;
+            this.enter.TabIndex = 3;
             this.enter.Text = "Далее";
             this.enter.UseVisualStyleBackColor = true;
             this.enter.Click += new System.EventHandler(this.enter_Click);

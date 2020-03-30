@@ -19,18 +19,49 @@ namespace inf_system_airline_companies
         private void Form1_Load(object sender, EventArgs e)
         {
 
-            XmlSerializer xmlsrl = new XmlSerializer(typeof(Company[]));
-
-            using (FileStream fs = new FileStream(@"samples/sample.xml", FileMode.Open))
+            try
             {
-                companies = (Company[])xmlsrl.Deserialize(fs);
+                if (Program.opened_file == "<sample>")
+                {
+                    XmlSerializer xmlsrl = new XmlSerializer(typeof(Company[]));
+
+                    using (FileStream fs = new FileStream(@"samples/sample.xml", FileMode.Open))
+                    {
+                        companies = (Company[])xmlsrl.Deserialize(fs);
+                    }
+
+                    companies_list = new List<Company>(companies);
+
+                    companyBindingSource.DataSource = companies_list;
+                }
+                else if (Program.opened_file == "<new>")
+                {
+                    companies_list = new List<Company>();
+
+                    companyBindingSource.DataSource = companies_list;
+                }
+                else
+                {
+                    XmlSerializer xmlsrl = new XmlSerializer(typeof(Company[]));
+
+                    using (FileStream fs = new FileStream(Program.opened_file, FileMode.Open))
+                    {
+                        companies = (Company[])xmlsrl.Deserialize(fs);
+                    }
+
+                    companies_list = new List<Company>(companies);
+
+                    companyBindingSource.DataSource = companies_list;
+                }
+
+                refresh_title();
+
+            } catch (Exception)
+            {
+                MessageBox.Show("При открытии файла произошла ошибка. Вероятно, данные повреждены. Будет создан новый файл.", "Ошибка!");
+                создатьНовыйФайлToolStripMenuItem_Click(создатьНовыйФайлToolStripMenuItem, null);
             }
 
-            companies_list = new List<Company>(companies);
-
-            companyBindingSource.DataSource = companies_list;
-
-            refresh_title();
         }
 
         private void gridforcomp_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -413,6 +444,11 @@ namespace inf_system_airline_companies
 
                 details_planes_count.Text = "моделей - " + Convert.ToString(details_planes_model_count) + "; всего - " + Convert.ToString(details_planes_all_count) + ";";
             }
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 
