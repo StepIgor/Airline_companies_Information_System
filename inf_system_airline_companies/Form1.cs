@@ -283,9 +283,28 @@ namespace inf_system_airline_companies
             {
                 MessageBox.Show("Файл-образец защищен от записи. Используйте пункт \"Сохранить как\".","Предупреждение");
                 return;
+            } if (Program.opened_file == "<new>")
+            {
+                сохранитьКакToolStripMenuItem_Click(сохранитьКакToolStripMenuItem, null);
+                return;
             } else
             {
+                try
+                {
+                    XmlSerializer xmlsrl = new XmlSerializer(typeof(Company[]));
 
+                    using (FileStream fs = new FileStream(Program.opened_file, FileMode.Open))
+                    {
+                        xmlsrl.Serialize(fs, companies_list.ToArray());
+                    }
+
+                    Program.anything_was_changed = false;
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Ошибка при записи данных.");
+                    return;
+                }
             }
         }
 
@@ -308,6 +327,46 @@ namespace inf_system_airline_companies
         private void details_site_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(details_site.Text);
+        }
+
+        private void открытьФайлобразецToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Program.anything_was_changed == true)
+            {
+                if (MessageBox.Show("Имеются несохраненные изменения. Продолжить без сохранения?","Предупреждение",MessageBoxButtons.YesNo) == DialogResult.No)
+                {
+                    return;
+                }
+            }
+
+            try
+            {
+                XmlSerializer xmlsrl = new XmlSerializer(typeof(Company[]));
+
+                using (FileStream fs = new FileStream(@"samples/sample.xml", FileMode.Open))
+                {
+                    companies = (Company[])xmlsrl.Deserialize(fs);
+                }
+
+                companies_list = new List<Company>(companies);
+
+                companyBindingSource.DataSource = companies_list;
+
+                companyBindingSource.ResetBindings(false);
+
+                Program.opened_file = "<sample>";
+
+                refresh_title();
+
+                Program.anything_was_changed = false;
+
+            } catch (Exception)
+            {
+                MessageBox.Show("Возникла ошибка при чтении файла-образца. Проверьте его наличие и целостность.", "Ошибка!");
+                return;
+            }
+
+            
         }
     }
 
