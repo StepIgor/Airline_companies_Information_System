@@ -397,6 +397,23 @@ namespace inf_system_airline_companies
             refresh_title();
             hide_details_info();
         }
+
+        private void Form1_Activated(object sender, EventArgs e)
+        {
+            if (details_planes_count.Visible == true)
+            {
+                int details_planes_model_count = companies_list[gridforcomp.SelectedRows[0].Index].planes.Count;
+
+                int details_planes_all_count = 0;
+
+                for (int step = 0; step < companies_list[gridforcomp.SelectedRows[0].Index].planes.Count; step++)
+                {
+                    details_planes_all_count += companies_list[gridforcomp.SelectedRows[0].Index].planes[step].count;
+                }
+
+                details_planes_count.Text = "моделей - " + Convert.ToString(details_planes_model_count) + "; всего - " + Convert.ToString(details_planes_all_count) + ";";
+            }
+        }
     }
 
     public class Plane
