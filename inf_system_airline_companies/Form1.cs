@@ -54,12 +54,12 @@ namespace inf_system_airline_companies
 
                     companyBindingSource.DataSource = companies_list;
 
-                    if (Registry.CurrentUser.OpenSubKey(@"Software/Airline_Inf_System") == null)
+                    if (Registry.CurrentUser.OpenSubKey(@"Software\Airline_Inf_System") == null)
                     {
-                        Registry.CurrentUser.CreateSubKey(@"Software/Airline_Inf_System", true);
+                        Registry.CurrentUser.CreateSubKey(@"Software\Airline_Inf_System", true);
                     }
 
-                    Registry.CurrentUser.OpenSubKey(@"Software/Airline_Inf_System").SetValue("last_opened", Program.opened_file);
+                    Registry.CurrentUser.OpenSubKey(@"Software\Airline_Inf_System", true).SetValue("last_opened", Program.opened_file);
                 }
 
                 refresh_title();
@@ -301,12 +301,12 @@ namespace inf_system_airline_companies
                     Program.anything_was_changed = false;
 
 
-                    if (Registry.CurrentUser.OpenSubKey(@"Software/Airline_Inf_System") == null)
+                    if (Registry.CurrentUser.OpenSubKey(@"Software\Airline_Inf_System") == null)
                     {
-                        Registry.CurrentUser.CreateSubKey(@"Software/Airline_Inf_System", true);
+                        Registry.CurrentUser.CreateSubKey(@"Software\Airline_Inf_System", true);
                     }
 
-                    Registry.CurrentUser.OpenSubKey(@"Software/Airline_Inf_System").SetValue("last_opened", Program.opened_file);
+                    Registry.CurrentUser.OpenSubKey(@"Software\Airline_Inf_System", true).SetValue("last_opened", Program.opened_file);
                 }
 
             } catch (Exception)
@@ -373,12 +373,12 @@ namespace inf_system_airline_companies
 
             if (Program.opened_file != "<sample>" && Program.opened_file != "<new>")
             {
-                if (Registry.CurrentUser.OpenSubKey(@"Software/Airline_Inf_System") == null)
+                if (Registry.CurrentUser.OpenSubKey(@"Software\Airline_Inf_System") == null)
                 {
-                    Registry.CurrentUser.CreateSubKey(@"Software/Airline_Inf_System", true);
+                    Registry.CurrentUser.CreateSubKey(@"Software\Airline_Inf_System", true);
                 }
 
-                Registry.CurrentUser.OpenSubKey(@"Software/Airline_Inf_System").SetValue("last_opened", Program.opened_file);
+                Registry.CurrentUser.OpenSubKey(@"Software\Airline_Inf_System", true).SetValue("last_opened", Program.opened_file);
             }
         }
 
@@ -404,12 +404,12 @@ namespace inf_system_airline_companies
 
             if (Program.opened_file != "<sample>" && Program.opened_file != "<new>")
             {
-                if (Registry.CurrentUser.OpenSubKey(@"Software/Airline_Inf_System") == null)
+                if (Registry.CurrentUser.OpenSubKey(@"Software\Airline_Inf_System") == null)
                 {
-                    Registry.CurrentUser.CreateSubKey(@"Software/Airline_Inf_System", true);
+                    Registry.CurrentUser.CreateSubKey(@"Software\Airline_Inf_System", true);
                 }
 
-                Registry.CurrentUser.OpenSubKey(@"Software/Airline_Inf_System").SetValue("last_opened", Program.opened_file);
+                Registry.CurrentUser.OpenSubKey(@"Software\Airline_Inf_System", true).SetValue("last_opened", Program.opened_file);
             }
 
             try
@@ -455,12 +455,12 @@ namespace inf_system_airline_companies
 
             if (Program.opened_file != "<sample>" && Program.opened_file != "<new>")
             {
-                if (Registry.CurrentUser.OpenSubKey(@"Software/Airline_Inf_System") == null)
+                if (Registry.CurrentUser.OpenSubKey(@"Software\Airline_Inf_System") == null)
                 {
-                    Registry.CurrentUser.CreateSubKey(@"Software/Airline_Inf_System", true);
+                    Registry.CurrentUser.CreateSubKey(@"Software\Airline_Inf_System", true);
                 }
 
-                Registry.CurrentUser.OpenSubKey(@"Software/Airline_Inf_System").SetValue("last_opened", Program.opened_file);
+                Registry.CurrentUser.OpenSubKey(@"Software\Airline_Inf_System", true).SetValue("last_opened", Program.opened_file);
             }
 
             Program.anything_was_changed = false;
