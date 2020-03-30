@@ -94,6 +94,18 @@
     <Compile Include="law_information.Designer.cs">
       <DependentUpon>law_information.cs</DependentUpon>
     </Compile>
+    <Compile Include="login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="login.Designer.cs">
+      <DependentUpon>login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="open_file_stage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="open_file_stage.Designer.cs">
+      <DependentUpon>open_file_stage.cs</DependentUpon>
+    </Compile>
     <Compile Include="planes_in_comp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +138,9 @@
     <EmbeddedResource Include="law_information.resx">
       <DependentUpon>law_information.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="login.resx">
+      <DependentUpon>login.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="planes_in_comp.resx">
       <DependentUpon>planes_in_comp.cs</DependentUpon>
     </EmbeddedResource>
@@ -137,6 +152,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\DataSources\Company.datasource" />
     <None Include="Properties\DataSources\Plane.datasource" />
@@ -152,6 +168,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\img\login.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\img\login_img.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
