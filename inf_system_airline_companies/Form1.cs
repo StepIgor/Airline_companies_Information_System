@@ -35,6 +35,11 @@ namespace inf_system_airline_companies
 
         private void gridforcomp_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (companies_list.Count == 0 || gridforcomp.SelectedRows[0].Index == -1)
+            {
+                return;
+            }
+
             del_comp_but.Enabled = true;
             edit_comp_but.Enabled = true;
 
@@ -252,6 +257,7 @@ namespace inf_system_airline_companies
                     Program.opened_file = load_file_dialog.FileName;
 
                     refresh_title();
+                    hide_details_info();
 
                     Program.anything_was_changed = false;
                 }
@@ -357,6 +363,7 @@ namespace inf_system_airline_companies
                 Program.opened_file = "<sample>";
 
                 refresh_title();
+                hide_details_info();
 
                 Program.anything_was_changed = false;
 
@@ -367,6 +374,28 @@ namespace inf_system_airline_companies
             }
 
             
+        }
+
+        private void создатьНовыйФайлToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Program.anything_was_changed == true)
+            {
+                if (MessageBox.Show("Имеются несохраненные изменения. Продолжить без сохранения?", "Предупреждение", MessageBoxButtons.YesNo) == DialogResult.No)
+                {
+                    return;
+                }
+            }
+
+            Program.anything_was_changed = false;
+
+            companies_list.Clear();
+
+            companyBindingSource.ResetBindings(false);
+
+            Program.opened_file = "<new>";
+
+            refresh_title();
+            hide_details_info();
         }
     }
 

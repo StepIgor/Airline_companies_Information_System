@@ -59,6 +59,8 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.создатьНовыйФайлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.открытьФайлобразецToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сохранитьКакToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -74,8 +76,6 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.save_as_dialog = new System.Windows.Forms.SaveFileDialog();
             this.load_file_dialog = new System.Windows.Forms.OpenFileDialog();
-            this.открытьФайлобразецToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.gridforcomp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).BeginInit();
             this.detailsgroup.SuspendLayout();
@@ -432,6 +432,19 @@
             this.создатьНовыйФайлToolStripMenuItem.Name = "создатьНовыйФайлToolStripMenuItem";
             this.создатьНовыйФайлToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
             this.создатьНовыйФайлToolStripMenuItem.Text = "Создать новый файл";
+            this.создатьНовыйФайлToolStripMenuItem.Click += new System.EventHandler(this.создатьНовыйФайлToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(200, 6);
+            // 
+            // открытьФайлобразецToolStripMenuItem
+            // 
+            this.открытьФайлобразецToolStripMenuItem.Name = "открытьФайлобразецToolStripMenuItem";
+            this.открытьФайлобразецToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.открытьФайлобразецToolStripMenuItem.Text = "Открыть файл-образец";
+            this.открытьФайлобразецToolStripMenuItem.Click += new System.EventHandler(this.открытьФайлобразецToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -553,18 +566,6 @@
             this.load_file_dialog.DefaultExt = "xml";
             this.load_file_dialog.Filter = "XML-Файлы|*.xml";
             this.load_file_dialog.Title = "Открыть файл с данными";
-            // 
-            // открытьФайлобразецToolStripMenuItem
-            // 
-            this.открытьФайлобразецToolStripMenuItem.Name = "открытьФайлобразецToolStripMenuItem";
-            this.открытьФайлобразецToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
-            this.открытьФайлобразецToolStripMenuItem.Text = "Открыть файл-образец";
-            this.открытьФайлобразецToolStripMenuItem.Click += new System.EventHandler(this.открытьФайлобразецToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(200, 6);
             // 
             // Form1
             // 
