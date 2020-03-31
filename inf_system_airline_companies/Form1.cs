@@ -16,7 +16,6 @@ namespace inf_system_airline_companies
 
         Company[] companies;
         List<Company> companies_list;
-        open_file_stage prev_form;
         sort_windows sort_window;
 
         private void Form1_Load(object sender, EventArgs e)
@@ -71,7 +70,7 @@ namespace inf_system_airline_companies
                     add_comp_but.Enabled = false;
                 }
 
-                sort_window = new sort_windows(companies_list, companyBindingSource);
+                sort_window = new sort_windows(companies_list, companyBindingSource, gridforcomp);
 
             } catch (Exception)
             {
@@ -87,6 +86,7 @@ namespace inf_system_airline_companies
             {
                 return;
             }
+
 
             if (Program.is_admin == true)
             {
@@ -509,6 +509,7 @@ namespace inf_system_airline_companies
 
                 details_planes_count.Text = "моделей - " + Convert.ToString(details_planes_model_count) + "; всего - " + Convert.ToString(details_planes_all_count) + ";";
             }
+
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
@@ -520,6 +521,7 @@ namespace inf_system_airline_companies
         {
             
             sort_window.parent_form = this;
+            sort_window.companies_list = companies_list;
             sort_window.ShowDialog();
             
         }
