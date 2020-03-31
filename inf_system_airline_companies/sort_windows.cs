@@ -172,7 +172,7 @@ namespace inf_system_airline_companies
 
             companyBindingSource.ResetBindings(false);
             parent_form.hide_details_info();
-            this.Close();
+            this.Hide();
 
         }
     }

@@ -17,6 +17,7 @@ namespace inf_system_airline_companies
         Company[] companies;
         List<Company> companies_list;
         open_file_stage prev_form;
+        sort_windows sort_window;
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -69,6 +70,8 @@ namespace inf_system_airline_companies
                 {
                     add_comp_but.Enabled = false;
                 }
+
+                sort_window = new sort_windows(companies_list, companyBindingSource);
 
             } catch (Exception)
             {
@@ -515,7 +518,7 @@ namespace inf_system_airline_companies
 
         private void sort_but_Click(object sender, EventArgs e)
         {
-            sort_windows sort_window = new sort_windows(companies_list, companyBindingSource);
+            
             sort_window.parent_form = this;
             sort_window.ShowDialog();
             
