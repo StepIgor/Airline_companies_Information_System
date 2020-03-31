@@ -26,6 +26,18 @@ namespace inf_system_airline_companies
 
         private void law_information_Load(object sender, EventArgs e)
         {
+            if (Program.is_admin == false)
+            {
+                add_dest_point_but.Enabled = false;
+                edit_dest_point_but.Enabled = false;
+                del_dest_point_but.Enabled = false;
+
+                lawinf_changecount_but.Enabled = false;
+                lawinf_change_compcost_but.Enabled = false;
+                lawinf_change_cert.Enabled = false;
+                lawinf_change_tax.Enabled = false;
+            }
+
             this.Text = companies_list[gridforcomp.SelectedRows[0].Index].name.ToString() + " | Юридическая информация";
 
             lawinf_count_empl.Text = companies_list[gridforcomp.SelectedRows[0].Index].number_of_employees.ToString("N0",CultureInfo.GetCultureInfo("ru-RU")) + " чел.";
@@ -51,6 +63,10 @@ namespace inf_system_airline_companies
         {
             if (companies_list[gridforcomp.SelectedRows[0].Index].destination_points.Count > 0 && destination_listbox.SelectedIndex != -1)
             {
+                if (Program.is_admin == false)
+                {
+                    return;
+                }
                 edit_dest_point_but.Enabled = true;
                 del_dest_point_but.Enabled = true;
             }

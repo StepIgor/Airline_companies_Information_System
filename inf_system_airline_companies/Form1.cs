@@ -65,6 +65,11 @@ namespace inf_system_airline_companies
 
                 refresh_title();
 
+                if (Program.is_admin == false)
+                {
+                    add_comp_but.Enabled = false;
+                }
+
             } catch (Exception)
             {
                 MessageBox.Show("При открытии файла произошла ошибка. Вероятно, данные повреждены.", "Ошибка!");
@@ -80,8 +85,12 @@ namespace inf_system_airline_companies
                 return;
             }
 
-            del_comp_but.Enabled = true;
-            edit_comp_but.Enabled = true;
+            if (Program.is_admin == true)
+            {
+                del_comp_but.Enabled = true;
+                edit_comp_but.Enabled = true;
+            }
+            
 
             //Прячем подсказку и выводим заголовок синими буквами
             tipforfirstselection.Visible = false;
@@ -446,6 +455,12 @@ namespace inf_system_airline_companies
 
         private void создатьНовыйФайлToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (Program.is_admin == false)
+            {
+                MessageBox.Show("Создание нового файла в режиме пользователя невозможно.", "Отказано в доступе");
+                return;
+            }
+
             if (Program.anything_was_changed == true)
             {
                 if (MessageBox.Show("Имеются несохраненные изменения. Продолжить без сохранения?", "Предупреждение", MessageBoxButtons.YesNo) == DialogResult.No)

@@ -43,8 +43,12 @@ namespace inf_system_airline_companies
         {
             if (companies_list[gridforcomp.SelectedRows[0].Index].planes.Count == 0) return;
 
-            edit_plane.Enabled = true;
-            delete_plane.Enabled = true;
+            if (Program.is_admin == true)
+            {
+                edit_plane.Enabled = true;
+                delete_plane.Enabled = true;
+            }
+            
 
             details_cost.Text = companies_list[row_selected].planes[gridforplanes.SelectedRows[0].Index].cost.ToString("N0",CultureInfo.GetCultureInfo("ru-RU")) + " Руб";
             details_speed.Text = companies_list[row_selected].planes[gridforplanes.SelectedRows[0].Index].speed.ToString("N0", CultureInfo.GetCultureInfo("ru-RU")) + " Км / Ч";
