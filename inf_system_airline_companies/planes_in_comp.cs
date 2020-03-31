@@ -27,6 +27,8 @@ namespace inf_system_airline_companies
 
         private void planes_in_comp_Load(object sender, EventArgs e)
         {
+            add_plane.Enabled = false;
+
             this.Text = companies_list[gridforcomp.SelectedRows[0].Index].name + " | Самолеты компании";
 
             header.Text = companies_list[gridforcomp.SelectedRows[0].Index].name + " > Самолёты";
