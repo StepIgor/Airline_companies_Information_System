@@ -24,6 +24,10 @@ namespace inf_system_airline_companies
         BindingSource companyBindingSource;
         public Form1 parent_form;
 
+
+        List<String> available_for_sort;
+        List<String> used_in_sort;
+
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -174,6 +178,162 @@ namespace inf_system_airline_companies
             parent_form.hide_details_info();
             this.Hide();
 
+        }
+
+        private void sort_windows_Load(object sender, EventArgs e)
+        {
+            available_for_sort = new List<string>();
+            used_in_sort = new List<string>();
+
+            available_for_sort.Add("Имя компании");
+            available_for_sort.Add("Дата основания");
+            available_for_sort.Add("Тип компании");
+            available_for_sort.Add("Стоимость компании");
+            available_for_sort.Add("Владелец компании");
+            available_for_sort.Add("Расположение");
+            available_for_sort.Add("Кол-во сотрудников");
+            available_for_sort.Add("Кол-во моделей самол.");
+            available_for_sort.Add("Кол-во пунктов назначения");
+
+            available_for_sort.Add("(УБЫВ) Имя компании");
+            available_for_sort.Add("(УБЫВ) Дата основания");
+            available_for_sort.Add("(УБЫВ) Тип компании");
+            available_for_sort.Add("(УБЫВ) Стоимость компании");
+            available_for_sort.Add("(УБЫВ) Владелец компании");
+            available_for_sort.Add("(УБЫВ) Расположение");
+            available_for_sort.Add("(УБЫВ) Кол-во сотрудников");
+            available_for_sort.Add("(УБЫВ) Кол-во моделей самол.");
+            available_for_sort.Add("(УБЫВ) Кол-во пунктов назначения");
+
+            available.DataSource = available_for_sort;
+            in_use.DataSource = used_in_sort;
+
+
+        }
+
+        private void add_in_use_Click(object sender, EventArgs e)
+        {
+            if (available.SelectedIndex == -1 || available_for_sort.Count < 1)
+            {
+                return;
+            }
+
+            used_in_sort.Add(available_for_sort[available.SelectedIndex]);
+            available_for_sort.Remove(available_for_sort[available.SelectedIndex]);
+
+            if (used_in_sort.Count > 1)
+            {
+                switch_up.Enabled = true;
+                switch_down.Enabled = true;
+            } else
+            {
+                switch_down.Enabled = false;
+                switch_up.Enabled = false;
+            }
+
+            if (available_for_sort.Count == 0)
+            {
+                add_in_use.Enabled = false;
+            } else
+            {
+                add_in_use.Enabled = true;
+            }
+
+            if (used_in_sort.Count == 0)
+            {
+                delete_from_use.Enabled = false;
+            } else
+            {
+                delete_from_use.Enabled = true;
+            }
+
+            available.DataSource = null;
+            available.DataSource = available_for_sort;
+
+            in_use.DataSource = null;
+            in_use.DataSource = used_in_sort;
+        }
+
+        private void delete_from_use_Click(object sender, EventArgs e)
+        {
+            if (in_use.SelectedIndex == -1 || used_in_sort.Count < 1)
+            {
+                return;
+            }
+
+            available_for_sort.Add(used_in_sort[in_use.SelectedIndex]);
+            used_in_sort.Remove(used_in_sort[in_use.SelectedIndex]);
+
+            if (used_in_sort.Count > 1)
+            {
+                switch_up.Enabled = true;
+                switch_down.Enabled = true;
+            }
+            else
+            {
+                switch_down.Enabled = false;
+                switch_up.Enabled = false;
+            }
+
+            if (available_for_sort.Count == 0)
+            {
+                add_in_use.Enabled = false;
+            }
+            else
+            {
+                add_in_use.Enabled = true;
+            }
+
+            if (used_in_sort.Count == 0)
+            {
+                delete_from_use.Enabled = false;
+            }
+            else
+            {
+                delete_from_use.Enabled = true;
+            }
+
+            available.DataSource = null;
+            available.DataSource = available_for_sort;
+
+            in_use.DataSource = null;
+            in_use.DataSource = used_in_sort;
+        }
+
+        private void switch_up_Click(object sender, EventArgs e)
+        {
+            if (in_use.SelectedIndex == -1 || used_in_sort.Count < 2 || in_use.SelectedIndex == 0)
+            {
+                return;
+            }
+
+            string temp = "";
+
+            temp = used_in_sort[in_use.SelectedIndex];
+
+            used_in_sort[in_use.SelectedIndex] = used_in_sort[in_use.SelectedIndex - 1];
+            used_in_sort[in_use.SelectedIndex - 1] = temp;
+
+            in_use.DataSource = null;
+            in_use.DataSource = used_in_sort;
+        }
+
+        private void switch_down_Click(object sender, EventArgs e)
+        {
+            if (in_use.SelectedIndex == -1 || used_in_sort.Count < 2 || in_use.SelectedIndex == used_in_sort.Count-1)
+            {
+                return;
+            }
+
+            string temp = "";
+
+            temp = used_in_sort[in_use.SelectedIndex];
+
+            used_in_sort[in_use.SelectedIndex] = used_in_sort[in_use.SelectedIndex + 1];
+            used_in_sort[in_use.SelectedIndex + 1] = temp;
+
+            in_use.DataSource = null;
+            in_use.DataSource = used_in_sort;
         }
     }
 }
