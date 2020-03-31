@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Win32;
+using System.IO;
+using System.Xml.Serialization;
 
 namespace inf_system_airline_companies
 {
@@ -47,12 +49,36 @@ namespace inf_system_airline_companies
                 
             }
 
+            List<Company> test_list;
+            Company[] test;
+
+            try
+            {
+                if (Program.opened_file != "<sample>" && Program.opened_file != "<new>")
+                {
+                    XmlSerializer xmlsrl = new XmlSerializer(typeof(Company[]));
+
+                    using (FileStream fs = new FileStream(Program.opened_file, FileMode.Open))
+                    {
+                        test = (Company[])xmlsrl.Deserialize(fs);
+                    }
+
+                    test_list = new List<Company>(test);
+                }
+            } catch (Exception)
+            {
+                MessageBox.Show("Данный файл поврежден.", "Внимание!");
+                return;
+            }
+
+            test = null;
+            test_list = null;
             Form1 new_form = new Form1();
-
             new_form.Show();
-
             this.Hide();
         }
+
+        
 
         private void select_file_but_Click(object sender, EventArgs e)
         {
