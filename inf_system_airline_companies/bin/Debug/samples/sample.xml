@@ -6,7 +6,7 @@
     <year_of_foundation>05.03.1932</year_of_foundation>
     <tax_number>7712040126</tax_number>
     <certificate>1 от 22.05.1992</certificate>
-    <ceo>Виталий Савельев</ceo>
+    <ceo>Савельев Виталий</ceo>
     <type>Пассажирская</type>
     <cost>106000000</cost>
     <location>Москва, Россия</location>
@@ -58,7 +58,7 @@
     <year_of_foundation>12.09.1926</year_of_foundation>
     <tax_number>43-28830291</tax_number>
     <certificate>23 от 19.07.1964</certificate>
-    <ceo>Дуг Паркер</ceo>
+    <ceo>Паркер Дуг</ceo>
     <type>Пассажирская</type>
     <cost>35000000000</cost>
     <location>Форт-Уэрт, США</location>
@@ -110,7 +110,7 @@
     <year_of_foundation>01.03.1985</year_of_foundation>
     <tax_number>28392 3825100023</tax_number>
     <certificate>95 от 31.12.1985</certificate>
-    <ceo>Тим Кларк</ceo>
+    <ceo>Кларк Тим</ceo>
     <type>Пассажирская</type>
     <cost>0</cost>
     <location>Дубай, ОАЭ</location>
@@ -162,7 +162,7 @@
     <year_of_foundation>14.11.1990</year_of_foundation>
     <tax_number>7729128472</tax_number>
     <certificate>43 от 03.02.1991</certificate>
-    <ceo>Алексей Исайкин</ceo>
+    <ceo>Исайкин Алексей</ceo>
     <type>Грузовая</type>
     <cost>33000000</cost>
     <location>Ульяновск, Россия</location>
@@ -204,7 +204,7 @@
     <year_of_foundation>29.08.1995</year_of_foundation>
     <tax_number>7029128472</tax_number>
     <certificate>96 от 03.05.1996</certificate>
-    <ceo>Сергей Иванов</ceo>
+    <ceo>Иванов Сергей</ceo>
     <type>Смешанная</type>
     <cost>29000000</cost>
     <location>Мирный, Россия</location>

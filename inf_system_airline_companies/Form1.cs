@@ -154,7 +154,7 @@ namespace inf_system_airline_companies
             details_open_planes_form.Visible = true;
         }
 
-        private void hide_details_info()
+        public void hide_details_info()
         {
             del_comp_but.Enabled = false;
             edit_comp_but.Enabled = false;
@@ -511,6 +511,14 @@ namespace inf_system_airline_companies
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void sort_but_Click(object sender, EventArgs e)
+        {
+            sort_windows sort_window = new sort_windows(companies_list, companyBindingSource);
+            sort_window.parent_form = this;
+            sort_window.ShowDialog();
+            
         }
     }
 

@@ -118,9 +118,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(203, 183);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(110, 13);
+            this.label4.Size = new System.Drawing.Size(146, 13);
             this.label4.TabIndex = 2;
-            this.label4.Text = "Директор компании";
+            this.label4.Text = "Директор компании (ФИО)";
             // 
             // ceo_name
             // 
