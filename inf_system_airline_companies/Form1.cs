@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using System.Xml.Serialization;
 using System.IO;
 using Microsoft.Win32;
+using System.Drawing;
 
 namespace inf_system_airline_companies
 {
@@ -313,6 +314,7 @@ namespace inf_system_airline_companies
 
                     refresh_title();
                     hide_details_info();
+                    cancel_filter_interface();
 
                     Program.anything_was_changed = false;
 
@@ -447,6 +449,7 @@ namespace inf_system_airline_companies
 
                 refresh_title();
                 hide_details_info();
+                cancel_filter_interface();
 
                 Program.anything_was_changed = false;
 
@@ -494,6 +497,7 @@ namespace inf_system_airline_companies
             Program.opened_file = "<new>";
 
             refresh_title();
+            cancel_filter_interface();
             hide_details_info();
         }
 
@@ -535,6 +539,15 @@ namespace inf_system_airline_companies
             filter_window.companyBindingSource = companyBindingSource;
             filter_window.companies_list = companies_list;
             filter_window.ShowDialog();
+        }
+
+
+        private void cancel_filter_interface()
+        {
+            filter_but.FlatStyle = FlatStyle.System;
+            filter_but.BackColor = SystemColors.Control;
+
+            filter_window.use_filter_checkbox.Checked = false;
         }
     }
 

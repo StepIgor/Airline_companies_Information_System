@@ -764,10 +764,7 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.CheckBox use_filter_checkbox;
         private System.Windows.Forms.GroupBox filter_set_group;
-        private System.Windows.Forms.Button apply;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox name_fil_textbox;
         private System.Windows.Forms.Label label1;
@@ -827,5 +824,7 @@
         private System.Windows.Forms.TextBox models_content_enum;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.CheckBox model_content_fil;
+        public System.Windows.Forms.Button apply;
+        public System.Windows.Forms.CheckBox use_filter_checkbox;
     }
 }

@@ -633,6 +633,9 @@ namespace inf_system_airline_companies
 
                 }
 
+                parent_window.filter_but.FlatStyle = FlatStyle.Flat;
+                parent_window.filter_but.BackColor = Color.Orange;
+                
 
             } else
             {
@@ -642,10 +645,15 @@ namespace inf_system_airline_companies
                 {
                     gridforcompany.Rows[row].Visible = true;
                 }
+
+                parent_window.filter_but.FlatStyle = FlatStyle.System;
+                parent_window.filter_but.BackColor = SystemColors.Control;
+
             }
 
             parent_window.hide_details_info();
             companyBindingSource.ResumeBinding();
+
             this.Hide();
         }
 
