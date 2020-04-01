@@ -82,6 +82,12 @@
     <Compile Include="change_law_number_details.Designer.cs">
       <DependentUpon>change_law_number_details.cs</DependentUpon>
     </Compile>
+    <Compile Include="filter_windows.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="filter_windows.Designer.cs">
+      <DependentUpon>filter_windows.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,6 +143,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="change_law_number_details.resx">
       <DependentUpon>change_law_number_details.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="filter_windows.resx">
+      <DependentUpon>filter_windows.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

@@ -17,6 +17,7 @@ namespace inf_system_airline_companies
         Company[] companies;
         List<Company> companies_list;
         sort_windows sort_window;
+        filter_windows filter_window;
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -71,6 +72,8 @@ namespace inf_system_airline_companies
                 }
 
                 sort_window = new sort_windows(companies_list, companyBindingSource, gridforcomp);
+
+                filter_window = new filter_windows(companies_list, gridforcomp);
 
             } catch (Exception)
             {
@@ -524,6 +527,12 @@ namespace inf_system_airline_companies
             sort_window.companies_list = companies_list;
             sort_window.ShowDialog();
             
+        }
+
+        private void filter_but_Click(object sender, EventArgs e)
+        {
+            filter_window.companies_list = companies_list;
+            filter_window.ShowDialog();
         }
     }
 
