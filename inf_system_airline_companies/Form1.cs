@@ -531,6 +531,8 @@ namespace inf_system_airline_companies
 
         private void filter_but_Click(object sender, EventArgs e)
         {
+            filter_window.parent_window = this;
+            filter_window.companyBindingSource = companyBindingSource;
             filter_window.companies_list = companies_list;
             filter_window.ShowDialog();
         }

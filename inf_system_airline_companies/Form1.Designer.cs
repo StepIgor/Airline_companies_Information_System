@@ -32,10 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.labelforcomplist = new System.Windows.Forms.Label();
             this.gridforcomp = new System.Windows.Forms.DataGridView();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.location = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.companyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.detailslabel = new System.Windows.Forms.Label();
             this.detailsgroup = new System.Windows.Forms.GroupBox();
             this.details_open_law_info = new System.Windows.Forms.Button();
@@ -79,14 +76,17 @@
             this.sort_but = new System.Windows.Forms.Button();
             this.save_as_dialog = new System.Windows.Forms.SaveFileDialog();
             this.load_file_dialog = new System.Windows.Forms.OpenFileDialog();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.companyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.gridforcomp)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).BeginInit();
             this.detailsgroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.details_web_img)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.details_phone_img)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // labelforcomplist
@@ -126,23 +126,6 @@
             this.gridforcomp.TabIndex = 3;
             this.gridforcomp.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridforcomp_CellClick);
             // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Название";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // typeDataGridViewTextBoxColumn
-            // 
-            this.typeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.typeDataGridViewTextBoxColumn.DataPropertyName = "type";
-            this.typeDataGridViewTextBoxColumn.HeaderText = "Тип";
-            this.typeDataGridViewTextBoxColumn.Name = "typeDataGridViewTextBoxColumn";
-            this.typeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.typeDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
             // location
             // 
             this.location.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -150,10 +133,6 @@
             this.location.HeaderText = "Расположение";
             this.location.Name = "location";
             this.location.ReadOnly = true;
-            // 
-            // companyBindingSource
-            // 
-            this.companyBindingSource.DataSource = typeof(inf_system_airline_companies.Company);
             // 
             // detailslabel
             // 
@@ -572,12 +551,14 @@
             // 
             // filter_but
             // 
+            this.filter_but.BackColor = System.Drawing.SystemColors.Control;
+            this.filter_but.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.filter_but.Location = new System.Drawing.Point(91, 19);
             this.filter_but.Name = "filter_but";
             this.filter_but.Size = new System.Drawing.Size(79, 31);
             this.filter_but.TabIndex = 0;
             this.filter_but.Text = "Фильтр";
-            this.filter_but.UseVisualStyleBackColor = true;
+            this.filter_but.UseVisualStyleBackColor = false;
             this.filter_but.Click += new System.EventHandler(this.filter_but_Click);
             // 
             // sort_but
@@ -602,6 +583,27 @@
             this.load_file_dialog.Filter = "XML-Файлы|*.xml";
             this.load_file_dialog.Title = "Открыть файл с данными";
             // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Название";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // typeDataGridViewTextBoxColumn
+            // 
+            this.typeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.typeDataGridViewTextBoxColumn.DataPropertyName = "type";
+            this.typeDataGridViewTextBoxColumn.HeaderText = "Тип";
+            this.typeDataGridViewTextBoxColumn.Name = "typeDataGridViewTextBoxColumn";
+            this.typeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.typeDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // companyBindingSource
+            // 
+            this.companyBindingSource.DataSource = typeof(inf_system_airline_companies.Company);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -625,7 +627,6 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridforcomp)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).EndInit();
             this.detailsgroup.ResumeLayout(false);
             this.detailsgroup.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.details_web_img)).EndInit();
@@ -634,6 +635,7 @@
             this.menuStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -688,8 +690,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem открытьФайлобразецToolStripMenuItem;
         private System.Windows.Forms.Button visual_but;
-        private System.Windows.Forms.Button filter_but;
         private System.Windows.Forms.Button sort_but;
+        public System.Windows.Forms.Button filter_but;
     }
 }
 

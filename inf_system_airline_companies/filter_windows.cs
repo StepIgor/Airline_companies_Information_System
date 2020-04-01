@@ -22,6 +22,8 @@ namespace inf_system_airline_companies
 
         public List<Company> companies_list;
         DataGridView gridforcompany;
+        public Form1 parent_window;
+        public BindingSource companyBindingSource;
 
         private void filter_windows_Load(object sender, EventArgs e)
         {
@@ -40,7 +42,9 @@ namespace inf_system_airline_companies
         }
 
         private void apply_Click(object sender, EventArgs e)
-        {   
+        {
+
+            companyBindingSource.SuspendBinding();
             //ВАЛИДАЦИЯ ПОЛЕЙ
 
             if (use_filter_checkbox.Checked == true)
@@ -301,11 +305,347 @@ namespace inf_system_airline_companies
                         return;
                     }
                 }
+
+                //НЕПОСРЕДСТВЕННО ФИЛЬТРАЦИЯ
+
+                for (int row = 0; row < companies_list.Count; row++)
+                {
+                    gridforcompany.Rows[row].Visible = true;
+                }
+
+                for (int row = 0; row < companies_list.Count; row++)
+                {
+                    if (name_fil.Checked == true)
+                    {
+                        if (companies_list[row].name.IndexOf(name_fil_textbox.Text) == -1)
+                        {
+                            gridforcompany.Rows[row].Visible = false;
+                            continue;
+                        }
+                    }
+
+                    if (date_fil.Checked == true)
+                    {
+                        if (min_date.Text.Length > 0 && max_date.Text.Length > 0)
+                        {
+                            if (!(DateTime.Parse(companies_list[row].year_of_foundation) >= DateTime.Parse(min_date.Text) && DateTime.Parse(companies_list[row].year_of_foundation) <= DateTime.Parse(max_date.Text))){
+                                gridforcompany.Rows[row].Visible = false;
+                                continue;
+                            }
+                        } else if (min_date.Text.Length > 0)
+                        {
+                            if (!(DateTime.Parse(companies_list[row].year_of_foundation) >= DateTime.Parse(min_date.Text)))
+                            {
+                                gridforcompany.Rows[row].Visible = false;
+                                continue;
+                            }
+                        } else
+                        {
+                            if (!(DateTime.Parse(companies_list[row].year_of_foundation) <= DateTime.Parse(max_date.Text)))
+                            {
+                                gridforcompany.Rows[row].Visible = false;
+                                continue;
+                            }
+                        }
+                    }
+
+
+                    if (type_fil.Checked == true)
+                    {
+                        if (pass_type.Checked == true && gryz_type.Checked == true && mixed_type.Checked == true)
+                        {
+
+                        } else if (pass_type.Checked == false && gryz_type.Checked == false && mixed_type.Checked == false)
+                        {
+                            gridforcompany.Rows[row].Visible = false;
+                            continue;
+                        } else if(pass_type.Checked == true && gryz_type.Checked == true && mixed_type.Checked == false)
+                        {
+                            if (!(companies_list[row].type == pass_type.Text || companies_list[row].type == gryz_type.Text)){
+                                gridforcompany.Rows[row].Visible = false;
+                                continue;
+                            }
+                        } else if(pass_type.Checked == true && gryz_type.Checked == false && mixed_type.Checked == false)
+                        {
+                            if (!(companies_list[row].type == pass_type.Text))
+                            {
+                                gridforcompany.Rows[row].Visible = false;
+                                continue;
+                            }
+                        } else if (pass_type.Checked == false && gryz_type.Checked == true && mixed_type.Checked == true)
+                        {
+                            if (!(companies_list[row].type == gryz_type.Text || companies_list[row].type == mixed_type.Text))
+                            {
+                                gridforcompany.Rows[row].Visible = false;
+                                continue;
+                            }
+                        }
+                        else if (pass_type.Checked == false && gryz_type.Checked == true && mixed_type.Checked == false)
+                        {
+                            if (!(companies_list[row].type == gryz_type.Text))
+                            {
+                                gridforcompany.Rows[row].Visible = false;
+                                continue;
+                            }
+                        }
+                        else if (pass_type.Checked == false && gryz_type.Checked == false && mixed_type.Checked == true)
+                        {
+                            if (!(companies_list[row].type == mixed_type.Text))
+                            {
+                                gridforcompany.Rows[row].Visible = false;
+                                continue;
+                            }
+                        }
+                        else if (pass_type.Checked == true && gryz_type.Checked == false && mixed_type.Checked == true)
+                        {
+                            if (!(companies_list[row].type == pass_type.Text || companies_list[row].type == mixed_type.Text))
+                            {
+                                gridforcompany.Rows[row].Visible = false;
+                                continue;
+                            }
+                        }
+                    }
+
+
+
+                    if (ceo_fil.Checked == true)
+                    {
+                        if (companies_list[row].ceo.IndexOf(ceo_name.Text) == -1)
+                        {
+                            gridforcompany.Rows[row].Visible = false;
+                            continue;
+                        }
+                    }
+
+
+                    if (cost_fil.Checked == true)
+                    {
+                        if (cost_min.Text.Length > 0 && cost_max.Text.Length > 0)
+                        {
+                            if (!(companies_list[row].cost >= long.Parse(cost_min.Text) && companies_list[row].cost <= long.Parse(cost_max.Text)))
+                            {
+                                gridforcompany.Rows[row].Visible = false;
+                                continue;
+                            }
+                        } else if (cost_min.Text.Length > 0)
+                        {
+                            if (!(companies_list[row].cost >= long.Parse(cost_min.Text)))
+                            {
+                                gridforcompany.Rows[row].Visible = false;
+                                continue;
+                            }
+                        } else
+                        {
+                            if (!(companies_list[row].cost <= long.Parse(cost_max.Text)))
+                            {
+                                gridforcompany.Rows[row].Visible = false;
+                                continue;
+                            }
+                        }
+                    }
+
+
+
+                    if (loc_fil.Checked == true)
+                    {
+                        if (city_fil.Text.Length == 0)
+                        {
+                            if (!(companies_list[row].location.Split(',')[1].Trim(' ') == country_fil.Text))
+                            {
+                                gridforcompany.Rows[row].Visible = false;
+                                continue;
+                            }
+                        } else
+                        {
+                            if (!(companies_list[row].location.Split(',')[1].Trim(' ') == country_fil.Text && companies_list[row].location.Split(',')[0] == city_fil.Text))
+                            {
+                                gridforcompany.Rows[row].Visible = false;
+                                continue;
+                            }
+                        }
+                    }
+
+
+
+                    if (num_emp_fil.Checked == true)
+                    {
+                        if (min_empl.Text.Length > 0 && max_empl.Text.Length > 0)
+                        {
+                            if (!(companies_list[row].number_of_employees >= int.Parse(min_empl.Text) && companies_list[row].number_of_employees <= int.Parse(max_empl.Text)))
+                            {
+                                gridforcompany.Rows[row].Visible = false;
+                                continue;
+                            }
+                        }
+                        else if (min_empl.Text.Length > 0)
+                        {
+                            if (!(companies_list[row].number_of_employees >= int.Parse(min_empl.Text)))
+                            {
+                                gridforcompany.Rows[row].Visible = false;
+                                continue;
+                            }
+                        }
+                        else
+                        {
+                            if (!(companies_list[row].number_of_employees <= int.Parse(max_empl.Text)))
+                            {
+                                gridforcompany.Rows[row].Visible = false;
+                                continue;
+                            }
+                        }
+                    }
+
+
+                    if (dest_p_count_fil.Checked == true)
+                    {
+                        if (min_dest_p_count.Text.Length > 0 && max_dest_p_count.Text.Length > 0)
+                        {
+                            if (!(companies_list[row].destination_points.Count >= int.Parse(min_dest_p_count.Text) && companies_list[row].destination_points.Count <= int.Parse(max_dest_p_count.Text)))
+                            {
+                                gridforcompany.Rows[row].Visible = false;
+                                continue;
+                            }
+                        }
+                        else if (min_dest_p_count.Text.Length > 0)
+                        {
+                            if (!(companies_list[row].destination_points.Count >= int.Parse(min_dest_p_count.Text)))
+                            {
+                                gridforcompany.Rows[row].Visible = false;
+                                continue;
+                            }
+                        }
+                        else
+                        {
+                            if (!(companies_list[row].destination_points.Count <= int.Parse(max_dest_p_count.Text)))
+                            {
+                                gridforcompany.Rows[row].Visible = false;
+                                continue;
+                            }
+                        }
+                    }
+
+
+                    if (desti_p_content_fil.Checked == true)
+                    {
+                        bool suitable = false;
+
+                        if (city_fil_dest.Text.Length == 0)
+                        {
+                            foreach (string subelem in companies_list[row].destination_points)
+                            {
+                                if (subelem.Split(',')[1].Trim(' ') == country_fil_dest.Text)
+                                {
+                                    suitable = true;
+                                    break;
+                                }
+                            }
+                        } else
+                        {
+                            foreach (string subelem in companies_list[row].destination_points)
+                            {
+                                if (subelem.Split(',')[1].Trim(' ') == country_fil_dest.Text && subelem.Split(',')[0] == city_fil_dest.Text)
+                                {
+                                    suitable = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if (suitable == false)
+                        {
+                            gridforcompany.Rows[row].Visible = false;
+                            continue;
+                        }
+                    }
+
+
+                    if (model_count_fil.Checked == true)
+                    {
+                        if (min_model_count.Text.Length > 0 && max_model_count.Text.Length > 0)
+                        {
+                            if (!(companies_list[row].planes.Count >= int.Parse(min_model_count.Text) && companies_list[row].planes.Count <= int.Parse(max_model_count.Text)))
+                            {
+                                gridforcompany.Rows[row].Visible = false;
+                                continue;
+                            }
+                        }
+                        else if (min_model_count.Text.Length > 0)
+                        {
+                            if (!(companies_list[row].planes.Count >= int.Parse(min_model_count.Text)))
+                            {
+                                gridforcompany.Rows[row].Visible = false;
+                                continue;
+                            }
+                        }
+                        else
+                        {
+                            if (!(companies_list[row].planes.Count <= int.Parse(max_model_count.Text)))
+                            {
+                                gridforcompany.Rows[row].Visible = false;
+                                continue;
+                            }
+                        }
+                    }
+
+
+
+                    if (model_content_fil.Checked == true)
+                    {
+                        bool suitable = true;
+
+                        List <string> planes_req = new List<string>(models_content_enum.Text.Split(';'));
+                        List<string> result = new List<string>();
+
+                        foreach (string req in planes_req)
+                        {
+                            foreach (Plane our in companies_list[row].planes)
+                            {
+                                if (req == our.name)
+                                {
+                                    result.Add(req);
+                                }
+                            }
+                        }
+
+
+                        if (result.Count != planes_req.Count)
+                        {
+                            suitable = false;
+                        } else
+                        {
+                            for (int elem = 0; elem < result.Count; elem++)
+                            {
+                                if (result[elem] != planes_req[elem])
+                                {
+                                    suitable = false;
+                                }
+                            }
+                        }
+
+
+                        if (suitable == false)
+                        {
+                            gridforcompany.Rows[row].Visible = false;
+                            continue;
+                        }
+
+                    }
+
+                }
+
+
+            } else
+            {
+                //ФИЛЬТРАЦИЯ ОТКЛЮЧЕНА
+
+            for (int row = 0; row < companies_list.Count; row++)
+                {
+                    gridforcompany.Rows[row].Visible = true;
+                }
             }
 
-            //НЕПОСРЕДСТВЕННО ФИЛЬРАЦИЯ
-
-
+            parent_window.hide_details_info();
+            companyBindingSource.ResumeBinding();
             this.Hide();
         }
 
