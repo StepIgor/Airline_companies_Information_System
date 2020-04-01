@@ -41,7 +41,7 @@ namespace inf_system_airline_companies
             }
         }
 
-        private void apply_Click(object sender, EventArgs e)
+        public void apply_Click(object sender, EventArgs e)
         {
 
             companyBindingSource.SuspendBinding();

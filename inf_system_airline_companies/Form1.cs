@@ -16,9 +16,11 @@ namespace inf_system_airline_companies
         }
 
         Company[] companies;
-        List<Company> companies_list;
+        public List<Company> companies_list;
         sort_windows sort_window;
-        filter_windows filter_window;
+        public filter_windows filter_window;
+
+        public bool filter_was_used = false;
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -538,6 +540,7 @@ namespace inf_system_airline_companies
             filter_window.parent_window = this;
             filter_window.companyBindingSource = companyBindingSource;
             filter_window.companies_list = companies_list;
+            filter_was_used = true;
             filter_window.ShowDialog();
         }
 

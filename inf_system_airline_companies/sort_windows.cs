@@ -332,6 +332,13 @@ namespace inf_system_airline_companies
             companyBindingSource.ResetBindings(false);
 
             parent_form.hide_details_info();
+
+            if (parent_form.filter_was_used == true)
+            {
+                parent_form.filter_window.companies_list = parent_form.companies_list;
+                parent_form.filter_window.apply_Click(parent_form, null);
+            }
+
             this.Hide();
 
         }
