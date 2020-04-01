@@ -94,6 +94,12 @@ namespace inf_system_airline_companies
                 return;
             }
 
+            if (model_name.Text.IndexOf(';') != -1)
+            {
+                MessageBox.Show("Название модели не может содержать в себе ;", "Обратите внимание");
+                return;
+            }
+
             if (!(int.TryParse(planes_count.Text, out _)))
             {
                 MessageBox.Show("Количество самолетов должно представлять собой число.", "Обратите внимание");
