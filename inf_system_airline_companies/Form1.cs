@@ -552,6 +552,13 @@ namespace inf_system_airline_companies
 
             filter_window.use_filter_checkbox.Checked = false;
         }
+
+        private void visual_but_Click(object sender, EventArgs e)
+        {
+            visualisation new_visual_windows = new visualisation(companies_list);
+
+            new_visual_windows.ShowDialog();
+        }
     }
 
     public class Plane

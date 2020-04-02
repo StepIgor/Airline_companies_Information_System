@@ -126,6 +126,12 @@
     <Compile Include="sort_windows.Designer.cs">
       <DependentUpon>sort_windows.cs</DependentUpon>
     </Compile>
+    <Compile Include="visualisation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="visualisation.Designer.cs">
+      <DependentUpon>visualisation.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="about_form.resx">
       <DependentUpon>about_form.cs</DependentUpon>
     </EmbeddedResource>
@@ -174,6 +180,9 @@
     </Compile>
     <EmbeddedResource Include="sort_windows.resx">
       <DependentUpon>sort_windows.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="visualisation.resx">
+      <DependentUpon>visualisation.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\DataSources\Company.datasource" />
     <None Include="Properties\DataSources\Plane.datasource" />

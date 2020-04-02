@@ -47,3 +47,4 @@ C:\Users\Igor\Documents\GitHub\Airline_companies_Information_System\inf_system_a
 C:\Users\Igor\Documents\GitHub\Airline_companies_Information_System\inf_system_airline_companies\obj\Debug\inf_system_airline_companies.open_file_stage.resources
 C:\Users\Igor\Documents\GitHub\Airline_companies_Information_System\inf_system_airline_companies\obj\Debug\inf_system_airline_companies.sort_windows.resources
 C:\Users\Igor\Documents\GitHub\Airline_companies_Information_System\inf_system_airline_companies\obj\Debug\inf_system_airline_companies.filter_windows.resources
+C:\Users\Igor\Documents\GitHub\Airline_companies_Information_System\inf_system_airline_companies\obj\Debug\inf_system_airline_companies.visualisation.resources
