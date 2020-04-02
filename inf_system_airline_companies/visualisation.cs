@@ -355,7 +355,109 @@ namespace inf_system_airline_companies
             {
                 //ПО КАЖДОЙ ОТДЕЛЬНО
 
-                
+                out_put.Text += "Сформирован по каждой отдельной компании.\n----------\n";
+
+                if (by_price_2.Checked == true)
+                {
+                    out_put.Text += by_price_2.Text + "\n----------\n";
+
+                    foreach (Company cmp in companies_list)
+                    {
+                        out_put.Text += string.Format("{0,-15}{1,20} Руб.\n",cmp.name, cmp.cost.ToString("N0",CultureInfo.GetCultureInfo("ru-RU")));
+                    }
+                }
+
+                if (by_emp_2.Checked == true)
+                {
+                    out_put.Text += by_emp_2.Text + "\n----------\n";
+
+                    foreach (Company cmp in companies_list)
+                    {
+                        out_put.Text += string.Format("{0,-15}{1,20} Чел.\n", cmp.name, cmp.number_of_employees.ToString("N0", CultureInfo.GetCultureInfo("ru-RU")));
+                    }
+                }
+
+                if (by_plane_type_2.Checked == true)
+                {
+                    out_put.Text += by_plane_type_2.Text + "\n----------\n";
+
+                    foreach (Company cmp in companies_list)
+                    {
+                        int type_a = 0;
+                        int type_b = 0;
+
+                        foreach (Plane plane in cmp.planes)
+                        {
+                            if (plane.type == "Пассажирский")
+                            {
+                                type_a += plane.count;
+                            } else
+                            {
+                                type_b += plane.count;
+                            }
+                        }
+
+                        out_put.Text += string.Format("{0,-25}\n\tПассажирских:{1,15}\n\tГрузовых:{2,19}\n\n",cmp.name,type_a.ToString(),type_b.ToString());
+                    }
+                }
+
+
+                if (by_plane_cost_2.Checked == true)
+                {
+                    out_put.Text += by_plane_cost_2.Text + "\n----------\n";
+
+                    foreach (Company cmp in companies_list)
+                    {
+                        long avg_cost = 0;
+
+                        foreach (Plane plane in cmp.planes)
+                        {
+                            avg_cost += plane.cost;
+                        }
+
+                        avg_cost = avg_cost / cmp.planes.Count;
+
+                        out_put.Text += string.Format("{0,-15}{1,20} Руб.\n",cmp.name,avg_cost.ToString("N0",CultureInfo.GetCultureInfo("ru-RU")));
+                    }
+                }
+
+                if (by_total_count_plane_2.Checked == true)
+                {
+                    out_put.Text += by_total_count_plane_2.Text + "\n----------\n";
+
+                    foreach (Company cmp in companies_list)
+                    {
+                        long total_planes = 0;
+
+                        foreach (Plane plane in cmp.planes)
+                        {
+                            total_planes += plane.count;
+                        }
+
+                        out_put.Text += string.Format("{0,-15}{1,20}\n", cmp.name, total_planes.ToString("N0",CultureInfo.GetCultureInfo("ru-RU")));
+                    }
+                }
+
+
+                if (by_avg_distance_2.Checked == true)
+                {
+                    out_put.Text += by_avg_distance_2.Text + "\n----------\n";
+
+                    foreach (Company cmp in companies_list)
+                    {
+                        int avg_distance = 0;
+
+                        foreach (Plane plane in cmp.planes)
+                        {
+                            avg_distance += plane.distance;
+                        }
+
+                        avg_distance = avg_distance / cmp.planes.Count;
+
+                        out_put.Text += string.Format("{0,-15}{1,20} Км\n",cmp.name,avg_distance.ToString("N0",CultureInfo.GetCultureInfo("ru-RU")));
+                    }
+                }
+
             }
 
             out_put.Text += String.Format("\n\n\nВсего компаний в базе:{0,18}",companies_list.Count.ToString());
