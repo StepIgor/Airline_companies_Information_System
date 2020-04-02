@@ -39,6 +39,12 @@ namespace inf_system_airline_companies
 
         private void generate_text_Click(object sender, EventArgs e)
         {
+            if (companies_list.Count == 0)
+            {
+                MessageBox.Show("Данных нет. Строить отчеты нет смысла.","Отчет по пустым данным?");
+                return;
+            }
+
             out_put.Text = "Отчёт от " + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + "\n";
 
             if (type_1.Checked == true)
