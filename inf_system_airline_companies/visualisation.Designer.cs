@@ -28,38 +28,47 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(visualisation));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.out_put = new System.Windows.Forms.RichTextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.type_1 = new System.Windows.Forms.RadioButton();
-            this.type_2 = new System.Windows.Forms.RadioButton();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.generate_text = new System.Windows.Forms.Button();
-            this.by_type_1 = new System.Windows.Forms.RadioButton();
-            this.by_price_1 = new System.Windows.Forms.RadioButton();
-            this.by_loc_1 = new System.Windows.Forms.RadioButton();
-            this.by_loc_and_city_1 = new System.Windows.Forms.RadioButton();
-            this.by_emp_1 = new System.Windows.Forms.RadioButton();
-            this.by_dest_p_1 = new System.Windows.Forms.RadioButton();
-            this.by_pop_model_1 = new System.Windows.Forms.RadioButton();
-            this.by_model_type_1 = new System.Windows.Forms.RadioButton();
-            this.by_model_price = new System.Windows.Forms.RadioButton();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.by_price_2 = new System.Windows.Forms.RadioButton();
-            this.by_emp_2 = new System.Windows.Forms.RadioButton();
+            this.type_2 = new System.Windows.Forms.RadioButton();
+            this.type_1 = new System.Windows.Forms.RadioButton();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.by_plane_type_2 = new System.Windows.Forms.RadioButton();
-            this.by_plane_cost_2 = new System.Windows.Forms.RadioButton();
-            this.by_total_count_plane_2 = new System.Windows.Forms.RadioButton();
+            this.by_emp_2 = new System.Windows.Forms.RadioButton();
             this.by_avg_distance_2 = new System.Windows.Forms.RadioButton();
+            this.by_total_count_plane_2 = new System.Windows.Forms.RadioButton();
+            this.by_plane_cost_2 = new System.Windows.Forms.RadioButton();
+            this.by_price_2 = new System.Windows.Forms.RadioButton();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.by_loc_and_city_1 = new System.Windows.Forms.RadioButton();
+            this.by_loc_1 = new System.Windows.Forms.RadioButton();
+            this.by_model_price = new System.Windows.Forms.RadioButton();
+            this.by_model_type_1 = new System.Windows.Forms.RadioButton();
+            this.by_pop_model_1 = new System.Windows.Forms.RadioButton();
+            this.by_dest_p_1 = new System.Windows.Forms.RadioButton();
+            this.by_emp_1 = new System.Windows.Forms.RadioButton();
+            this.by_price_1 = new System.Windows.Forms.RadioButton();
+            this.by_type_1 = new System.Windows.Forms.RadioButton();
+            this.label1 = new System.Windows.Forms.Label();
+            this.out_put = new System.Windows.Forms.RichTextBox();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.build_chart = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -92,55 +101,26 @@
             this.tabPage1.Text = "Текстовые отчеты";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // generate_text
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(986, 450);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Визуализация";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.generate_text.Location = new System.Drawing.Point(799, 421);
+            this.generate_text.Name = "generate_text";
+            this.generate_text.Size = new System.Drawing.Size(168, 41);
+            this.generate_text.TabIndex = 4;
+            this.generate_text.Text = "Сформировать";
+            this.generate_text.UseVisualStyleBackColor = true;
+            this.generate_text.Click += new System.EventHandler(this.generate_text_Click);
             // 
-            // out_put
+            // type_2
             // 
-            this.out_put.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.out_put.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.out_put.Location = new System.Drawing.Point(0, 0);
-            this.out_put.Name = "out_put";
-            this.out_put.ReadOnly = true;
-            this.out_put.Size = new System.Drawing.Size(496, 473);
-            this.out_put.TabIndex = 0;
-            this.out_put.Text = "";
-            // 
-            // label1
-            // 
-            this.label1.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(503, 7);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(464, 23);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Настройки отчета:";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.by_loc_and_city_1);
-            this.groupBox1.Controls.Add(this.by_loc_1);
-            this.groupBox1.Controls.Add(this.by_model_price);
-            this.groupBox1.Controls.Add(this.by_model_type_1);
-            this.groupBox1.Controls.Add(this.by_pop_model_1);
-            this.groupBox1.Controls.Add(this.by_dest_p_1);
-            this.groupBox1.Controls.Add(this.by_emp_1);
-            this.groupBox1.Controls.Add(this.by_price_1);
-            this.groupBox1.Controls.Add(this.by_type_1);
-            this.groupBox1.Location = new System.Drawing.Point(507, 66);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(460, 190);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "По всем компаниям в совокупности";
+            this.type_2.AutoSize = true;
+            this.type_2.Location = new System.Drawing.Point(507, 274);
+            this.type_2.Name = "type_2";
+            this.type_2.Size = new System.Drawing.Size(260, 17);
+            this.type_2.TabIndex = 3;
+            this.type_2.Text = "Сформировать по каждой компании отдельно";
+            this.type_2.UseVisualStyleBackColor = true;
+            this.type_2.CheckedChanged += new System.EventHandler(this.type_2_CheckedChanged);
             // 
             // type_1
             // 
@@ -154,17 +134,6 @@
             this.type_1.Text = "Сформировать по всей базе в совокупности";
             this.type_1.UseVisualStyleBackColor = true;
             this.type_1.CheckedChanged += new System.EventHandler(this.type_1_CheckedChanged);
-            // 
-            // type_2
-            // 
-            this.type_2.AutoSize = true;
-            this.type_2.Location = new System.Drawing.Point(507, 274);
-            this.type_2.Name = "type_2";
-            this.type_2.Size = new System.Drawing.Size(260, 17);
-            this.type_2.TabIndex = 3;
-            this.type_2.Text = "Сформировать по каждой компании отдельно";
-            this.type_2.UseVisualStyleBackColor = true;
-            this.type_2.CheckedChanged += new System.EventHandler(this.type_2_CheckedChanged);
             // 
             // groupBox2
             // 
@@ -184,125 +153,55 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Информация по каждой компании";
             // 
-            // generate_text
+            // by_plane_type_2
             // 
-            this.generate_text.Location = new System.Drawing.Point(799, 421);
-            this.generate_text.Name = "generate_text";
-            this.generate_text.Size = new System.Drawing.Size(168, 41);
-            this.generate_text.TabIndex = 4;
-            this.generate_text.Text = "Сформировать";
-            this.generate_text.UseVisualStyleBackColor = true;
-            this.generate_text.Click += new System.EventHandler(this.generate_text_Click);
+            this.by_plane_type_2.AutoSize = true;
+            this.by_plane_type_2.Location = new System.Drawing.Point(10, 83);
+            this.by_plane_type_2.Name = "by_plane_type_2";
+            this.by_plane_type_2.Size = new System.Drawing.Size(198, 30);
+            this.by_plane_type_2.TabIndex = 1;
+            this.by_plane_type_2.Text = "Количество самолетов (экземпл.)\r\nпо типам";
+            this.by_plane_type_2.UseVisualStyleBackColor = true;
             // 
-            // by_type_1
+            // by_emp_2
             // 
-            this.by_type_1.AutoSize = true;
-            this.by_type_1.Checked = true;
-            this.by_type_1.Location = new System.Drawing.Point(7, 20);
-            this.by_type_1.Name = "by_type_1";
-            this.by_type_1.Size = new System.Drawing.Size(206, 17);
-            this.by_type_1.TabIndex = 0;
-            this.by_type_1.TabStop = true;
-            this.by_type_1.Text = "Распределение по типам компаний";
-            this.by_type_1.UseVisualStyleBackColor = true;
+            this.by_emp_2.AutoSize = true;
+            this.by_emp_2.Location = new System.Drawing.Point(10, 60);
+            this.by_emp_2.Name = "by_emp_2";
+            this.by_emp_2.Size = new System.Drawing.Size(151, 17);
+            this.by_emp_2.TabIndex = 1;
+            this.by_emp_2.Text = "Количество сотрудников";
+            this.by_emp_2.UseVisualStyleBackColor = true;
             // 
-            // by_price_1
+            // by_avg_distance_2
             // 
-            this.by_price_1.AutoSize = true;
-            this.by_price_1.Location = new System.Drawing.Point(7, 43);
-            this.by_price_1.Name = "by_price_1";
-            this.by_price_1.Size = new System.Drawing.Size(183, 17);
-            this.by_price_1.TabIndex = 0;
-            this.by_price_1.Text = "Сведения о ценах на компании";
-            this.by_price_1.UseVisualStyleBackColor = true;
+            this.by_avg_distance_2.AutoSize = true;
+            this.by_avg_distance_2.Location = new System.Drawing.Point(231, 90);
+            this.by_avg_distance_2.Name = "by_avg_distance_2";
+            this.by_avg_distance_2.Size = new System.Drawing.Size(174, 17);
+            this.by_avg_distance_2.TabIndex = 1;
+            this.by_avg_distance_2.Text = "Средняя дистанция перелета";
+            this.by_avg_distance_2.UseVisualStyleBackColor = true;
             // 
-            // by_loc_1
+            // by_total_count_plane_2
             // 
-            this.by_loc_1.AutoSize = true;
-            this.by_loc_1.Location = new System.Drawing.Point(7, 66);
-            this.by_loc_1.Name = "by_loc_1";
-            this.by_loc_1.Size = new System.Drawing.Size(198, 30);
-            this.by_loc_1.TabIndex = 0;
-            this.by_loc_1.Text = "Распределение по расположению\r\n(только страны)";
-            this.by_loc_1.UseVisualStyleBackColor = true;
+            this.by_total_count_plane_2.AutoSize = true;
+            this.by_total_count_plane_2.Location = new System.Drawing.Point(231, 60);
+            this.by_total_count_plane_2.Name = "by_total_count_plane_2";
+            this.by_total_count_plane_2.Size = new System.Drawing.Size(184, 17);
+            this.by_total_count_plane_2.TabIndex = 1;
+            this.by_total_count_plane_2.Text = "Всего экземпляров самолетов";
+            this.by_total_count_plane_2.UseVisualStyleBackColor = true;
             // 
-            // by_loc_and_city_1
+            // by_plane_cost_2
             // 
-            this.by_loc_and_city_1.AutoSize = true;
-            this.by_loc_and_city_1.Location = new System.Drawing.Point(7, 102);
-            this.by_loc_and_city_1.Name = "by_loc_and_city_1";
-            this.by_loc_and_city_1.Size = new System.Drawing.Size(198, 30);
-            this.by_loc_and_city_1.TabIndex = 0;
-            this.by_loc_and_city_1.Text = "Распределение по расположению\r\n(с учетом города)";
-            this.by_loc_and_city_1.UseVisualStyleBackColor = true;
-            // 
-            // by_emp_1
-            // 
-            this.by_emp_1.AutoSize = true;
-            this.by_emp_1.Location = new System.Drawing.Point(6, 138);
-            this.by_emp_1.Name = "by_emp_1";
-            this.by_emp_1.Size = new System.Drawing.Size(211, 17);
-            this.by_emp_1.TabIndex = 0;
-            this.by_emp_1.Text = "Сведения о количестве сотрудников";
-            this.by_emp_1.UseVisualStyleBackColor = true;
-            // 
-            // by_dest_p_1
-            // 
-            this.by_dest_p_1.AutoSize = true;
-            this.by_dest_p_1.Location = new System.Drawing.Point(6, 161);
-            this.by_dest_p_1.Name = "by_dest_p_1";
-            this.by_dest_p_1.Size = new System.Drawing.Size(225, 17);
-            this.by_dest_p_1.TabIndex = 0;
-            this.by_dest_p_1.Text = "Самые популярные пункты назначения";
-            this.by_dest_p_1.UseVisualStyleBackColor = true;
-            // 
-            // by_pop_model_1
-            // 
-            this.by_pop_model_1.AutoSize = true;
-            this.by_pop_model_1.Location = new System.Drawing.Point(231, 19);
-            this.by_pop_model_1.Name = "by_pop_model_1";
-            this.by_pop_model_1.Size = new System.Drawing.Size(223, 17);
-            this.by_pop_model_1.TabIndex = 0;
-            this.by_pop_model_1.Text = "Самые популярные модели самолетов";
-            this.by_pop_model_1.UseVisualStyleBackColor = true;
-            // 
-            // by_model_type_1
-            // 
-            this.by_model_type_1.AutoSize = true;
-            this.by_model_type_1.Location = new System.Drawing.Point(231, 43);
-            this.by_model_type_1.Name = "by_model_type_1";
-            this.by_model_type_1.Size = new System.Drawing.Size(210, 17);
-            this.by_model_type_1.TabIndex = 0;
-            this.by_model_type_1.Text = "Самые популярные типы самолетов";
-            this.by_model_type_1.UseVisualStyleBackColor = true;
-            // 
-            // by_model_price
-            // 
-            this.by_model_price.AutoSize = true;
-            this.by_model_price.Location = new System.Drawing.Point(231, 73);
-            this.by_model_price.Name = "by_model_price";
-            this.by_model_price.Size = new System.Drawing.Size(184, 17);
-            this.by_model_price.TabIndex = 0;
-            this.by_model_price.Text = "Сведения о ценах на самолеты";
-            this.by_model_price.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 20);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(132, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Не требуют вычислений:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(228, 20);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(149, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "С вычислением результата:";
+            this.by_plane_cost_2.AutoSize = true;
+            this.by_plane_cost_2.Location = new System.Drawing.Point(231, 37);
+            this.by_plane_cost_2.Name = "by_plane_cost_2";
+            this.by_plane_cost_2.Size = new System.Drawing.Size(177, 17);
+            this.by_plane_cost_2.TabIndex = 1;
+            this.by_plane_cost_2.Text = "Средняя стоимость самолета";
+            this.by_plane_cost_2.UseVisualStyleBackColor = true;
             // 
             // by_price_2
             // 
@@ -316,55 +215,212 @@
             this.by_price_2.Text = "Стоимость компании";
             this.by_price_2.UseVisualStyleBackColor = true;
             // 
-            // by_emp_2
+            // label3
             // 
-            this.by_emp_2.AutoSize = true;
-            this.by_emp_2.Location = new System.Drawing.Point(10, 60);
-            this.by_emp_2.Name = "by_emp_2";
-            this.by_emp_2.Size = new System.Drawing.Size(151, 17);
-            this.by_emp_2.TabIndex = 1;
-            this.by_emp_2.Text = "Количество сотрудников";
-            this.by_emp_2.UseVisualStyleBackColor = true;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(228, 20);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(149, 13);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "С вычислением результата:";
             // 
-            // by_plane_type_2
+            // label2
             // 
-            this.by_plane_type_2.AutoSize = true;
-            this.by_plane_type_2.Location = new System.Drawing.Point(10, 83);
-            this.by_plane_type_2.Name = "by_plane_type_2";
-            this.by_plane_type_2.Size = new System.Drawing.Size(198, 30);
-            this.by_plane_type_2.TabIndex = 1;
-            this.by_plane_type_2.Text = "Количество самолетов (экземпл.)\r\nпо типам";
-            this.by_plane_type_2.UseVisualStyleBackColor = true;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(7, 20);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(132, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Не требуют вычислений:";
             // 
-            // by_plane_cost_2
+            // groupBox1
             // 
-            this.by_plane_cost_2.AutoSize = true;
-            this.by_plane_cost_2.Location = new System.Drawing.Point(231, 37);
-            this.by_plane_cost_2.Name = "by_plane_cost_2";
-            this.by_plane_cost_2.Size = new System.Drawing.Size(177, 17);
-            this.by_plane_cost_2.TabIndex = 1;
-            this.by_plane_cost_2.Text = "Средняя стоимость самолета";
-            this.by_plane_cost_2.UseVisualStyleBackColor = true;
+            this.groupBox1.Controls.Add(this.by_loc_and_city_1);
+            this.groupBox1.Controls.Add(this.by_loc_1);
+            this.groupBox1.Controls.Add(this.by_model_price);
+            this.groupBox1.Controls.Add(this.by_model_type_1);
+            this.groupBox1.Controls.Add(this.by_pop_model_1);
+            this.groupBox1.Controls.Add(this.by_dest_p_1);
+            this.groupBox1.Controls.Add(this.by_emp_1);
+            this.groupBox1.Controls.Add(this.by_price_1);
+            this.groupBox1.Controls.Add(this.by_type_1);
+            this.groupBox1.Location = new System.Drawing.Point(507, 66);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(460, 190);
+            this.groupBox1.TabIndex = 2;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "По всем компаниям в совокупности";
             // 
-            // by_total_count_plane_2
+            // by_loc_and_city_1
             // 
-            this.by_total_count_plane_2.AutoSize = true;
-            this.by_total_count_plane_2.Location = new System.Drawing.Point(231, 60);
-            this.by_total_count_plane_2.Name = "by_total_count_plane_2";
-            this.by_total_count_plane_2.Size = new System.Drawing.Size(184, 17);
-            this.by_total_count_plane_2.TabIndex = 1;
-            this.by_total_count_plane_2.Text = "Всего экземпляров самолетов";
-            this.by_total_count_plane_2.UseVisualStyleBackColor = true;
+            this.by_loc_and_city_1.AutoSize = true;
+            this.by_loc_and_city_1.Location = new System.Drawing.Point(7, 102);
+            this.by_loc_and_city_1.Name = "by_loc_and_city_1";
+            this.by_loc_and_city_1.Size = new System.Drawing.Size(198, 30);
+            this.by_loc_and_city_1.TabIndex = 0;
+            this.by_loc_and_city_1.Text = "Распределение по расположению\r\n(с учетом города)";
+            this.by_loc_and_city_1.UseVisualStyleBackColor = true;
             // 
-            // by_avg_distance_2
+            // by_loc_1
             // 
-            this.by_avg_distance_2.AutoSize = true;
-            this.by_avg_distance_2.Location = new System.Drawing.Point(231, 90);
-            this.by_avg_distance_2.Name = "by_avg_distance_2";
-            this.by_avg_distance_2.Size = new System.Drawing.Size(174, 17);
-            this.by_avg_distance_2.TabIndex = 1;
-            this.by_avg_distance_2.Text = "Средняя дистанция перелета";
-            this.by_avg_distance_2.UseVisualStyleBackColor = true;
+            this.by_loc_1.AutoSize = true;
+            this.by_loc_1.Location = new System.Drawing.Point(7, 66);
+            this.by_loc_1.Name = "by_loc_1";
+            this.by_loc_1.Size = new System.Drawing.Size(198, 30);
+            this.by_loc_1.TabIndex = 0;
+            this.by_loc_1.Text = "Распределение по расположению\r\n(только страны)";
+            this.by_loc_1.UseVisualStyleBackColor = true;
+            // 
+            // by_model_price
+            // 
+            this.by_model_price.AutoSize = true;
+            this.by_model_price.Location = new System.Drawing.Point(231, 73);
+            this.by_model_price.Name = "by_model_price";
+            this.by_model_price.Size = new System.Drawing.Size(184, 17);
+            this.by_model_price.TabIndex = 0;
+            this.by_model_price.Text = "Сведения о ценах на самолеты";
+            this.by_model_price.UseVisualStyleBackColor = true;
+            // 
+            // by_model_type_1
+            // 
+            this.by_model_type_1.AutoSize = true;
+            this.by_model_type_1.Location = new System.Drawing.Point(231, 43);
+            this.by_model_type_1.Name = "by_model_type_1";
+            this.by_model_type_1.Size = new System.Drawing.Size(210, 17);
+            this.by_model_type_1.TabIndex = 0;
+            this.by_model_type_1.Text = "Самые популярные типы самолетов";
+            this.by_model_type_1.UseVisualStyleBackColor = true;
+            // 
+            // by_pop_model_1
+            // 
+            this.by_pop_model_1.AutoSize = true;
+            this.by_pop_model_1.Location = new System.Drawing.Point(231, 19);
+            this.by_pop_model_1.Name = "by_pop_model_1";
+            this.by_pop_model_1.Size = new System.Drawing.Size(223, 17);
+            this.by_pop_model_1.TabIndex = 0;
+            this.by_pop_model_1.Text = "Самые популярные модели самолетов";
+            this.by_pop_model_1.UseVisualStyleBackColor = true;
+            // 
+            // by_dest_p_1
+            // 
+            this.by_dest_p_1.AutoSize = true;
+            this.by_dest_p_1.Location = new System.Drawing.Point(6, 161);
+            this.by_dest_p_1.Name = "by_dest_p_1";
+            this.by_dest_p_1.Size = new System.Drawing.Size(225, 17);
+            this.by_dest_p_1.TabIndex = 0;
+            this.by_dest_p_1.Text = "Самые популярные пункты назначения";
+            this.by_dest_p_1.UseVisualStyleBackColor = true;
+            // 
+            // by_emp_1
+            // 
+            this.by_emp_1.AutoSize = true;
+            this.by_emp_1.Location = new System.Drawing.Point(6, 138);
+            this.by_emp_1.Name = "by_emp_1";
+            this.by_emp_1.Size = new System.Drawing.Size(211, 17);
+            this.by_emp_1.TabIndex = 0;
+            this.by_emp_1.Text = "Сведения о количестве сотрудников";
+            this.by_emp_1.UseVisualStyleBackColor = true;
+            // 
+            // by_price_1
+            // 
+            this.by_price_1.AutoSize = true;
+            this.by_price_1.Location = new System.Drawing.Point(7, 43);
+            this.by_price_1.Name = "by_price_1";
+            this.by_price_1.Size = new System.Drawing.Size(183, 17);
+            this.by_price_1.TabIndex = 0;
+            this.by_price_1.Text = "Сведения о ценах на компании";
+            this.by_price_1.UseVisualStyleBackColor = true;
+            // 
+            // by_type_1
+            // 
+            this.by_type_1.AutoSize = true;
+            this.by_type_1.Checked = true;
+            this.by_type_1.Location = new System.Drawing.Point(7, 20);
+            this.by_type_1.Name = "by_type_1";
+            this.by_type_1.Size = new System.Drawing.Size(206, 17);
+            this.by_type_1.TabIndex = 0;
+            this.by_type_1.TabStop = true;
+            this.by_type_1.Text = "Распределение по типам компаний";
+            this.by_type_1.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(503, 7);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(464, 23);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Настройки отчета:";
+            // 
+            // out_put
+            // 
+            this.out_put.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.out_put.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.out_put.Location = new System.Drawing.Point(0, 0);
+            this.out_put.Name = "out_put";
+            this.out_put.ReadOnly = true;
+            this.out_put.Size = new System.Drawing.Size(496, 473);
+            this.out_put.TabIndex = 0;
+            this.out_put.Text = "";
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.groupBox3);
+            this.tabPage2.Controls.Add(this.label4);
+            this.tabPage2.Controls.Add(this.build_chart);
+            this.tabPage2.Controls.Add(this.chart1);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(977, 469);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Визуализация";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // chart1
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Готов";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(8, 7);
+            this.chart1.Name = "chart1";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Готов";
+            series1.Name = "Готов";
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(508, 456);
+            this.chart1.TabIndex = 0;
+            this.chart1.Text = "chart1";
+            // 
+            // build_chart
+            // 
+            this.build_chart.Location = new System.Drawing.Point(849, 414);
+            this.build_chart.Name = "build_chart";
+            this.build_chart.Size = new System.Drawing.Size(118, 46);
+            this.build_chart.TabIndex = 1;
+            this.build_chart.Text = "Построить";
+            this.build_chart.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(522, 7);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(409, 35);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Настройка визуализации:";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Location = new System.Drawing.Point(526, 46);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(441, 362);
+            this.groupBox3.TabIndex = 3;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Построить распределение";
             // 
             // visualisation
             // 
@@ -384,10 +440,12 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -421,5 +479,9 @@
         private System.Windows.Forms.RadioButton by_plane_cost_2;
         private System.Windows.Forms.RadioButton by_total_count_plane_2;
         private System.Windows.Forms.RadioButton by_avg_distance_2;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.Button build_chart;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.GroupBox groupBox3;
     }
 }
