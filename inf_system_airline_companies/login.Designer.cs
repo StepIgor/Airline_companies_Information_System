@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(login));
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.user = new System.Windows.Forms.ComboBox();
@@ -37,17 +36,9 @@
             this.password = new System.Windows.Forms.TextBox();
             this.enter = new System.Windows.Forms.Button();
             this.password_tip = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::inf_system_airline_companies.Properties.Resources.login_img;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(485, 130);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // label1
             // 
@@ -118,6 +109,15 @@
             this.password_tip.Size = new System.Drawing.Size(68, 13);
             this.password_tip.TabIndex = 7;
             this.password_tip.Text = "Пароль: test";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::inf_system_airline_companies.Properties.Resources.login_img1;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(485, 130);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // login
             // 

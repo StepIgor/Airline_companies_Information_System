@@ -110,7 +110,12 @@ namespace inf_system_airline_companies
 
         private void planes_in_comp_Activated(object sender, EventArgs e)
         {
-            gridforplanes_CellClick(gridforplanes, null);
+            try { 
+                gridforplanes_CellClick(gridforplanes, null);
+            } catch (Exception)
+            {
+                this.Close();
+            }
         }
     }
 }
