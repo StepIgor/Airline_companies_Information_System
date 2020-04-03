@@ -59,15 +59,26 @@
             this.label1 = new System.Windows.Forms.Label();
             this.out_put = new System.Windows.Forms.RichTextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.build_chart = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.build_chart = new System.Windows.Forms.Button();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.use_3d = new System.Windows.Forms.CheckBox();
+            this.price_diag = new System.Windows.Forms.RadioButton();
+            this.emp_diag = new System.Windows.Forms.RadioButton();
+            this.country_diag = new System.Windows.Forms.RadioButton();
+            this.by_country_and_city_diag = new System.Windows.Forms.RadioButton();
+            this.country_dest_diag = new System.Windows.Forms.RadioButton();
+            this.country_and_city_dest_diag = new System.Windows.Forms.RadioButton();
+            this.plane_model_diag = new System.Windows.Forms.RadioButton();
+            this.label_is_val = new System.Windows.Forms.CheckBox();
+            this.show_labels = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -379,6 +390,44 @@
             this.tabPage2.Text = "Визуализация";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.plane_model_diag);
+            this.groupBox3.Controls.Add(this.country_and_city_dest_diag);
+            this.groupBox3.Controls.Add(this.country_dest_diag);
+            this.groupBox3.Controls.Add(this.by_country_and_city_diag);
+            this.groupBox3.Controls.Add(this.country_diag);
+            this.groupBox3.Controls.Add(this.emp_diag);
+            this.groupBox3.Controls.Add(this.price_diag);
+            this.groupBox3.Controls.Add(this.show_labels);
+            this.groupBox3.Controls.Add(this.label_is_val);
+            this.groupBox3.Controls.Add(this.use_3d);
+            this.groupBox3.Location = new System.Drawing.Point(526, 46);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(441, 362);
+            this.groupBox3.TabIndex = 3;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Построить распределение";
+            // 
+            // label4
+            // 
+            this.label4.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(522, 7);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(409, 35);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Настройка визуализации:";
+            // 
+            // build_chart
+            // 
+            this.build_chart.Location = new System.Drawing.Point(849, 414);
+            this.build_chart.Name = "build_chart";
+            this.build_chart.Size = new System.Drawing.Size(118, 46);
+            this.build_chart.TabIndex = 1;
+            this.build_chart.Text = "Построить";
+            this.build_chart.UseVisualStyleBackColor = true;
+            this.build_chart.Click += new System.EventHandler(this.build_chart_Click);
+            // 
             // chart1
             // 
             chartArea1.Name = "ChartArea1";
@@ -395,32 +444,110 @@
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
             // 
-            // build_chart
+            // use_3d
             // 
-            this.build_chart.Location = new System.Drawing.Point(849, 414);
-            this.build_chart.Name = "build_chart";
-            this.build_chart.Size = new System.Drawing.Size(118, 46);
-            this.build_chart.TabIndex = 1;
-            this.build_chart.Text = "Построить";
-            this.build_chart.UseVisualStyleBackColor = true;
+            this.use_3d.AutoSize = true;
+            this.use_3d.Location = new System.Drawing.Point(7, 20);
+            this.use_3d.Name = "use_3d";
+            this.use_3d.Size = new System.Drawing.Size(116, 17);
+            this.use_3d.TabIndex = 0;
+            this.use_3d.Text = "Использовать 3D";
+            this.use_3d.UseVisualStyleBackColor = true;
             // 
-            // label4
+            // price_diag
             // 
-            this.label4.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(522, 7);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(409, 35);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Настройка визуализации:";
+            this.price_diag.AutoSize = true;
+            this.price_diag.Checked = true;
+            this.price_diag.Location = new System.Drawing.Point(7, 73);
+            this.price_diag.Name = "price_diag";
+            this.price_diag.Size = new System.Drawing.Size(193, 17);
+            this.price_diag.TabIndex = 1;
+            this.price_diag.TabStop = true;
+            this.price_diag.Text = "Распределение цен на компании";
+            this.price_diag.UseVisualStyleBackColor = true;
             // 
-            // groupBox3
+            // emp_diag
             // 
-            this.groupBox3.Location = new System.Drawing.Point(526, 46);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(441, 362);
-            this.groupBox3.TabIndex = 3;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Построить распределение";
+            this.emp_diag.AutoSize = true;
+            this.emp_diag.Location = new System.Drawing.Point(7, 96);
+            this.emp_diag.Name = "emp_diag";
+            this.emp_diag.Size = new System.Drawing.Size(203, 17);
+            this.emp_diag.TabIndex = 1;
+            this.emp_diag.Text = "Распределение числа сотрудников";
+            this.emp_diag.UseVisualStyleBackColor = true;
+            // 
+            // country_diag
+            // 
+            this.country_diag.AutoSize = true;
+            this.country_diag.Location = new System.Drawing.Point(7, 119);
+            this.country_diag.Name = "country_diag";
+            this.country_diag.Size = new System.Drawing.Size(218, 17);
+            this.country_diag.TabIndex = 1;
+            this.country_diag.Text = "Распределение компаний по странам";
+            this.country_diag.UseVisualStyleBackColor = true;
+            // 
+            // by_country_and_city_diag
+            // 
+            this.by_country_and_city_diag.AutoSize = true;
+            this.by_country_and_city_diag.Location = new System.Drawing.Point(7, 142);
+            this.by_country_and_city_diag.Name = "by_country_and_city_diag";
+            this.by_country_and_city_diag.Size = new System.Drawing.Size(273, 17);
+            this.by_country_and_city_diag.TabIndex = 1;
+            this.by_country_and_city_diag.Text = "Распределение компаний по странам и городам";
+            this.by_country_and_city_diag.UseVisualStyleBackColor = true;
+            // 
+            // country_dest_diag
+            // 
+            this.country_dest_diag.AutoSize = true;
+            this.country_dest_diag.Location = new System.Drawing.Point(7, 165);
+            this.country_dest_diag.Name = "country_dest_diag";
+            this.country_dest_diag.Size = new System.Drawing.Size(235, 17);
+            this.country_dest_diag.TabIndex = 1;
+            this.country_dest_diag.Text = "Популярные пункты назначения (страны)";
+            this.country_dest_diag.UseVisualStyleBackColor = true;
+            // 
+            // country_and_city_dest_diag
+            // 
+            this.country_and_city_dest_diag.AutoSize = true;
+            this.country_and_city_dest_diag.Location = new System.Drawing.Point(7, 188);
+            this.country_and_city_dest_diag.Name = "country_and_city_dest_diag";
+            this.country_and_city_dest_diag.Size = new System.Drawing.Size(282, 17);
+            this.country_and_city_dest_diag.TabIndex = 1;
+            this.country_and_city_dest_diag.Text = "Популярные пункты назначения (страны и города)";
+            this.country_and_city_dest_diag.UseVisualStyleBackColor = true;
+            // 
+            // plane_model_diag
+            // 
+            this.plane_model_diag.AutoSize = true;
+            this.plane_model_diag.Location = new System.Drawing.Point(7, 211);
+            this.plane_model_diag.Name = "plane_model_diag";
+            this.plane_model_diag.Size = new System.Drawing.Size(187, 17);
+            this.plane_model_diag.TabIndex = 1;
+            this.plane_model_diag.Text = "Популярные модели самолетов";
+            this.plane_model_diag.UseVisualStyleBackColor = true;
+            // 
+            // label_is_val
+            // 
+            this.label_is_val.AutoSize = true;
+            this.label_is_val.Location = new System.Drawing.Point(255, 20);
+            this.label_is_val.Name = "label_is_val";
+            this.label_is_val.Size = new System.Drawing.Size(167, 17);
+            this.label_is_val.TabIndex = 0;
+            this.label_is_val.Text = "Отображать само значение";
+            this.label_is_val.UseVisualStyleBackColor = true;
+            // 
+            // show_labels
+            // 
+            this.show_labels.AutoSize = true;
+            this.show_labels.Checked = true;
+            this.show_labels.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.show_labels.Location = new System.Drawing.Point(129, 20);
+            this.show_labels.Name = "show_labels";
+            this.show_labels.Size = new System.Drawing.Size(120, 17);
+            this.show_labels.TabIndex = 0;
+            this.show_labels.Text = "Показать подписи";
+            this.show_labels.UseVisualStyleBackColor = true;
+            this.show_labels.CheckedChanged += new System.EventHandler(this.show_labels_CheckedChanged);
             // 
             // visualisation
             // 
@@ -445,6 +572,8 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
 
@@ -483,5 +612,15 @@
         private System.Windows.Forms.Button build_chart;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.CheckBox use_3d;
+        private System.Windows.Forms.RadioButton emp_diag;
+        private System.Windows.Forms.RadioButton price_diag;
+        private System.Windows.Forms.RadioButton country_diag;
+        private System.Windows.Forms.RadioButton by_country_and_city_diag;
+        private System.Windows.Forms.RadioButton country_and_city_dest_diag;
+        private System.Windows.Forms.RadioButton country_dest_diag;
+        private System.Windows.Forms.RadioButton plane_model_diag;
+        private System.Windows.Forms.CheckBox label_is_val;
+        private System.Windows.Forms.CheckBox show_labels;
     }
 }

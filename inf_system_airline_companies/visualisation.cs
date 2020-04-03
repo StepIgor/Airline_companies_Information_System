@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Globalization;
+using System.Windows.Forms.DataVisualization.Charting;
+
 
 namespace inf_system_airline_companies
 {
@@ -24,7 +26,16 @@ namespace inf_system_airline_companies
 
         private void visualisation_Load(object sender, EventArgs e)
         {
+            chart1.Series.Clear();
 
+            // Форматировать диаграмму
+            chart1.BackColor = Color.LightGray;
+
+            chart1.BorderlineDashStyle = ChartDashStyle.Solid;
+            chart1.BorderlineColor = Color.LightGray;
+
+            // Форматировать область диаграммы
+            chart1.ChartAreas[0].BackColor = Color.LightGray;
         }
 
         private void type_1_CheckedChanged(object sender, EventArgs e)
@@ -467,6 +478,252 @@ namespace inf_system_airline_companies
             }
 
             out_put.Text += String.Format("\n\n\nВсего компаний в базе:{0,18}",companies_list.Count.ToString());
+        }
+
+        private void build_chart_Click(object sender, EventArgs e)
+        {
+            if (companies_list.Count == 0)
+            {
+                MessageBox.Show("В базе нет данных. Строить визуализацию бессмысленно.","Визуализация по пустым данным?");
+                return;
+            }
+
+            chart1.Titles.Clear();
+            chart1.Series.Clear();
+            chart1.Series.Add("data");
+
+
+            if (price_diag.Checked == true)
+            {
+                chart1.Titles.Add(price_diag.Text);
+                chart1.Titles[0].Font = new Font("Utopia", 16);
+
+                List<long> y = new List<long>();
+                List<string> x = new List<string>();
+
+                foreach (Company cmp in companies_list)
+                {
+                    y.Add(cmp.cost);
+                    x.Add(cmp.name);
+                }
+
+                chart1.Series[0].Points.DataBindXY(x, y);
+                
+                
+            }
+
+
+            if (emp_diag.Checked == true)
+            {
+                chart1.Titles.Add(emp_diag.Text);
+                chart1.Titles[0].Font = new Font("Utopia", 16);
+
+                List<int> y = new List<int>();
+                List<string> x = new List<string>();
+
+                foreach (Company cmp in companies_list)
+                {
+                    y.Add(cmp.number_of_employees);
+                    x.Add(cmp.name);
+                }
+
+                chart1.Series[0].Points.DataBindXY(x, y);
+
+
+            }
+
+            if (country_diag.Checked == true)
+            {
+                chart1.Titles.Add(country_diag.Text);
+                chart1.Titles[0].Font = new Font("Utopia", 16);
+
+                List<string> country_names = new List<string>();    //содержит названия стран
+                List<int> country_count = new List<int>();          //содержит кол-во совпадений - соответств. по индексу
+
+                foreach (Company cmp in companies_list)
+                {
+                    if (country_names.IndexOf(cmp.location.Split(',')[1].Trim(' ')) == -1)
+                    {
+                        country_names.Add(cmp.location.Split(',')[1].Trim(' '));
+                        country_count.Add(0);
+                    }
+                }
+
+
+                foreach (Company cmp in companies_list)
+                {
+                    country_count[country_names.IndexOf(cmp.location.Split(',')[1].Trim(' '))] += 1;
+                }
+
+
+                chart1.Series[0].Points.DataBindXY(country_names, country_count);
+            }
+
+
+            if (by_country_and_city_diag.Checked == true)
+            {
+                chart1.Titles.Add(by_country_and_city_diag.Text);
+                chart1.Titles[0].Font = new Font("Utopia", 16);
+
+                List<string> location_names = new List<string>();    //содержит названия стран и городов
+                List<int> locations_count = new List<int>();          //содержит кол-во совпадений - соответств. по индексу
+
+                foreach (Company cmp in companies_list)
+                {
+                    if (location_names.IndexOf(cmp.location) == -1)
+                    {
+                        location_names.Add(cmp.location);
+                        locations_count.Add(0);
+                    }
+                }
+
+
+                foreach (Company cmp in companies_list)
+                {
+                    locations_count[location_names.IndexOf(cmp.location)] += 1;
+                }
+
+
+                chart1.Series[0].Points.DataBindXY(location_names, locations_count);
+            }
+
+
+
+            if (country_dest_diag.Checked == true)
+            {
+                chart1.Titles.Add(country_dest_diag.Text);
+                chart1.Titles[0].Font = new Font("Utopia", 16);
+
+                List<string> destination_names = new List<string>();    //содержит названия стран
+                List<int> destination_count = new List<int>();          //содержит кол-во совпадений - соответств. по индексу
+
+                foreach (Company cmp in companies_list)
+                {
+                    foreach (string dest in cmp.destination_points)
+                    {
+                        if (destination_names.IndexOf(dest.Split(',')[1].Trim(' ')) == -1)
+                        {
+                            destination_names.Add(dest.Split(',')[1].Trim(' '));
+                            destination_count.Add(0);
+                        }
+                    }
+                }
+
+
+                foreach (Company cmp in companies_list)
+                {
+                    foreach (string dest in cmp.destination_points)
+                    {
+                        destination_count[destination_names.IndexOf(dest.Split(',')[1].Trim(' '))] += 1;
+                    }
+                }
+
+
+                chart1.Series[0].Points.DataBindXY(destination_names, destination_count);
+            }
+
+
+            if (country_and_city_dest_diag.Checked == true)
+            {
+                chart1.Titles.Add(country_and_city_dest_diag.Text);
+                chart1.Titles[0].Font = new Font("Utopia", 16);
+
+                List<string> destination_names = new List<string>();    //содержит названия стран
+                List<int> destination_count = new List<int>();          //содержит кол-во совпадений - соответств. по индексу
+
+                foreach (Company cmp in companies_list)
+                {
+                    foreach (string dest in cmp.destination_points)
+                    {
+                        if (destination_names.IndexOf(dest) == -1)
+                        {
+                            destination_names.Add(dest);
+                            destination_count.Add(0);
+                        }
+                    }
+                }
+
+
+                foreach (Company cmp in companies_list)
+                {
+                    foreach (string dest in cmp.destination_points)
+                    {
+                        destination_count[destination_names.IndexOf(dest)] += 1;
+                    }
+                }
+
+
+                chart1.Series[0].Points.DataBindXY(destination_names, destination_count);
+            }
+
+
+            if (plane_model_diag.Checked == true)
+            {
+                chart1.Titles.Add(plane_model_diag.Text);
+                chart1.Titles[0].Font = new Font("Utopia", 16);
+
+                List<string> planes_names = new List<string>();    //содержит названия моделей
+                List<int> planes_count = new List<int>();          //содержит кол-во совпадений - соответств. по индексу
+
+                foreach (Company cmp in companies_list)
+                {
+                    foreach (Plane plane in cmp.planes)
+                    {
+                        if (planes_names.IndexOf(plane.name) == -1)
+                        {
+                            planes_names.Add(plane.name);
+                            planes_count.Add(0);
+                        }
+                    }
+                }
+
+
+                foreach (Company cmp in companies_list)
+                {
+                    foreach (Plane plane in cmp.planes)
+                    {
+                        planes_count[planes_names.IndexOf(plane.name)] += 1;
+                    }
+                }
+
+                chart1.Series[0].Points.DataBindXY(planes_names, planes_count);
+            }
+
+
+
+            chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+
+            if (label_is_val.Checked == true)
+            {
+                chart1.Series[0].IsValueShownAsLabel = true;
+            }
+            else
+            {
+                chart1.Series[0].IsValueShownAsLabel = false;
+            }
+
+            if (show_labels.Checked == false)
+            {
+                chart1.Series[0]["PieLabelStyle"] = "Disabled";
+
+            }
+            else
+            {
+
+            }
+
+            if (use_3d.Checked == true)
+            {
+                chart1.ChartAreas[0].Area3DStyle.Enable3D = true;
+            } else
+            {
+                chart1.ChartAreas[0].Area3DStyle.Enable3D = false;
+            }
+        }
+
+        private void show_labels_CheckedChanged(object sender, EventArgs e)
+        {
+            label_is_val.Enabled = show_labels.Checked;
         }
     }
 }
