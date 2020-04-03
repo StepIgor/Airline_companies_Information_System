@@ -93,17 +93,22 @@ namespace inf_system_airline_companies
                 planeBindingSource.ResetBindings(false);
                 hide_details_info();
                 Program.anything_was_changed = true;
+                search_bar.Text = "";
             }
         }
 
         private void edit_plane_Click(object sender, EventArgs e)
         {
+            search_bar.Text = "";
+
             add_or_edit_plane new_form = new add_or_edit_plane(companies_list[row_selected].planes, gridforplanes, planeBindingSource, true);
             new_form.ShowDialog();
         }
 
         private void add_plane_Click(object sender, EventArgs e)
         {
+            search_bar.Text = "";
+
             add_or_edit_plane new_form = new add_or_edit_plane(companies_list[row_selected].planes, gridforplanes, planeBindingSource, false);
             new_form.ShowDialog();
         }
@@ -116,6 +121,36 @@ namespace inf_system_airline_companies
             {
                 this.Close();
             }
+        }
+
+        private void search_bar_TextChanged(object sender, EventArgs e)
+        {
+            planeBindingSource.SuspendBinding();
+
+            if (search_bar.Text.Length == 0)
+            {
+                for (int elem = 0; elem < companies_list[row_selected].planes.Count; elem++)
+                {
+                    gridforplanes.Rows[elem].Visible = true;
+                }
+            } else
+            {
+
+                for (int elem = 0; elem < companies_list[row_selected].planes.Count; elem++)
+                {
+                    if (companies_list[row_selected].planes[elem].name.IndexOf(search_bar.Text) == -1)
+                    {
+                        gridforplanes.Rows[elem].Visible = false;
+                    } else
+                    {
+                        gridforplanes.Rows[elem].Visible = true;
+                    }
+                    
+                }
+            }
+
+            planeBindingSource.ResumeBinding();
+            hide_details_info();
         }
     }
 }

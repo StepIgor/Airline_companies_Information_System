@@ -32,10 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(planes_in_comp));
             this.header = new System.Windows.Forms.Label();
             this.gridforplanes = new System.Windows.Forms.DataGridView();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.countDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.planeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.detailsblock = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -51,10 +47,17 @@
             this.delete_plane = new System.Windows.Forms.Button();
             this.edit_plane = new System.Windows.Forms.Button();
             this.add_plane = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.search_bar = new System.Windows.Forms.TextBox();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.countDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.planeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.gridforplanes)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.planeBindingSource)).BeginInit();
             this.detailsblock.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.planeBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // header
@@ -93,31 +96,6 @@
             this.gridforplanes.Size = new System.Drawing.Size(904, 251);
             this.gridforplanes.TabIndex = 1;
             this.gridforplanes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridforplanes_CellClick);
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Модель";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // countDataGridViewTextBoxColumn
-            // 
-            this.countDataGridViewTextBoxColumn.DataPropertyName = "count";
-            this.countDataGridViewTextBoxColumn.HeaderText = "Количество";
-            this.countDataGridViewTextBoxColumn.Name = "countDataGridViewTextBoxColumn";
-            this.countDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // typeDataGridViewTextBoxColumn
-            // 
-            this.typeDataGridViewTextBoxColumn.DataPropertyName = "type";
-            this.typeDataGridViewTextBoxColumn.HeaderText = "Тип";
-            this.typeDataGridViewTextBoxColumn.Name = "typeDataGridViewTextBoxColumn";
-            this.typeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // planeBindingSource
-            // 
-            this.planeBindingSource.DataSource = typeof(inf_system_airline_companies.Plane);
             // 
             // detailsblock
             // 
@@ -292,11 +270,60 @@
             this.add_plane.UseVisualStyleBackColor = true;
             this.add_plane.Click += new System.EventHandler(this.add_plane_Click);
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.search_bar);
+            this.groupBox2.Location = new System.Drawing.Point(277, 411);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(645, 58);
+            this.groupBox2.TabIndex = 4;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Поиск";
+            // 
+            // search_bar
+            // 
+            this.search_bar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.search_bar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.search_bar.Location = new System.Drawing.Point(6, 19);
+            this.search_bar.Name = "search_bar";
+            this.search_bar.Size = new System.Drawing.Size(632, 29);
+            this.search_bar.TabIndex = 0;
+            this.search_bar.TextChanged += new System.EventHandler(this.search_bar_TextChanged);
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Модель";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // countDataGridViewTextBoxColumn
+            // 
+            this.countDataGridViewTextBoxColumn.DataPropertyName = "count";
+            this.countDataGridViewTextBoxColumn.HeaderText = "Количество";
+            this.countDataGridViewTextBoxColumn.Name = "countDataGridViewTextBoxColumn";
+            this.countDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // typeDataGridViewTextBoxColumn
+            // 
+            this.typeDataGridViewTextBoxColumn.DataPropertyName = "type";
+            this.typeDataGridViewTextBoxColumn.HeaderText = "Тип";
+            this.typeDataGridViewTextBoxColumn.Name = "typeDataGridViewTextBoxColumn";
+            this.typeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // planeBindingSource
+            // 
+            this.planeBindingSource.DataSource = typeof(inf_system_airline_companies.Plane);
+            // 
             // planes_in_comp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(934, 551);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.detailsblock);
             this.Controls.Add(this.gridforplanes);
@@ -309,10 +336,12 @@
             this.Activated += new System.EventHandler(this.planes_in_comp_Activated);
             this.Load += new System.EventHandler(this.planes_in_comp_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridforplanes)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.planeBindingSource)).EndInit();
             this.detailsblock.ResumeLayout(false);
             this.detailsblock.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.planeBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -340,5 +369,7 @@
         private System.Windows.Forms.Button delete_plane;
         private System.Windows.Forms.Button edit_plane;
         private System.Windows.Forms.Button add_plane;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TextBox search_bar;
     }
 }
