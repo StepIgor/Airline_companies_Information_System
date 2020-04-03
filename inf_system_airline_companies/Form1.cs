@@ -5,6 +5,7 @@ using System.Xml.Serialization;
 using System.IO;
 using Microsoft.Win32;
 using System.Drawing;
+using System.Diagnostics;
 
 namespace inf_system_airline_companies
 {
@@ -558,6 +559,17 @@ namespace inf_system_airline_companies
             visualisation new_visual_windows = new visualisation(companies_list);
 
             new_visual_windows.ShowDialog();
+        }
+
+        private void справкаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Process.Start(@"C:\Windows\System32\notepad.exe", "Help.txt");
+            } catch (Exception)
+            {
+                MessageBox.Show("Ошибка при открытии файла со справкой.", "Ошибка");
+            }
         }
     }
 
