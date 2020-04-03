@@ -152,5 +152,32 @@ namespace inf_system_airline_companies
             planeBindingSource.ResumeBinding();
             hide_details_info();
         }
+
+        private void sort_model_CheckedChanged(object sender, EventArgs e)
+        {
+            companies_list[row_selected].planes.Sort((x,y) => x.name.CompareTo(y.name));
+
+            planeBindingSource.ResetBindings(false);
+            hide_details_info();
+            search_bar_TextChanged(this, null);
+        }
+
+        private void sort_count_CheckedChanged(object sender, EventArgs e)
+        {
+            companies_list[row_selected].planes.Sort((x, y) => x.count.CompareTo(y.count));
+
+            planeBindingSource.ResetBindings(false);
+            hide_details_info();
+            search_bar_TextChanged(this, null);
+        }
+
+        private void sort_type_CheckedChanged(object sender, EventArgs e)
+        {
+            companies_list[row_selected].planes.Sort((x, y) => x.type.CompareTo(y.type));
+
+            planeBindingSource.ResetBindings(false);
+            hide_details_info();
+            search_bar_TextChanged(this, null);
+        }
     }
 }
