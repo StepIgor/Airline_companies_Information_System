@@ -432,7 +432,14 @@ namespace inf_system_airline_companies
                             avg_cost += plane.cost;
                         }
 
-                        avg_cost = avg_cost / cmp.planes.Count;
+                        if (cmp.planes.Count != 0)
+                        {
+                            avg_cost = avg_cost / cmp.planes.Count;
+                        } else
+                        {
+                            avg_cost = 0;
+                        }
+                        
 
                         out_put.Text += string.Format("{0,-15}{1,20} Руб.\n",cmp.name,avg_cost.ToString("N0",CultureInfo.GetCultureInfo("ru-RU")));
                     }
@@ -469,7 +476,14 @@ namespace inf_system_airline_companies
                             avg_distance += plane.distance;
                         }
 
-                        avg_distance = avg_distance / cmp.planes.Count;
+                        if (cmp.planes.Count != 0)
+                        {
+                            avg_distance = avg_distance / cmp.planes.Count;
+                        } else
+                        {
+                            avg_distance = 0;
+                        }
+                        
 
                         out_put.Text += string.Format("{0,-15}{1,20} Км\n",cmp.name,avg_distance.ToString("N0",CultureInfo.GetCultureInfo("ru-RU")));
                     }
