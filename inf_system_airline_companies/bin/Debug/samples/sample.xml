@@ -1,6 +1,38 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <ArrayOfCompany xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Company>
+    <planes>
+      <Plane>
+        <cost>710000000</cost>
+        <speed>840</speed>
+        <volume>158</volume>
+        <distance>4900</distance>
+        <payload_capacity>0</payload_capacity>
+        <name>Airbus A320-200</name>
+        <count>78</count>
+        <type>Пассажирский</type>
+      </Plane>
+      <Plane>
+        <cost>780000000</cost>
+        <speed>828</speed>
+        <volume>130</volume>
+        <distance>5648</distance>
+        <payload_capacity>0</payload_capacity>
+        <name>Boeing 737-800</name>
+        <count>47</count>
+        <type>Пассажирский</type>
+      </Plane>
+      <Plane>
+        <cost>350000000</cost>
+        <speed>820</speed>
+        <volume>108</volume>
+        <distance>4600</distance>
+        <payload_capacity>0</payload_capacity>
+        <name>Sukhoi Superjet-100-95</name>
+        <count>54</count>
+        <type>Пассажирский</type>
+      </Plane>
+    </planes>
     <name>Аэрофлот</name>
     <full_name>ПАО «Аэрофлот — российские авиалинии»</full_name>
     <year_of_foundation>05.03.1932</year_of_foundation>
@@ -14,45 +46,45 @@
     <number_of_employees>30300</number_of_employees>
     <phone_number>+7 (495) 223-55-55</phone_number>
     <site>aeroflot.ru</site>
-	<destination_points>
-		<string>Анапа, Россия</string>
-		<string>Архангельск, Россия</string>
-		<string>Токио, Япония</string>
-	</destination_points>
+    <destination_points>
+      <string>Анапа, Россия</string>
+      <string>Архангельск, Россия</string>
+      <string>Токио, Япония</string>
+    </destination_points>
+  </Company>
+  <Company>
     <planes>
       <Plane>
-        <name>Airbus A320-200</name>
-        <count>78</count>
-        <cost>710000000</cost>
-        <speed>840</speed>
-        <type>Пассажирский</type>
-        <volume>158</volume>
-        <distance>4900</distance>
+        <cost>700000000</cost>
+        <speed>830</speed>
+        <volume>128</volume>
+        <distance>4800</distance>
         <payload_capacity>0</payload_capacity>
+        <name>Airbus A319-100</name>
+        <count>125</count>
+        <type>Пассажирский</type>
       </Plane>
       <Plane>
-        <name>Boeing 737-800</name>
-        <count>47</count>
         <cost>780000000</cost>
         <speed>828</speed>
-        <type>Пассажирский</type>
         <volume>130</volume>
         <distance>5648</distance>
         <payload_capacity>0</payload_capacity>
+        <name>Boeing 737-800</name>
+        <count>47</count>
+        <type>Пассажирский</type>
       </Plane>
       <Plane>
-        <name>Sukhoi Superjet-100-95</name>
-        <count>54</count>
-        <cost>350000000</cost>
+        <cost>410000000</cost>
         <speed>820</speed>
-        <type>Пассажирский</type>
-        <volume>108</volume>
+        <volume>140</volume>
         <distance>4600</distance>
         <payload_capacity>0</payload_capacity>
+        <name>McDonnell Douglas MD-83</name>
+        <count>28</count>
+        <type>Пассажирский</type>
       </Plane>
     </planes>
-  </Company>
-  <Company>
     <name>American</name>
     <full_name>American Airlines, Inc</full_name>
     <year_of_foundation>12.09.1926</year_of_foundation>
@@ -66,45 +98,45 @@
     <number_of_employees>123000</number_of_employees>
     <phone_number>+7 (800) 433-73-00</phone_number>
     <site>aa.com</site>
-	<destination_points>
-		<string>Вашингтон, США</string>
-		<string>Бразилиа, Бразилия</string>
-		<string>Нью-Йорк, США</string>
-	</destination_points>
-    <planes>
-      <Plane>
-        <name>Airbus A319-100</name>
-        <count>125</count>
-        <cost>700000000</cost>
-        <speed>830</speed>
-        <type>Пассажирский</type>
-        <volume>128</volume>
-        <distance>4800</distance>
-        <payload_capacity>0</payload_capacity>
-      </Plane>
-      <Plane>
-        <name>Boeing 737-800</name>
-        <count>47</count>
-        <cost>780000000</cost>
-        <speed>828</speed>
-        <type>Пассажирский</type>
-        <volume>130</volume>
-        <distance>5648</distance>
-        <payload_capacity>0</payload_capacity>
-      </Plane>
-      <Plane>
-        <name>McDonnell Douglas MD-83</name>
-        <count>28</count>
-        <cost>410000000</cost>
-        <speed>820</speed>
-        <type>Пассажирский</type>
-        <volume>140</volume>
-        <distance>4600</distance>
-        <payload_capacity>0</payload_capacity>
-      </Plane>
-    </planes>
+    <destination_points>
+      <string>Вашингтон, США</string>
+      <string>Бразилиа, Бразилия</string>
+      <string>Нью-Йорк, США</string>
+    </destination_points>
   </Company>
   <Company>
+    <planes>
+      <Plane>
+        <cost>4890000000</cost>
+        <speed>830</speed>
+        <volume>489</volume>
+        <distance>15000</distance>
+        <payload_capacity>0</payload_capacity>
+        <name>Airbus A380-800</name>
+        <count>115</count>
+        <type>Пассажирский</type>
+      </Plane>
+      <Plane>
+        <cost>710000000</cost>
+        <speed>838</speed>
+        <volume>350</volume>
+        <distance>4800</distance>
+        <payload_capacity>0</payload_capacity>
+        <name>Airbus ACJ319</name>
+        <count>1</count>
+        <type>Пассажирский</type>
+      </Plane>
+      <Plane>
+        <cost>2690000000</cost>
+        <speed>905</speed>
+        <volume>428</volume>
+        <distance>17500</distance>
+        <payload_capacity>0</payload_capacity>
+        <name>Boeing 777-300ER</name>
+        <count>155</count>
+        <type>Пассажирский</type>
+      </Plane>
+    </planes>
     <name>Emirates</name>
     <full_name>Emirates Airlines</full_name>
     <year_of_foundation>01.03.1985</year_of_foundation>
@@ -118,45 +150,35 @@
     <number_of_employees>63000</number_of_employees>
     <phone_number>+8 (800) 555-19-19</phone_number>
     <site>emirates.com</site>
-	<destination_points>
-		<string>Вашингтон, США</string>
-		<string>Москва, Россия</string>
-		<string>Пекин, Китай</string>
-	</destination_points>
-    <planes>
-      <Plane>
-        <name>Airbus A380-800</name>
-        <count>115</count>
-        <cost>4890000000</cost>
-        <speed>830</speed>
-        <type>Пассажирский</type>
-        <volume>489</volume>
-        <distance>15000</distance>
-        <payload_capacity>0</payload_capacity>
-      </Plane>
-      <Plane>
-        <name>Airbus ACJ319</name>
-        <count>1</count>
-        <cost>710000000</cost>
-        <speed>838</speed>
-        <type>Пассажирский</type>
-        <volume>350</volume>
-        <distance>4800</distance>
-        <payload_capacity>0</payload_capacity>
-      </Plane>
-      <Plane>
-        <name>Boeing 777-300ER</name>
-        <count>155</count>
-        <cost>2690000000</cost>
-        <speed>905</speed>
-        <type>Пассажирский</type>
-        <volume>428</volume>
-        <distance>17500</distance>
-        <payload_capacity>0</payload_capacity>
-      </Plane>
-    </planes>
+    <destination_points>
+      <string>Вашингтон, США</string>
+      <string>Москва, Россия</string>
+      <string>Пекин, Китай</string>
+    </destination_points>
   </Company>
   <Company>
+    <planes>
+      <Plane>
+        <cost>5000000000</cost>
+        <speed>770</speed>
+        <volume>400</volume>
+        <distance>4200</distance>
+        <payload_capacity>6000</payload_capacity>
+        <name>Ил-76ТД-90ВД</name>
+        <count>5</count>
+        <type>Грузовой</type>
+      </Plane>
+      <Plane>
+        <cost>3000000000</cost>
+        <speed>865</speed>
+        <volume>1050</volume>
+        <distance>4800</distance>
+        <payload_capacity>80000</payload_capacity>
+        <name>Ан-124-100 «Руслан»</name>
+        <count>12</count>
+        <type>Грузовой</type>
+      </Plane>
+    </planes>
     <name>Волга-Днепр</name>
     <full_name>Волга-Днепр</full_name>
     <year_of_foundation>14.11.1990</year_of_foundation>
@@ -170,35 +192,35 @@
     <number_of_employees>1500</number_of_employees>
     <phone_number>+7 (842) 259-00-59</phone_number>
     <site>volga-dnepr.com</site>
-	<destination_points>
-		<string>Самара, Россия</string>
-		<string>Москва, Россия</string>
-		<string>Сургут, Россия</string>
-	</destination_points>
-    <planes>
-      <Plane>
-        <name>Ил-76ТД-90ВД</name>
-        <count>5</count>
-        <cost>5000000000</cost>
-        <speed>770</speed>
-        <type>Грузовой</type>
-        <volume>400</volume>
-        <distance>4200</distance>
-        <payload_capacity>6000</payload_capacity>
-      </Plane>
-      <Plane>
-        <name>Ан-124-100 «Руслан»</name>
-        <count>12</count>
-        <cost>3000000000</cost>
-        <speed>865</speed>
-        <type>Грузовой</type>
-        <volume>1050</volume>
-        <distance>4800</distance>
-        <payload_capacity>80000</payload_capacity>
-      </Plane>
-    </planes>
+    <destination_points>
+      <string>Самара, Россия</string>
+      <string>Москва, Россия</string>
+      <string>Сургут, Россия</string>
+    </destination_points>
   </Company>
   <Company>
+    <planes>
+      <Plane>
+        <cost>5000000</cost>
+        <speed>900</speed>
+        <volume>164</volume>
+        <distance>4000</distance>
+        <payload_capacity>0</payload_capacity>
+        <name>Ту-154</name>
+        <count>1</count>
+        <type>Пассажирский</type>
+      </Plane>
+      <Plane>
+        <cost>5000000000</cost>
+        <speed>800</speed>
+        <volume>1200</volume>
+        <distance>4200</distance>
+        <payload_capacity>40000</payload_capacity>
+        <name>ИЛ-76</name>
+        <count>2</count>
+        <type>Грузовой</type>
+      </Plane>
+    </planes>
     <name>АЛРОСА</name>
     <full_name>Авиакомпания АЛРОСА</full_name>
     <year_of_foundation>29.08.1995</year_of_foundation>
@@ -212,32 +234,180 @@
     <number_of_employees>1200</number_of_employees>
     <phone_number>+7 (800) 234-49-24</phone_number>
     <site>alrosa.aero</site>
-	<destination_points>
-		<string>Самара, Россия</string>
-		<string>Москва, Россия</string>
-		<string>Санкт-Петербург, Россия</string>
-	</destination_points>
+    <destination_points>
+      <string>Самара, Россия</string>
+      <string>Москва, Россия</string>
+      <string>Санкт-Петербург, Россия</string>
+    </destination_points>
+  </Company>
+  <Company>
     <planes>
       <Plane>
-        <name>Ту-154</name>
-        <count>1</count>
-        <cost>5000000</cost>
-        <speed>900</speed>
-        <type>Пассажирский</type>
-        <volume>164</volume>
-        <distance>4000</distance>
+        <cost>850000000</cost>
+        <speed>840</speed>
+        <volume>138</volume>
+        <distance>6650</distance>
         <payload_capacity>0</payload_capacity>
+        <name>Airbus A319-100</name>
+        <count>26</count>
+        <type>Пассажирский</type>
       </Plane>
       <Plane>
-        <name>ИЛ-76</name>
-        <count>2</count>
-        <cost>5000000000</cost>
-        <speed>800</speed>
-        <type>Грузовой</type>
-        <volume>1200</volume>
-        <distance>4200</distance>
-        <payload_capacity>40000</payload_capacity>
+        <cost>2300000000</cost>
+        <speed>900</speed>
+        <volume>330</volume>
+        <distance>12000</distance>
+        <payload_capacity>0</payload_capacity>
+        <name>Boeing 747-400</name>
+        <count>13</count>
+        <type>Пассажирский</type>
+      </Plane>
+      <Plane>
+        <cost>1000000000</cost>
+        <speed>828</speed>
+        <volume>180</volume>
+        <distance>4500</distance>
+        <payload_capacity>0</payload_capacity>
+        <name>Airbus A321neo</name>
+        <count>22</count>
+        <type>Пассажирский</type>
       </Plane>
     </planes>
+    <name>Lufthansa</name>
+    <full_name>Deutsche Lufthansa AG</full_name>
+    <year_of_foundation>06.01.1926</year_of_foundation>
+    <tax_number>29374982374</tax_number>
+    <certificate>1 от 07.01.1955</certificate>
+    <ceo>Шпор Карстен</ceo>
+    <type>Пассажирская</type>
+    <cost>2700000000</cost>
+    <location>Франкфурт-на-Майне, Германия</location>
+    <description>Флагманский авиаперевозчик Германии, крупнейший авиаконцерн Европы, включающий в себя и такие крупные авиакомпании, как Swiss International Airlines и Austrian Airlines. В общем счёте Lufthansa выполняет рейсы в 78 стран мира по более чем двумстам направлениям. Воздушный флот всей авиакомпании, включая и дочерних перевозчиков, насчитывает около 620 воздушных судов.</description>
+    <number_of_employees>130000</number_of_employees>
+    <phone_number>+7 (495) 411-8444</phone_number>
+    <site>lufthansa.com</site>
+    <destination_points>
+      <string>Москва, Россия</string>
+      <string>Берлин, Германия</string>
+      <string>Варшава, Польша</string>
+      <string>Прага, Чехия</string>
+      <string>Барселона, Испания</string>
+    </destination_points>
+  </Company>
+  <Company>
+    <planes>
+      <Plane>
+        <cost>860000000</cost>
+        <speed>830</speed>
+        <volume>76</volume>
+        <distance>1530</distance>
+        <payload_capacity>0</payload_capacity>
+        <name>Mitsubishi MRJ-90</name>
+        <count>15</count>
+        <type>Пассажирский</type>
+      </Plane>
+      <Plane>
+        <cost>1000000000</cost>
+        <speed>840</speed>
+        <volume>122</volume>
+        <distance>5950</distance>
+        <payload_capacity>68000</payload_capacity>
+        <name>Airbus A320-200</name>
+        <count>5</count>
+        <type>Грузовой</type>
+      </Plane>
+      <Plane>
+        <cost>3000000000</cost>
+        <speed>810</speed>
+        <volume>103</volume>
+        <distance>2600</distance>
+        <payload_capacity>0</payload_capacity>
+        <name>Boeing 737-800</name>
+        <count>40</count>
+        <type>Пассажирский</type>
+      </Plane>
+    </planes>
+    <name>All Nippon Airways</name>
+    <full_name>All Nippon Airways Co., Ltd.</full_name>
+    <year_of_foundation>27.12.1952</year_of_foundation>
+    <tax_number>9491651564712</tax_number>
+    <certificate>36 от 29.02.1956</certificate>
+    <ceo>Ямамото Минэо</ceo>
+    <type>Смешанная</type>
+    <cost>3300000000</cost>
+    <location>Токио, Япония</location>
+    <description>Японская авиакомпания, штаб-квартира которой находится в Сиодомэ-Сити Центре в Сиодомэ в Минато, Токио. ANA является второй по размеру международной авиакомпанией страны после Japan Airlines и крупнейшей авиакомпанией, выполняющей внутренние рейсы. Авиакомпания выполняет рейсы в 49 аэропортов Японии и в 22 иностранных аэропорта.</description>
+    <number_of_employees>22500</number_of_employees>
+    <phone_number>+8 (112) 002-9377</phone_number>
+    <site>ana.co.jp</site>
+    <destination_points>
+      <string>Пекин, Китай</string>
+      <string>Сеул, Южная Корея</string>
+      <string>Пхеньян, Северная Корея</string>
+      <string>Вашингтон, США</string>
+    </destination_points>
+  </Company>
+  <Company>
+    <planes>
+      <Plane>
+        <cost>28000000</cost>
+        <speed>890</speed>
+        <volume>80</volume>
+        <distance>3900</distance>
+        <payload_capacity>0</payload_capacity>
+        <name>Embraer 190</name>
+        <count>20</count>
+        <type>Пассажирский</type>
+      </Plane>
+      <Plane>
+        <cost>85000000</cost>
+        <speed>840</speed>
+        <volume>122</volume>
+        <distance>5950</distance>
+        <payload_capacity>0</payload_capacity>
+        <name>Airbus A319-100</name>
+        <count>25</count>
+        <type>Пассажирский</type>
+      </Plane>
+      <Plane>
+        <cost>90000000</cost>
+        <speed>840</speed>
+        <volume>179</volume>
+        <distance>6000</distance>
+        <payload_capacity>0</payload_capacity>
+        <name>Airbus A321-200</name>
+        <count>99</count>
+        <type>Пассажирский</type>
+      </Plane>
+      <Plane>
+        <cost>100000000</cost>
+        <speed>828</speed>
+        <volume>27</volume>
+        <distance>5900</distance>
+        <payload_capacity>55000</payload_capacity>
+        <name>Boeing 737-800</name>
+        <count>163</count>
+        <type>Грузовой</type>
+      </Plane>
+    </planes>
+    <name>China Southern Airlines</name>
+    <full_name>China Southern Airlines</full_name>
+    <year_of_foundation>24.03.1988</year_of_foundation>
+    <tax_number>98491616465132</tax_number>
+    <certificate>33 от 24.11.1988</certificate>
+    <ceo>Аксу Синьцзян</ceo>
+    <type>Смешанная</type>
+    <cost>50000000000</cost>
+    <location>Гуанчжоу, Китай</location>
+    <description>Авиакомпания, базирующаяся в Гуанчжоу провинции Гуандун (Китай), осуществляет местные, региональные и международные рейсы. Китайские Южные авиалинии — крупнейшая азиатская авиакомпания по размеру флота, крупнейший авиаперевозчик Азии, 7-я в мире авиакомпания по перевозке местных пассажиров, 7-я в мире авиакомпания по пассажирообороту регулярных рейсов в пассажиро-километрах.</description>
+    <number_of_employees>100000</number_of_employees>
+    <phone_number>+4 (006) 695-5391</phone_number>
+    <site>csair.com</site>
+    <destination_points>
+      <string>Пекин, Китай</string>
+      <string>Москва, Россия</string>
+      <string>Лондон, Великобритания</string>
+      <string>Лос-Анджелес, США</string>
+    </destination_points>
   </Company>
 </ArrayOfCompany>
