@@ -125,6 +125,7 @@
             this.gridforcomp.StandardTab = true;
             this.gridforcomp.TabIndex = 3;
             this.gridforcomp.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridforcomp_CellClick);
+            this.gridforcomp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.gridforcomp_KeyPress);
             // 
             // nameDataGridViewTextBoxColumn
             // 
@@ -493,14 +494,14 @@
             // справкаToolStripMenuItem
             // 
             this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
-            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.справкаToolStripMenuItem.Text = "Справка";
             this.справкаToolStripMenuItem.Click += new System.EventHandler(this.справкаToolStripMenuItem_Click);
             // 
             // оПрограммеToolStripMenuItem
             // 
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.оПрограммеToolStripMenuItem.Text = "О программе";
             this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem_Click);
             // 

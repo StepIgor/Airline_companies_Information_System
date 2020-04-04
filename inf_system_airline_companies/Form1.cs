@@ -571,6 +571,14 @@ namespace inf_system_airline_companies
                 MessageBox.Show("Ошибка при открытии файла со справкой.", "Ошибка");
             }
         }
+
+        private void gridforcomp_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == ' ')
+            {
+                gridforcomp_CellClick(this, null);
+            }
+        }
     }
 
     public class Plane

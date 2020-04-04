@@ -179,5 +179,13 @@ namespace inf_system_airline_companies
             hide_details_info();
             search_bar_TextChanged(this, null);
         }
+
+        private void gridforplanes_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == ' ')
+            {
+                gridforplanes_CellClick(this, null);
+            }
+        }
     }
 }

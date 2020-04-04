@@ -32,6 +32,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(planes_in_comp));
             this.header = new System.Windows.Forms.Label();
             this.gridforplanes = new System.Windows.Forms.DataGridView();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.countDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.planeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.detailsblock = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -50,19 +54,15 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.search_bar = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.countDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.planeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sort_model = new System.Windows.Forms.RadioButton();
-            this.sort_count = new System.Windows.Forms.RadioButton();
             this.sort_type = new System.Windows.Forms.RadioButton();
+            this.sort_count = new System.Windows.Forms.RadioButton();
+            this.sort_model = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.gridforplanes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.planeBindingSource)).BeginInit();
             this.detailsblock.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.planeBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // header
@@ -101,6 +101,32 @@
             this.gridforplanes.Size = new System.Drawing.Size(904, 251);
             this.gridforplanes.TabIndex = 1;
             this.gridforplanes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridforplanes_CellClick);
+            this.gridforplanes.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.gridforplanes_KeyPress);
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Модель";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // countDataGridViewTextBoxColumn
+            // 
+            this.countDataGridViewTextBoxColumn.DataPropertyName = "count";
+            this.countDataGridViewTextBoxColumn.HeaderText = "Количество";
+            this.countDataGridViewTextBoxColumn.Name = "countDataGridViewTextBoxColumn";
+            this.countDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // typeDataGridViewTextBoxColumn
+            // 
+            this.typeDataGridViewTextBoxColumn.DataPropertyName = "type";
+            this.typeDataGridViewTextBoxColumn.HeaderText = "Тип";
+            this.typeDataGridViewTextBoxColumn.Name = "typeDataGridViewTextBoxColumn";
+            this.typeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // planeBindingSource
+            // 
+            this.planeBindingSource.DataSource = typeof(inf_system_airline_companies.Plane);
             // 
             // detailsblock
             // 
@@ -311,42 +337,17 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Сортировка";
             // 
-            // nameDataGridViewTextBoxColumn
+            // sort_type
             // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Модель";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // countDataGridViewTextBoxColumn
-            // 
-            this.countDataGridViewTextBoxColumn.DataPropertyName = "count";
-            this.countDataGridViewTextBoxColumn.HeaderText = "Количество";
-            this.countDataGridViewTextBoxColumn.Name = "countDataGridViewTextBoxColumn";
-            this.countDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // typeDataGridViewTextBoxColumn
-            // 
-            this.typeDataGridViewTextBoxColumn.DataPropertyName = "type";
-            this.typeDataGridViewTextBoxColumn.HeaderText = "Тип";
-            this.typeDataGridViewTextBoxColumn.Name = "typeDataGridViewTextBoxColumn";
-            this.typeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // planeBindingSource
-            // 
-            this.planeBindingSource.DataSource = typeof(inf_system_airline_companies.Plane);
-            // 
-            // sort_model
-            // 
-            this.sort_model.AutoSize = true;
-            this.sort_model.Location = new System.Drawing.Point(6, 24);
-            this.sort_model.Name = "sort_model";
-            this.sort_model.Size = new System.Drawing.Size(64, 17);
-            this.sort_model.TabIndex = 0;
-            this.sort_model.TabStop = true;
-            this.sort_model.Text = "Модель";
-            this.sort_model.UseVisualStyleBackColor = true;
-            this.sort_model.CheckedChanged += new System.EventHandler(this.sort_model_CheckedChanged);
+            this.sort_type.AutoSize = true;
+            this.sort_type.Location = new System.Drawing.Point(233, 24);
+            this.sort_type.Name = "sort_type";
+            this.sort_type.Size = new System.Drawing.Size(96, 17);
+            this.sort_type.TabIndex = 0;
+            this.sort_type.TabStop = true;
+            this.sort_type.Text = "Тип самолета";
+            this.sort_type.UseVisualStyleBackColor = true;
+            this.sort_type.CheckedChanged += new System.EventHandler(this.sort_type_CheckedChanged);
             // 
             // sort_count
             // 
@@ -360,17 +361,17 @@
             this.sort_count.UseVisualStyleBackColor = true;
             this.sort_count.CheckedChanged += new System.EventHandler(this.sort_count_CheckedChanged);
             // 
-            // sort_type
+            // sort_model
             // 
-            this.sort_type.AutoSize = true;
-            this.sort_type.Location = new System.Drawing.Point(233, 24);
-            this.sort_type.Name = "sort_type";
-            this.sort_type.Size = new System.Drawing.Size(96, 17);
-            this.sort_type.TabIndex = 0;
-            this.sort_type.TabStop = true;
-            this.sort_type.Text = "Тип самолета";
-            this.sort_type.UseVisualStyleBackColor = true;
-            this.sort_type.CheckedChanged += new System.EventHandler(this.sort_type_CheckedChanged);
+            this.sort_model.AutoSize = true;
+            this.sort_model.Location = new System.Drawing.Point(6, 24);
+            this.sort_model.Name = "sort_model";
+            this.sort_model.Size = new System.Drawing.Size(64, 17);
+            this.sort_model.TabIndex = 0;
+            this.sort_model.TabStop = true;
+            this.sort_model.Text = "Модель";
+            this.sort_model.UseVisualStyleBackColor = true;
+            this.sort_model.CheckedChanged += new System.EventHandler(this.sort_model_CheckedChanged);
             // 
             // planes_in_comp
             // 
@@ -391,6 +392,7 @@
             this.Activated += new System.EventHandler(this.planes_in_comp_Activated);
             this.Load += new System.EventHandler(this.planes_in_comp_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridforplanes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.planeBindingSource)).EndInit();
             this.detailsblock.ResumeLayout(false);
             this.detailsblock.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -398,7 +400,6 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.planeBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
