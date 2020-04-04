@@ -16,6 +16,7 @@ namespace inf_system_airline_companies
         {
             InitializeComponent();
 
+            //передаем список компаний (что и будем сортировать), биндинг (отображение изменений) и грид
             this.companies_list = cmp_list;
             this.companyBindingSource = bndsrc;
             this.gridforcomp = gridforcomp;
@@ -24,18 +25,22 @@ namespace inf_system_airline_companies
         public List<Company> companies_list;
         BindingSource companyBindingSource;
         DataGridView gridforcomp;
+        //из род. формы через поле передаем ссылку на саму себя
         public Form1 parent_form;
 
-        List<String> available_for_sort;
-        List<String> used_in_sort;
+        //два списка для многоуровн. сортировки
+        List<String> available_for_sort; //то, что можно выбрать
+        List<String> used_in_sort; //то, что выбрал пользователь
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //отказались
             this.Close();
         }
 
         private void one_level_radio_CheckedChanged(object sender, EventArgs e)
         {
+            //если выбрали одноуровневую сортировку (активируем параметры)
             if (one_level_radio.Checked == true)
             {
                 groupBox1.Enabled = true;
@@ -47,6 +52,7 @@ namespace inf_system_airline_companies
 
         private void multilevel_sort_radio_CheckedChanged(object sender, EventArgs e)
         {
+            //если выбрали многоуровневую сортировку (активируем параметры)
             if (multilevel_sort_radio.Checked == true)
             {
                 group2.Enabled = true;
@@ -61,9 +67,11 @@ namespace inf_system_airline_companies
             if (one_level_radio.Checked == true)
             {
                 //ОДНОУРОВНЕВАЯ СОРТИРОВКА
+                //by_incr проверяет, по возрастанию ли сортировать
 
                 if (by_name.Checked == true)
                 {
+                    //по имени
                     if (by_incr.Checked == true)
                     {
                         companies_list.Sort((x, y) => x.name.CompareTo(y.name));
@@ -75,6 +83,7 @@ namespace inf_system_airline_companies
 
                 if (by_date.Checked == true)
                 {
+                    //по дате основания
                     if (by_incr.Checked == true)
                     {
                         companies_list.Sort((x, y) => DateTime.Parse(x.year_of_foundation).CompareTo(DateTime.Parse(y.year_of_foundation)));
@@ -87,6 +96,7 @@ namespace inf_system_airline_companies
 
                 if (by_type.Checked == true)
                 {
+                    //по типу
                     if (by_incr.Checked == true)
                     {
                         companies_list.Sort((x, y) => x.type.CompareTo(y.type));
@@ -99,6 +109,7 @@ namespace inf_system_airline_companies
 
                 if (by_ceo.Checked == true)
                 {
+                    //по директору
                     if (by_incr.Checked == true)
                     {
                         companies_list.Sort((x, y) => x.ceo.CompareTo(y.ceo));
@@ -112,6 +123,7 @@ namespace inf_system_airline_companies
 
                 if (by_cost.Checked == true)
                 {
+                    //по стоимости
                     if (by_incr.Checked == true)
                     {
                         companies_list.Sort((x, y) => x.cost.CompareTo(y.cost));
@@ -125,6 +137,7 @@ namespace inf_system_airline_companies
 
                 if (by_loc.Checked == true)
                 {
+                    //по расположению
                     if (by_incr.Checked == true)
                     {
                         companies_list.Sort((x, y) => x.location.CompareTo(y.location));
@@ -138,6 +151,7 @@ namespace inf_system_airline_companies
 
                 if (by_empl.Checked == true)
                 {
+                    //по кол-ву сотрудников
                     if (by_incr.Checked == true)
                     {
                         companies_list.Sort((x, y) => x.number_of_employees.CompareTo(y.number_of_employees));
@@ -151,6 +165,7 @@ namespace inf_system_airline_companies
 
                 if (by_planes.Checked == true)
                 {
+                    //по кол-ву моделей самолетов
                     if (by_incr.Checked == true)
                     {
                         companies_list.Sort((x, y) => x.planes.Count.CompareTo(y.planes.Count));
@@ -163,6 +178,7 @@ namespace inf_system_airline_companies
 
                 if (by_dest_p.Checked == true)
                 {
+                    //по кол-ву пунктов назначения перелетов
                     if (by_incr.Checked == true)
                     {
                         companies_list.Sort((x, y) => x.destination_points.Count.CompareTo(y.destination_points.Count));
@@ -177,18 +193,23 @@ namespace inf_system_airline_companies
             {
                 //МНОГОУРОВНЕВАЯ СОРТИРОВКА
 
+                //если не выбрали поля для сортировки, то ничего не делаем
                 if (used_in_sort.Count == 0)
                 {
                     return;
                 }
 
+                //основа сортировки. к нему будем сначала применять orderby, а затем thenby
                 IOrderedEnumerable<Company> temp_enum = null;
 
                 for (int step = 0; step < used_in_sort.Count; step++)
                 {
+                    //проходимся по всем выбранным полям сортировки
+
                     //ПЕРВАЯ СТАДИЯ СОРТИРОВКИ
                     if (step == 0)
                     {
+                        //выделяю первую стадию отдельно, т.к. сначала нужно применить orderby
                         switch (used_in_sort[step])
                         {
                             case "Имя компании":
@@ -249,6 +270,7 @@ namespace inf_system_airline_companies
                     } else
                     {
                         //ОСТАЛЬНЫЕ СТАДИИ
+                        //здесь уже независимо от стадии берем thenby
 
                         switch (used_in_sort[step])
                         {
@@ -321,6 +343,7 @@ namespace inf_system_airline_companies
                     companies_list.Add(cmp);
                 }
 
+                //удаляем старые дубликаты
                 for (int elem = 0; elem < last_size; elem++)
                 {
                     companies_list.RemoveAt(0);
@@ -328,23 +351,28 @@ namespace inf_system_airline_companies
 
             }
 
-
+            //обновляем отображение
             companyBindingSource.ResetBindings(false);
 
+            //прячем старую информацию
             parent_form.hide_details_info();
 
+            //если уже применен фильтр, то переприменяем его для удобства
             if (parent_form.filter_was_used == true)
             {
                 parent_form.filter_window.companies_list = parent_form.companies_list;
                 parent_form.filter_window.apply_Click(parent_form, null);
             }
 
+            //прячем форму с сохранением параметров
             this.Hide();
 
         }
 
         private void sort_windows_Load(object sender, EventArgs e)
         {
+            //загрузка формы. добавляем доступные поля для сортировки
+
             if (available_for_sort == null)
             {
                 available_for_sort = new List<string>();
@@ -381,6 +409,8 @@ namespace inf_system_airline_companies
 
         private void add_in_use_Click(object sender, EventArgs e)
         {
+            //кнопка добавления выделенного поля в используемые поля для сортировки
+
             if (available.SelectedIndex == -1 || available_for_sort.Count < 1)
             {
                 return;
@@ -388,6 +418,8 @@ namespace inf_system_airline_companies
 
             used_in_sort.Add(available_for_sort[available.SelectedIndex]);
             available_for_sort.Remove(available_for_sort[available.SelectedIndex]);
+
+            //стрелки перемещения порядка сортировки
 
             if (used_in_sort.Count > 1)
             {
@@ -399,6 +431,7 @@ namespace inf_system_airline_companies
                 switch_up.Enabled = false;
             }
 
+            // если список доступных полей опустел
             if (available_for_sort.Count == 0)
             {
                 add_in_use.Enabled = false;
@@ -407,6 +440,7 @@ namespace inf_system_airline_companies
                 add_in_use.Enabled = true;
             }
 
+            //если список испол. полей опустел
             if (used_in_sort.Count == 0)
             {
                 delete_from_use.Enabled = false;
@@ -415,6 +449,7 @@ namespace inf_system_airline_companies
                 delete_from_use.Enabled = true;
             }
 
+            //обновление содержимого listbox
             available.DataSource = null;
             available.DataSource = available_for_sort;
 
@@ -424,6 +459,8 @@ namespace inf_system_airline_companies
 
         private void delete_from_use_Click(object sender, EventArgs e)
         {
+            //удаление поля из использ. полей для сортировки
+
             if (in_use.SelectedIndex == -1 || used_in_sort.Count < 1)
             {
                 return;
@@ -432,6 +469,7 @@ namespace inf_system_airline_companies
             available_for_sort.Add(used_in_sort[in_use.SelectedIndex]);
             used_in_sort.Remove(used_in_sort[in_use.SelectedIndex]);
 
+            //если список исп. полей не пуст
             if (used_in_sort.Count > 1)
             {
                 switch_up.Enabled = true;
@@ -443,6 +481,8 @@ namespace inf_system_airline_companies
                 switch_up.Enabled = false;
             }
 
+            //если список доступ. для сортировки полей пуст
+
             if (available_for_sort.Count == 0)
             {
                 add_in_use.Enabled = false;
@@ -452,6 +492,8 @@ namespace inf_system_airline_companies
                 add_in_use.Enabled = true;
             }
 
+            //если список исп. полей для сортировки пуст
+
             if (used_in_sort.Count == 0)
             {
                 delete_from_use.Enabled = false;
@@ -460,6 +502,8 @@ namespace inf_system_airline_companies
             {
                 delete_from_use.Enabled = true;
             }
+
+            //обновление содержимого listbox
 
             available.DataSource = null;
             available.DataSource = available_for_sort;
@@ -470,6 +514,8 @@ namespace inf_system_airline_companies
 
         private void switch_up_Click(object sender, EventArgs e)
         {
+            //перемещение поля сортировки наверх (уст. порядка)
+
             if (in_use.SelectedIndex == -1 || used_in_sort.Count < 2 || in_use.SelectedIndex == 0)
             {
                 return;
@@ -482,12 +528,16 @@ namespace inf_system_airline_companies
             used_in_sort[in_use.SelectedIndex] = used_in_sort[in_use.SelectedIndex - 1];
             used_in_sort[in_use.SelectedIndex - 1] = temp;
 
+            //обновление содержимого Listbox
+
             in_use.DataSource = null;
             in_use.DataSource = used_in_sort;
         }
 
         private void switch_down_Click(object sender, EventArgs e)
         {
+            //перемещение поля сортировки вниз (уст. порядка)
+
             if (in_use.SelectedIndex == -1 || used_in_sort.Count < 2 || in_use.SelectedIndex == used_in_sort.Count-1)
             {
                 return;
@@ -499,6 +549,8 @@ namespace inf_system_airline_companies
 
             used_in_sort[in_use.SelectedIndex] = used_in_sort[in_use.SelectedIndex + 1];
             used_in_sort[in_use.SelectedIndex + 1] = temp;
+
+            //обновление содержимого Listbox
 
             in_use.DataSource = null;
             in_use.DataSource = used_in_sort;

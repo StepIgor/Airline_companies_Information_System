@@ -21,11 +21,13 @@ namespace inf_system_airline_companies
         {
             user.Text = "Пользователь";
 
-
+            //изначально предлагаем войти под правами пользователя
         }
 
         private void user_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //активируем поле ввода пароля, если входит администратор
+
             if (user.Text == "Пользователь")
             {
                 password.Text = "";
@@ -39,8 +41,12 @@ namespace inf_system_airline_companies
 
         private void enter_Click(object sender, EventArgs e)
         {
+            //попытка входа
+
             if (user.Text == "Пользователь")
             {
+                //пропускаем без пароля
+
                 open_file_stage new_form = new open_file_stage();
                 new_form.Show();
 
@@ -48,6 +54,8 @@ namespace inf_system_airline_companies
             }
             else
             {
+                //проверяем пароль администратора
+
                 if (password.Text == "test")
                 {
                     Program.is_admin = true;

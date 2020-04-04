@@ -7,8 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Globalization;
-using System.Windows.Forms.DataVisualization.Charting;
+using System.Globalization; //деление больших чисел на разряды
+using System.Windows.Forms.DataVisualization.Charting; //отображение диаграммы (круговой)
 
 
 namespace inf_system_airline_companies
@@ -19,6 +19,8 @@ namespace inf_system_airline_companies
         {
             InitializeComponent();
 
+            //передаем список компаний
+
             this.companies_list = cmp_list;
         }
 
@@ -26,6 +28,7 @@ namespace inf_system_airline_companies
 
         private void visualisation_Load(object sender, EventArgs e)
         {
+            //очищаем диаграмму
             chart1.Series.Clear();
 
             // Форматировать диаграмму
@@ -40,32 +43,41 @@ namespace inf_system_airline_companies
 
         private void type_1_CheckedChanged(object sender, EventArgs e)
         {
+            //если нужен отчет 1 типа
             groupBox1.Enabled = type_1.Checked;
         }
 
         private void type_2_CheckedChanged(object sender, EventArgs e)
         {
+            //если нужен отчет 2 типа
             groupBox2.Enabled = type_2.Checked;
         }
 
         private void generate_text_Click(object sender, EventArgs e)
         {
+            //генерация отчета
+            //out_put - текст отчета
+
             if (companies_list.Count == 0)
             {
                 MessageBox.Show("Данных нет. Строить отчеты нет смысла.","Отчет по пустым данным?");
                 return;
             }
 
+            //общий заголовок с датой
             out_put.Text = "Отчёт от " + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + "\n";
 
             if (type_1.Checked == true)
             {
-                //ПО ВСЕМ В СОВОКУПНОСТИ
+                //ПО ВСЕМ В СОВОКУПНОСТИ тип 1
 
+                //общий заголовок для этого типа
                 out_put.Text += "Сформирован по всем компаниям в базе в совокупности.\n----------\n";
 
                 if (by_type_1.Checked == true)
                 {
+                    //по типу компаний
+
                     out_put.Text +=  by_type_1.Text + "\n----------\n";
 
                     int type_a = 0;
@@ -95,6 +107,8 @@ namespace inf_system_airline_companies
 
                 if (by_price_1.Checked == true)
                 {
+                    //по цене
+
                     out_put.Text += by_price_1.Text + "\n----------\n";
 
                     long min = 999999999999999;
@@ -130,6 +144,8 @@ namespace inf_system_airline_companies
 
                 if (by_loc_1.Checked == true)
                 {
+                    //по расположению
+
                     List<string> country_names = new List<string>();    //содержит названия стран
                     List<int> country_count = new List<int>();          //содержит кол-во совпадений - соответств. по индексу
 
@@ -161,7 +177,9 @@ namespace inf_system_airline_companies
 
                 if (by_loc_and_city_1.Checked == true)
                 {
-                    List<string> location_names = new List<string>();    //содержит названия стран
+                    //по расположению с учетом города
+
+                    List<string> location_names = new List<string>();    //содержит названия стран и городов
                     List<int> locations_count = new List<int>();          //содержит кол-во совпадений - соответств. по индексу
 
                     foreach (Company cmp in companies_list)
@@ -193,6 +211,8 @@ namespace inf_system_airline_companies
 
                 if (by_emp_1.Checked == true)
                 {
+                    //по кол-ву сотрудников
+
                     out_put.Text += by_emp_1.Text + "\n----------\n";
 
                     int min = 999999999;
@@ -230,6 +250,8 @@ namespace inf_system_airline_companies
 
                 if (by_dest_p_1.Checked == true)
                 {
+                    //по пунктам назначения с уч. города
+
                     List<string> destination_names = new List<string>();    //содержит названия стран и городов
                     List<int> destination_count = new List<int>();          //содержит кол-во совпадений - соответств. по индексу
 
@@ -268,6 +290,8 @@ namespace inf_system_airline_companies
 
                 if (by_pop_model_1.Checked == true)
                 {
+                    //по моделям самолетов
+
                     List<string> planes_names = new List<string>();    //содержит названия моделей
                     List<int> planes_count = new List<int>();          //содержит кол-во совпадений - соответств. по индексу
 
@@ -305,6 +329,8 @@ namespace inf_system_airline_companies
 
                 if (by_model_type_1.Checked == true)
                 {
+                    //по типам самолетов
+
                     int type_a = 0;
                     int type_b = 0;
 
@@ -331,6 +357,8 @@ namespace inf_system_airline_companies
 
                 if (by_model_price.Checked == true)
                 {
+                    //по цене модели самолета
+
                     long max = -1;
                     long min = 999999999999999999;
                     string min_name = "";
@@ -370,12 +398,14 @@ namespace inf_system_airline_companies
 
             } else
             {
-                //ПО КАЖДОЙ ОТДЕЛЬНО
+                //ПО КАЖДОЙ ОТДЕЛЬНО тип 2
 
                 out_put.Text += "Сформирован по каждой отдельной компании.\n----------\n";
 
                 if (by_price_2.Checked == true)
                 {
+                    //по цене
+
                     out_put.Text += by_price_2.Text + "\n----------\n";
 
                     foreach (Company cmp in companies_list)
@@ -386,6 +416,8 @@ namespace inf_system_airline_companies
 
                 if (by_emp_2.Checked == true)
                 {
+                    //по кол-ву сотрудников
+
                     out_put.Text += by_emp_2.Text + "\n----------\n";
 
                     foreach (Company cmp in companies_list)
@@ -396,6 +428,8 @@ namespace inf_system_airline_companies
 
                 if (by_plane_type_2.Checked == true)
                 {
+                    //по типу самолетов
+
                     out_put.Text += by_plane_type_2.Text + "\n----------\n";
 
                     foreach (Company cmp in companies_list)
@@ -421,6 +455,8 @@ namespace inf_system_airline_companies
 
                 if (by_plane_cost_2.Checked == true)
                 {
+                    //средняя стоим. самолета
+
                     out_put.Text += by_plane_cost_2.Text + "\n----------\n";
 
                     foreach (Company cmp in companies_list)
@@ -447,6 +483,8 @@ namespace inf_system_airline_companies
 
                 if (by_total_count_plane_2.Checked == true)
                 {
+                    //всего экз. самолетов
+
                     out_put.Text += by_total_count_plane_2.Text + "\n----------\n";
 
                     foreach (Company cmp in companies_list)
@@ -465,6 +503,8 @@ namespace inf_system_airline_companies
 
                 if (by_avg_distance_2.Checked == true)
                 {
+                    //средняя дистанция перелета
+
                     out_put.Text += by_avg_distance_2.Text + "\n----------\n";
 
                     foreach (Company cmp in companies_list)
@@ -491,17 +531,23 @@ namespace inf_system_airline_companies
 
             }
 
+            //общий конец для всех типов отчетов
+
             out_put.Text += String.Format("\n\n\nВсего компаний в базе:{0,18}",companies_list.Count.ToString());
         }
 
         private void build_chart_Click(object sender, EventArgs e)
         {
+            //ВИЗУАЛИЗАЦИЯ вкладка 2 (круговая диаграмма)
+
             if (companies_list.Count == 0)
             {
                 MessageBox.Show("В базе нет данных. Строить визуализацию бессмысленно.","Визуализация по пустым данным?");
                 return;
             }
 
+
+            //очистка диаграммы
             chart1.Titles.Clear();
             chart1.Series.Clear();
             chart1.Series.Add("data");
@@ -509,6 +555,8 @@ namespace inf_system_airline_companies
 
             if (price_diag.Checked == true)
             {
+                //цены на компании
+
                 chart1.Titles.Add(price_diag.Text);
                 chart1.Titles[0].Font = new Font("Utopia", 16);
 
@@ -529,6 +577,8 @@ namespace inf_system_airline_companies
 
             if (emp_diag.Checked == true)
             {
+                //кол-во сотрудников
+
                 chart1.Titles.Add(emp_diag.Text);
                 chart1.Titles[0].Font = new Font("Utopia", 16);
 
@@ -548,6 +598,8 @@ namespace inf_system_airline_companies
 
             if (country_diag.Checked == true)
             {
+                //располржение по странам
+
                 chart1.Titles.Add(country_diag.Text);
                 chart1.Titles[0].Font = new Font("Utopia", 16);
 
@@ -576,6 +628,8 @@ namespace inf_system_airline_companies
 
             if (by_country_and_city_diag.Checked == true)
             {
+                //расположение по странам и городам
+
                 chart1.Titles.Add(by_country_and_city_diag.Text);
                 chart1.Titles[0].Font = new Font("Utopia", 16);
 
@@ -605,6 +659,8 @@ namespace inf_system_airline_companies
 
             if (country_dest_diag.Checked == true)
             {
+                //пункты назначения - страны
+
                 chart1.Titles.Add(country_dest_diag.Text);
                 chart1.Titles[0].Font = new Font("Utopia", 16);
 
@@ -639,6 +695,8 @@ namespace inf_system_airline_companies
 
             if (country_and_city_dest_diag.Checked == true)
             {
+                //пункты назначения - страны и города
+
                 chart1.Titles.Add(country_and_city_dest_diag.Text);
                 chart1.Titles[0].Font = new Font("Utopia", 16);
 
@@ -673,6 +731,8 @@ namespace inf_system_airline_companies
 
             if (plane_model_diag.Checked == true)
             {
+                //модели самолетов
+
                 chart1.Titles.Add(plane_model_diag.Text);
                 chart1.Titles[0].Font = new Font("Utopia", 16);
 
@@ -704,9 +764,10 @@ namespace inf_system_airline_companies
             }
 
 
-
+            //тип диаграммы всегда один - круговая
             chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
 
+            //подписи в качестве значений?
             if (label_is_val.Checked == true)
             {
                 chart1.Series[0].IsValueShownAsLabel = true;
@@ -716,6 +777,8 @@ namespace inf_system_airline_companies
                 chart1.Series[0].IsValueShownAsLabel = false;
             }
 
+
+            //показывать ли подписи?
             if (show_labels.Checked == false)
             {
                 chart1.Series[0]["PieLabelStyle"] = "Disabled";
@@ -726,6 +789,7 @@ namespace inf_system_airline_companies
 
             }
 
+            //использовать 3д?
             if (use_3d.Checked == true)
             {
                 chart1.ChartAreas[0].Area3DStyle.Enable3D = true;
@@ -737,6 +801,7 @@ namespace inf_system_airline_companies
 
         private void show_labels_CheckedChanged(object sender, EventArgs e)
         {
+            //включен ли переключатель подписей в качестве значений
             label_is_val.Enabled = show_labels.Checked;
         }
     }

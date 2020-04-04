@@ -14,6 +14,7 @@ namespace inf_system_airline_companies
     {
         public change_certificate(Company cmp)
         {
+            //передаем в конструкторе конкретный объект-компанию из списка
             InitializeComponent();
             this.cmp = cmp;
         }
@@ -24,6 +25,7 @@ namespace inf_system_airline_companies
         {
             if (cmp.certificate != "(не указано)")
             {
+                //если сертификат уже указан, то подставляем данные + граница даты - сегодня
                 textBox1.Text = cmp.certificate.Split(' ')[0];
                 monthCalendar1.SelectionStart = DateTime.Parse(cmp.certificate.Split(' ')[2]);
                 monthCalendar1.MaxDate = DateTime.Now;
@@ -33,11 +35,13 @@ namespace inf_system_airline_companies
 
         private void cancel_Click(object sender, EventArgs e)
         {
+            //закрытие без изменений
             this.Close();
         }
 
         private void accept_Click(object sender, EventArgs e)
         {
+            //проверка данных
             if (!int.TryParse(textBox1.Text, out _))
             {
                 MessageBox.Show("Номер лицензии - всегда целое число.","Предупреждение");
@@ -49,6 +53,8 @@ namespace inf_system_airline_companies
                 MessageBox.Show("Номер лицензии не может быть отрицательным.", "Предупреждение");
                 return;
             }
+
+            //обновляем поле компании, ставим флаг об изменениях
 
             cmp.certificate = textBox1.Text + " от " + Convert.ToString(monthCalendar1.SelectionStart.ToShortDateString());
 

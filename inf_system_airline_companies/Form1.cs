@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using System.Xml.Serialization;
-using System.IO;
-using Microsoft.Win32;
-using System.Drawing;
-using System.Diagnostics;
+using System.Xml.Serialization; //де-  и сериализация объектов
+using System.IO; //проверка наличия файлов
+using Microsoft.Win32; //копировать сайт и телефон в буфер обмена + работа с реестром
+using System.Drawing; //кнопка фильтра (её цвет)
+using System.Diagnostics; //запустить блокнот с файлом Help.txt
 
 namespace inf_system_airline_companies
 {
@@ -16,20 +16,23 @@ namespace inf_system_airline_companies
             InitializeComponent();
         }
 
-        Company[] companies;
-        public List<Company> companies_list;
-        sort_windows sort_window;
-        public filter_windows filter_window;
+        Company[] companies; //промежуточная стадия для десериализации
+        public List<Company> companies_list; //основа программы - список компаний из файла
+        sort_windows sort_window; //окно сортировки (объявляем сразу, чтобы потом прятать, сохраняя параметры пользователя)
+        public filter_windows filter_window; //окно фильтра (объявляем сразу, чтобы потом прятать, сохраняя параметры пользователя)
 
-        public bool filter_was_used = false;
+        public bool filter_was_used = false; //использовали ли мы фильтр хотя бы раз? понадобится для правильного взаимодействия сортировки и фильтра
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //при запуске формы пытаемся считать файл, путь которого указан в глобальной переменной, значение которой было установлено в предыдущей форме
 
             try
             {
                 if (Program.opened_file == "<sample>")
                 {
+                    //если это образец
+
                     XmlSerializer xmlsrl = new XmlSerializer(typeof(Company[]));
 
                     using (FileStream fs = new FileStream(@"samples/sample.xml", FileMode.Open))
@@ -43,12 +46,16 @@ namespace inf_system_airline_companies
                 }
                 else if (Program.opened_file == "<new>")
                 {
+                    //если это новый файл (пустой)
+
                     companies_list = new List<Company>();
 
                     companyBindingSource.DataSource = companies_list;
                 }
                 else
                 {
+                    //если ранее сохраненный файл
+
                     XmlSerializer xmlsrl = new XmlSerializer(typeof(Company[]));
 
                     using (FileStream fs = new FileStream(Program.opened_file, FileMode.Open))
@@ -60,20 +67,28 @@ namespace inf_system_airline_companies
 
                     companyBindingSource.DataSource = companies_list;
 
+                    //сохраняем путь в реестр, чтобы при след. запуске программы предложить пользователю продолжить с ним работу
+
                     if (Registry.CurrentUser.OpenSubKey(@"Software\Airline_Inf_System") == null)
                     {
+                        //создаем ветку
                         Registry.CurrentUser.CreateSubKey(@"Software\Airline_Inf_System", true);
                     }
 
+                    //устанавливаем ключ - значение
                     Registry.CurrentUser.OpenSubKey(@"Software\Airline_Inf_System", true).SetValue("last_opened", Program.opened_file);
                 }
 
+                //обновляем заголовок окна (там указан путь к файлу для удобства пользователя)
                 refresh_title();
 
+                //глобальная переменная (мы администратор?)
                 if (Program.is_admin == false)
                 {
                     add_comp_but.Enabled = false;
                 }
+
+                //создаются окна сортировки и фильтра (потом просто прячутся, чтобы сохранять параметры)
 
                 sort_window = new sort_windows(companies_list, companyBindingSource, gridforcomp);
 
@@ -81,6 +96,7 @@ namespace inf_system_airline_companies
 
             } catch (Exception)
             {
+                //если что-то пошло не так. Этот код не совсем полезен, т.к. есть уже предварительная проверка файла на предыдущей форме
                 MessageBox.Show("При открытии файла произошла ошибка. Вероятно, данные повреждены.", "Ошибка!");
                 this.Close();
             }
@@ -89,12 +105,16 @@ namespace inf_system_airline_companies
 
         private void gridforcomp_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            //если выбираем какую-то компанию из списка (кликом)
+
+
+            //проверяем, не пуст ли список и есть ли выделение строки
             if (companies_list.Count == 0 || gridforcomp.SelectedRows[0].Index == -1)
             {
                 return;
             }
 
-
+            //проверка прав администратора
             if (Program.is_admin == true)
             {
                 del_comp_but.Enabled = true;
@@ -147,6 +167,7 @@ namespace inf_system_airline_companies
                 details_planes_all_count += companies_list[gridforcomp.SelectedRows[0].Index].planes[step].count;
             }
 
+            //подсчет сделан не только по моделям, но и по экземплярам
             details_planes_count.Text = "моделей - " + Convert.ToString(details_planes_model_count) + "; всего - " + Convert.ToString(details_planes_all_count) + ";";
             details_planes_count.Visible = true;
             details_cat_planes_count.Visible = true;
@@ -157,7 +178,7 @@ namespace inf_system_airline_companies
             details_web_img.Visible = true;
             details_phone_img.Visible = true;
 
-            //видимость кнопки открытия юридической информации
+            //видимость кнопки открытия юридической информации и пунктов назначения
 
             details_open_law_info.Visible = true;
 
@@ -166,6 +187,9 @@ namespace inf_system_airline_companies
 
         public void hide_details_info()
         {
+            //если нужно спрятать информацию о выделенной компании (после фильтра, сортировки, когда выделение строки может быть снято)
+            //информация отображается в правой части окна
+
             del_comp_but.Enabled = false;
             edit_comp_but.Enabled = false;
 
@@ -214,6 +238,8 @@ namespace inf_system_airline_companies
 
         private void details_open_law_info_Click(object sender, EventArgs e)
         {
+            //открываем окно с юридической информацией и пунктами назначения
+
             Form new_law_info_form = new law_information(companies_list, gridforcomp);
 
             new_law_info_form.ShowDialog();
@@ -222,6 +248,8 @@ namespace inf_system_airline_companies
 
         private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //окно О программе
+
             Form about_form = new about_form();
 
             about_form.ShowDialog();
@@ -229,6 +257,8 @@ namespace inf_system_airline_companies
 
         private void details_open_planes_form_Click(object sender, EventArgs e)
         {
+            //открыть окно с самолетами в компании
+
             Form planes_if_comp_form = new planes_in_comp(companies_list, gridforcomp);
 
             planes_if_comp_form.Show();
@@ -236,17 +266,22 @@ namespace inf_system_airline_companies
 
         private void del_comp_but_Click(object sender, EventArgs e)
         {
+            //удаление компании из списка с предварительным вопросом
             if (MessageBox.Show("Вы действительно хотите удалить компанию?","Удалить",MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 companies_list.Remove(companies_list[gridforcomp.SelectedRows[0].Index]);
                 companyBindingSource.ResetBindings(false);
+                //прячем информацию об уже удаленной компании из правой части окна
                 hide_details_info();
+                //активируем флаг наличия несохраненных изменений
                 Program.anything_was_changed = true;
             }
         }
 
         private void edit_comp_but_Click(object sender, EventArgs e)
         {
+            //редактировать компанию
+
             add_or_edit_company add_or_edit = new add_or_edit_company(companies_list, gridforcomp, companyBindingSource, true);
             add_or_edit.ShowDialog();
             
@@ -254,13 +289,19 @@ namespace inf_system_airline_companies
 
         private void add_comp_but_Click(object sender, EventArgs e)
         {
+            //добавить новую компанию
+
             add_or_edit_company add_or_edit = new add_or_edit_company(companies_list, gridforcomp, companyBindingSource, false);
             add_or_edit.ShowDialog();
         }
 
         private void сохранитьКакToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try{
+            //процесс сохранения данных пользователя в файл (сериализация)
+            //предварительно проверяем, есть ли доступ на запись
+
+            try
+            {
                 if (save_as_dialog.ShowDialog() != DialogResult.Cancel)
                 {
                     XmlSerializer xmlsrl = new XmlSerializer(typeof(Company[]));
@@ -271,7 +312,9 @@ namespace inf_system_airline_companies
                     }
 
                     Program.opened_file = save_as_dialog.FileName;
+                    //обновляем заголовок с новым путем для файла
                     refresh_title();
+                    //сбрасываем флаг наличия несохр. изменений
                     Program.anything_was_changed = false;
                 }
                 else
@@ -288,10 +331,16 @@ namespace inf_system_airline_companies
 
         private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //открыть существующий файл
+            //проверяется доступ на чтение и исправность файла
+
             try
             {
                 if (Program.anything_was_changed == true)
                 {
+                    //если флаг несохраненных изменений активирован, то предупреждаем пользователя
+                    //что он не все сохранил
+
                     if (MessageBox.Show("Имеются несохраненные изменения. Продолжить без сохранения?", "Вы уверены?", MessageBoxButtons.YesNo) == DialogResult.No)
                     {
                         return;
@@ -313,14 +362,18 @@ namespace inf_system_airline_companies
 
                     companyBindingSource.ResetBindings(false);
 
+                    //обновляем путь, заголовок окна, прячем информацию о старых данных, сбрасываем флаг наличия несохр. изменений
+
                     Program.opened_file = load_file_dialog.FileName;
 
                     refresh_title();
                     hide_details_info();
+                    //отменяем примененный фильтр
                     cancel_filter_interface();
 
                     Program.anything_was_changed = false;
 
+                    //обновляем информацию о последнем открытом файле в реестре
 
                     if (Registry.CurrentUser.OpenSubKey(@"Software\Airline_Inf_System") == null)
                     {
@@ -339,6 +392,8 @@ namespace inf_system_airline_companies
 
         private void refresh_title()
         {
+            //функция просто обновляет путь в заголовке окна (для удобства пользователя)
+
             if (Program.opened_file == "<sample>")
             {
                 this.Text = "ИСС \"Авиатранспортные компании\" - Образец";
@@ -353,16 +408,22 @@ namespace inf_system_airline_companies
 
         private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //сохранение изменений в текущий файл
+
             if (Program.opened_file == "<sample>")
             {
+                //просто так образец нельзя переписать
                 MessageBox.Show("Файл-образец защищен от записи. Используйте пункт \"Сохранить как\".","Предупреждение");
                 return;
             } if (Program.opened_file == "<new>")
             {
+                //если файл новый, то нужно получить новый путь
                 сохранитьКакToolStripMenuItem_Click(сохранитьКакToolStripMenuItem, null);
                 return;
             } else
             {
+                //простая сериализация с проверкой доступа на запись
+
                 try
                 {
                     XmlSerializer xmlsrl = new XmlSerializer(typeof(Company[]));
@@ -372,6 +433,7 @@ namespace inf_system_airline_companies
                         xmlsrl.Serialize(fs, companies_list.ToArray());
                     }
 
+                    //сброс флага наличия несохр. изменений
                     Program.anything_was_changed = false;
                 }
                 catch (Exception)
@@ -384,6 +446,9 @@ namespace inf_system_airline_companies
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
+            //если закрываем форму (а значит и программу)
+
+            //предупреждаем пользователя, если есть несохраненные изменения
             if (Program.anything_was_changed == true)
             {
                 if (MessageBox.Show("Имеются несохраненные изменения. Вы уверены, что хотите закрыть программу без сохранения?", "Внимание", MessageBoxButtons.YesNo) == DialogResult.No)
@@ -391,6 +456,8 @@ namespace inf_system_airline_companies
                     e.Cancel = true;
                 }
             }
+
+            //если открыт свой файл, то сохраняем его в реестр, как последний редактируемый
 
             if (Program.opened_file != "<sample>" && Program.opened_file != "<new>")
             {
@@ -405,16 +472,21 @@ namespace inf_system_airline_companies
 
         private void details_phone_Click(object sender, EventArgs e)
         {
+            //копируем номер телефона в буфер
             Clipboard.SetText(details_phone.Text);
         }
 
         private void details_site_Click(object sender, EventArgs e)
         {
+            //копируем сайт в буфер
             Clipboard.SetText(details_site.Text);
         }
 
         private void открытьФайлобразецToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //открываем файл-образец
+
+            //предупреждаем пользователя, если он не сохранил последние изменения
             if (Program.anything_was_changed == true)
             {
                 if (MessageBox.Show("Имеются несохраненные изменения. Продолжить без сохранения?","Предупреждение",MessageBoxButtons.YesNo) == DialogResult.No)
@@ -422,6 +494,8 @@ namespace inf_system_airline_companies
                     return;
                 }
             }
+
+            //сохраняем в реестр последний редактируемый файл
 
             if (Program.opened_file != "<sample>" && Program.opened_file != "<new>")
             {
@@ -432,6 +506,8 @@ namespace inf_system_airline_companies
 
                 Registry.CurrentUser.OpenSubKey(@"Software\Airline_Inf_System", true).SetValue("last_opened", Program.opened_file);
             }
+
+            //пытаемся открыть образец, проверяя, не испорчен ли он
 
             try
             {
@@ -450,6 +526,9 @@ namespace inf_system_airline_companies
 
                 Program.opened_file = "<sample>";
 
+                //если все прошло успешно, обновляем заголовок окна, прячем старую информацию, отключаем примененный фильтр
+                //сбрасываем флаг наличия изменений (несохранен.)
+
                 refresh_title();
                 hide_details_info();
                 cancel_filter_interface();
@@ -467,11 +546,17 @@ namespace inf_system_airline_companies
 
         private void создатьНовыйФайлToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //если создаем новый файл (пустой список)
+
+            //создать новый файл может только админ
+
             if (Program.is_admin == false)
             {
                 MessageBox.Show("Создание нового файла в режиме пользователя невозможно.", "Отказано в доступе");
                 return;
             }
+
+            //уведомляем пользователя, если он не сохранил старый файл
 
             if (Program.anything_was_changed == true)
             {
@@ -480,6 +565,8 @@ namespace inf_system_airline_companies
                     return;
                 }
             }
+
+            //запоминаем старый файл в реестре
 
             if (Program.opened_file != "<sample>" && Program.opened_file != "<new>")
             {
@@ -490,6 +577,8 @@ namespace inf_system_airline_companies
 
                 Registry.CurrentUser.OpenSubKey(@"Software\Airline_Inf_System", true).SetValue("last_opened", Program.opened_file);
             }
+
+            //сбрасываем наличие изменений, чистим список. Обновляем биндинг, обновляем путь. Обновлям заголовок окна, отменяем фильтр и прячем старую информацию
 
             Program.anything_was_changed = false;
 
@@ -506,8 +595,13 @@ namespace inf_system_airline_companies
 
         private void Form1_Activated(object sender, EventArgs e)
         {
+            //сфокусировавшись на форме, нужно обновить информацию о количестве самолетов, так как пользователь мог там что-то поменять
+
+            //при условии, что предварительно пользователь выбрал какую-то компанию (информация в правой части окна)
             if (details_planes_count.Visible == true)
             {
+                //считаются не только модели, но и экземпляры
+
                 int details_planes_model_count = companies_list[gridforcomp.SelectedRows[0].Index].planes.Count;
 
                 int details_planes_all_count = 0;
@@ -524,12 +618,16 @@ namespace inf_system_airline_companies
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
+            //если мы окончательно закрыли форму, то нужно закрыть приложение именно таким способом
+            //так как есть спрятанные формы
+
             Application.Exit();
         }
 
         private void sort_but_Click(object sender, EventArgs e)
         {
-            
+            //открываем сортировку. важно передать актульный список компаний
+
             sort_window.parent_form = this;
             sort_window.companies_list = companies_list;
             sort_window.ShowDialog();
@@ -538,6 +636,8 @@ namespace inf_system_airline_companies
 
         private void filter_but_Click(object sender, EventArgs e)
         {
+            //открываем фильтр. важно передать актуальный список компаний
+
             filter_window.parent_window = this;
             filter_window.companyBindingSource = companyBindingSource;
             filter_window.companies_list = companies_list;
@@ -548,6 +648,9 @@ namespace inf_system_airline_companies
 
         private void cancel_filter_interface()
         {
+            //сброс фильтра. чисто внешний. в случае, если пользователь,  например, открыл новый файл
+            //грид сам отобразит все строки без фильтра
+
             filter_but.FlatStyle = FlatStyle.System;
             filter_but.BackColor = SystemColors.Control;
 
@@ -556,6 +659,8 @@ namespace inf_system_airline_companies
 
         private void visual_but_Click(object sender, EventArgs e)
         {
+            //открываем окно отчетов
+
             visualisation new_visual_windows = new visualisation(companies_list);
 
             new_visual_windows.ShowDialog();
@@ -563,6 +668,9 @@ namespace inf_system_airline_companies
 
         private void справкаToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //запускаем блокнот со справкой
+            //проверяем, а есть ли блокнот у пользователя
+
             try
             {
                 Process.Start(@"C:\Windows\System32\notepad.exe", "Help.txt");
@@ -574,6 +682,9 @@ namespace inf_system_airline_companies
 
         private void gridforcomp_KeyPress(object sender, KeyPressEventArgs e)
         {
+            //даем возможность пользователю выбирать компании клавиатурой
+            //подтверждая выбор пробелом
+
             if (e.KeyChar == ' ')
             {
                 gridforcomp_CellClick(this, null);
@@ -581,21 +692,25 @@ namespace inf_system_airline_companies
         }
     }
 
+    //классы, используемые в программе
+
     public class Plane
     {
-        public string name { get; set; }
-        public int count { get; set; }
-        public long cost;
-        public int speed;
-        public string type { get; set; }
-        public int volume;
-        public int distance;
-        public int payload_capacity;
+        public string name { get; set; } //название модели
+        public int count { get; set; } //количество экземпляров
+        public long cost; //стоимость одного экз.
+        public int speed; //скорость полета
+        public string type { get; set; } //тип (пасс. или груз.)
+        public int volume; //вместимость (в человеках или куб. метрах - зависит от типа выше)
+        public int distance; //расстояние перелета без подзаправки
+        public int payload_capacity; //грузоподъемность (только для грузовых)
 
         public Plane()
         {
 
         }
+
+        //конструктор, по которому и работает добавление новых моделей
 
         public Plane(string name, int count, int speed, long cost, string type, int volume, int distance, int payload_capacity)
         {
@@ -614,21 +729,21 @@ namespace inf_system_airline_companies
 
     public class Company
     {
-        public string name { get; set; }
-        public string full_name { get; set; }
-        public string year_of_foundation { get; set; }
-        public string tax_number { get; set; }
-        public string certificate { get; set; }
-        public string ceo { get; set; }
-        public string type { get; set; }
-        public long cost { get; set; }
-        public string location { get; set; }
-        public string description { get; set; }
-        public int number_of_employees { get; set; }
-        public string phone_number { get; set; }
-        public string site { get; set; }
-        public List<String> destination_points { get; set; }
-        public List<Plane> planes = new List<Plane>();
+        public string name { get; set; } //название компании
+        public string full_name { get; set; } //полное название
+        public string year_of_foundation { get; set; } //дата основания (день.месяц.год)
+        public string tax_number { get; set; } //налоговый номер
+        public string certificate { get; set; } //лицензия на право деятельности
+        public string ceo { get; set; } //директор ФИО или ФИ
+        public string type { get; set; } //тип (пассажирская, грузовая или смешанная)
+        public long cost { get; set; } //стоимость в Руб
+        public string location { get; set; } //расположение Город, Страна
+        public string description { get; set; } //краткое описание
+        public int number_of_employees { get; set; } //количество сотрудников
+        public string phone_number { get; set; } //номер телефона
+        public string site { get; set; } //веб-сайт
+        public List<String> destination_points { get; set; } //список пунктов назначения перелетов
+        public List<Plane> planes = new List<Plane>(); //список самолетов компании
 
         public Company()
         {
@@ -637,6 +752,8 @@ namespace inf_system_airline_companies
 
         public Company(string name, string full_name, string year_of_foundation, string tax_number, string certificate, string ceo, string type, long cost, string location, string description, int number_of_employees, string phone_number, string site)
         {
+            //конструктор, который активно используется при создании новой компании
+
             this.name = name;
             this.full_name = full_name;
             this.year_of_foundation = year_of_foundation;

@@ -16,10 +16,10 @@ namespace inf_system_airline_companies
         {
             InitializeComponent();
 
-            this.companies_list = lst;
-            this.gridforcomp = gridforcomp;
-            this.edit = edit;
-            this.bndsrc = bndsrc;
+            this.companies_list = lst; //список компаний
+            this.gridforcomp = gridforcomp; //сетка компаний для обновления
+            this.edit = edit; //запускаем ли мы форму для редактирования сущ. компании
+            this.bndsrc = bndsrc; //обновление биндинга после окончания редактирования информации
         }
 
         List<Company> companies_list;
@@ -29,13 +29,13 @@ namespace inf_system_airline_companies
 
         private void add_or_edit_company_Load(object sender, EventArgs e)
         {
-            if (edit == true)
+            if (edit == true) //если форма запущена для редактирования
             {
                 main_label.Text = "В этом окне происходит редактирование только самой основной информации. Остальные элементы можно изменить, зайдя в соответствующие разделы.";
                 this.Text = "Изменить информацию о компании";
                 add_now.Text = "Сохранить изменения";
 
-
+                //заполнение полей имеющимися данными
                 company_name.Text = companies_list[gridforcomp.SelectedRows[0].Index].name;
                 company_full_name.Text = companies_list[gridforcomp.SelectedRows[0].Index].full_name;
                 ceo_name.Text = companies_list[gridforcomp.SelectedRows[0].Index].ceo;
@@ -53,6 +53,7 @@ namespace inf_system_airline_companies
 
 
             } else {
+                //если форма запущена для создания новой компании
                 main_label.Text = "Введите основную информацию о новой компании. Остальные элементы можно добавить, зайдя в соответствующие разделы программы.";
                 this.Text = "Добавить новую компанию";
                 add_now.Text = "Добавить компанию";
@@ -62,6 +63,7 @@ namespace inf_system_airline_companies
 
         private void cancel_Click(object sender, EventArgs e)
         {
+            //закрываем форму без изменений, если пользователь отменил редактирование
             this.Close();
         }
 
@@ -126,6 +128,7 @@ namespace inf_system_airline_companies
             if (edit == true)
             {
                 //если редактируем существующую компанию
+                //просто меняем элемент списка компаний по индексу
                 companies_list[gridforcomp.SelectedRows[0].Index].name = company_name.Text;
                 companies_list[gridforcomp.SelectedRows[0].Index].full_name = company_full_name.Text;
                 companies_list[gridforcomp.SelectedRows[0].Index].ceo = ceo_name.Text;
@@ -139,12 +142,14 @@ namespace inf_system_airline_companies
                 
             } else
             {
+                //если создаем компанию, то создаем объект, затем добавляем его в список
                 Company new_comp = new Company(company_name.Text, company_full_name.Text, monthCalendar1.SelectionRange.Start.ToShortDateString(),"(не указано)","(не указано)", ceo_name.Text, type_of_comp.Text,0, city.Text + ", " + country.Text, description.Text,0, phone_num.Text, website.Text);
                 new_comp.destination_points = new List<string>();
                 companies_list.Add(new_comp);
                 new_comp = null;
             }
 
+            //обновляем биндинг, ставим флажок, что меняли данные (чтобы предупреждать пользователя о несохраненных изменениях)
             this.Close();
             Program.anything_was_changed = true;
             bndsrc.ResetBindings(false);

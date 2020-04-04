@@ -15,6 +15,8 @@ namespace inf_system_airline_companies
         public about_form()
         {
             InitializeComponent();
+
+            //Все данные находятся на форме. Действий не предусмотрено.
         }
     }
 }

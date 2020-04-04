@@ -16,10 +16,14 @@ namespace inf_system_airline_companies
         {
             InitializeComponent();
 
+            //передаем список компаний (что и будем фильтровать) и грид компаний для отображения изменений
+
             this.companies_list = cmp_lst;
             this.gridforcompany = gridforcmp;
         }
 
+
+        //также передаем из родительской формы ссылку на родит. форму, биндинг компаний (отображение изменений)
         public List<Company> companies_list;
         DataGridView gridforcompany;
         public Form1 parent_window;
@@ -32,6 +36,7 @@ namespace inf_system_airline_companies
 
         private void use_filter_checkbox_CheckedChanged(object sender, EventArgs e)
         {
+            //включаем или выключаем возможность выбора опций фильтрации в зависимости от выбора пользователя
             if (use_filter_checkbox.Checked == true)
             {
                 filter_set_group.Enabled = true;
@@ -43,9 +48,12 @@ namespace inf_system_airline_companies
 
         public void apply_Click(object sender, EventArgs e)
         {
-
+            //требуется заморозка, чтобы не было ошибок
             companyBindingSource.SuspendBinding();
+
             //ВАЛИДАЦИЯ ПОЛЕЙ
+
+            //проверку выполняем только у тех полей, которые включены пользователем
 
             if (use_filter_checkbox.Checked == true)
             {
@@ -66,6 +74,7 @@ namespace inf_system_airline_companies
                         return;
                     }
 
+                    //разбиваем даты по точкам на дни, месяцы и годы (для проверки)
                     string[] check_split_min = min_date.Text.Split('.');
                     string[] check_split_max = max_date.Text.Split('.');
 
@@ -80,7 +89,7 @@ namespace inf_system_airline_companies
                         return;
                     }
 
-                    if (check_split_min.Count() == 3)
+                    if (check_split_min.Count() == 3) //дата должна состоять из трех частей (или быть пустой)
                     {
                         foreach (string elem in check_split_min)
                         {
@@ -92,7 +101,7 @@ namespace inf_system_airline_companies
                         }
                     }
                         
-                    if (check_split_max.Count() == 3)
+                    if (check_split_max.Count() == 3) //дата должна состоять из трех частей (или быть пустой)
                     {
                         foreach (string elem in check_split_max)
                         {
@@ -123,6 +132,7 @@ namespace inf_system_airline_companies
                         return;
                     }
 
+                    //делаем систему умней. Нельзя выставить неверный диапазон (мин дата больше максимальной)
 
                     if (min_date.Text.Length > 0 && max_date.Text.Length > 0 && DateTime.Parse(min_date.Text) > DateTime.Parse(max_date.Text))
                     {
@@ -308,10 +318,14 @@ namespace inf_system_airline_companies
 
                 //НЕПОСРЕДСТВЕННО ФИЛЬТРАЦИЯ
 
+                //перед каждой фильтрацией все возвращаем в прежний вид (отключаем фильтр)
                 for (int row = 0; row < companies_list.Count; row++)
                 {
                     gridforcompany.Rows[row].Visible = true;
                 }
+
+                //проходимся по каждой компании и проверяем те поля, что выбраны пользователем
+                //если условие не выполняется, делаем строку невидимой (это и есть фильтр)
 
                 for (int row = 0; row < companies_list.Count; row++)
                 {
@@ -326,6 +340,7 @@ namespace inf_system_airline_companies
 
                     if (date_fil.Checked == true)
                     {
+                        //проверка по дате основания
                         if (min_date.Text.Length > 0 && max_date.Text.Length > 0)
                         {
                             if (!(DateTime.Parse(companies_list[row].year_of_foundation) >= DateTime.Parse(min_date.Text) && DateTime.Parse(companies_list[row].year_of_foundation) <= DateTime.Parse(max_date.Text))){
@@ -352,6 +367,7 @@ namespace inf_system_airline_companies
 
                     if (type_fil.Checked == true)
                     {
+                        //типов компаний у нас 3, поэтому возможны 8 вариантов выбора фильтра
                         if (pass_type.Checked == true && gryz_type.Checked == true && mixed_type.Checked == true)
                         {
 
@@ -410,6 +426,7 @@ namespace inf_system_airline_companies
 
                     if (ceo_fil.Checked == true)
                     {
+                        //проверка подстрокой
                         if (companies_list[row].ceo.IndexOf(ceo_name.Text) == -1)
                         {
                             gridforcompany.Rows[row].Visible = false;
@@ -420,6 +437,7 @@ namespace inf_system_airline_companies
 
                     if (cost_fil.Checked == true)
                     {
+                        //проверка стоимости компании
                         if (cost_min.Text.Length > 0 && cost_max.Text.Length > 0)
                         {
                             if (!(companies_list[row].cost >= long.Parse(cost_min.Text) && companies_list[row].cost <= long.Parse(cost_max.Text)))
@@ -448,6 +466,7 @@ namespace inf_system_airline_companies
 
                     if (loc_fil.Checked == true)
                     {
+                        //проверка по расположению. Страна обязательна для указания, а город нет.
                         if (city_fil.Text.Length == 0)
                         {
                             if (!(companies_list[row].location.Split(',')[1].Trim(' ') == country_fil.Text))
@@ -469,6 +488,7 @@ namespace inf_system_airline_companies
 
                     if (num_emp_fil.Checked == true)
                     {
+                        //проверка количества сотрудников
                         if (min_empl.Text.Length > 0 && max_empl.Text.Length > 0)
                         {
                             if (!(companies_list[row].number_of_employees >= int.Parse(min_empl.Text) && companies_list[row].number_of_employees <= int.Parse(max_empl.Text)))
@@ -498,6 +518,7 @@ namespace inf_system_airline_companies
 
                     if (dest_p_count_fil.Checked == true)
                     {
+                        //проверка количества пунктов назначения перелетов
                         if (min_dest_p_count.Text.Length > 0 && max_dest_p_count.Text.Length > 0)
                         {
                             if (!(companies_list[row].destination_points.Count >= int.Parse(min_dest_p_count.Text) && companies_list[row].destination_points.Count <= int.Parse(max_dest_p_count.Text)))
@@ -527,6 +548,8 @@ namespace inf_system_airline_companies
 
                     if (desti_p_content_fil.Checked == true)
                     {
+                        //проверка, летает ли компания в определенную страну (или + ещё город).
+
                         bool suitable = false;
 
                         if (city_fil_dest.Text.Length == 0)
@@ -561,6 +584,7 @@ namespace inf_system_airline_companies
 
                     if (model_count_fil.Checked == true)
                     {
+                        //проверка количества моделей самолетов
                         if (min_model_count.Text.Length > 0 && max_model_count.Text.Length > 0)
                         {
                             if (!(companies_list[row].planes.Count >= int.Parse(min_model_count.Text) && companies_list[row].planes.Count <= int.Parse(max_model_count.Text)))
@@ -591,10 +615,12 @@ namespace inf_system_airline_companies
 
                     if (model_content_fil.Checked == true)
                     {
+                        //проверка, есть ли у компании самолеты определенных моделей (указываются через ;)
+
                         bool suitable = true;
 
-                        List <string> planes_req = new List<string>(models_content_enum.Text.Split(';'));
-                        List<string> result = new List<string>();
+                        List <string> planes_req = new List<string>(models_content_enum.Text.Split(';')); //требуемые пользователем самолеты 
+                        List<string> result = new List<string>(); //складываем совпадающие по имени модели
 
                         foreach (string req in planes_req)
                         {
@@ -607,7 +633,7 @@ namespace inf_system_airline_companies
                             }
                         }
 
-
+                        //проверяем не только по длине, но и по содержимому (чтобы не прошли дубликаты)
                         if (result.Count != planes_req.Count)
                         {
                             suitable = false;
@@ -633,6 +659,7 @@ namespace inf_system_airline_companies
 
                 }
 
+                //подсветка кнопки наличия фильтра в главной форме
                 parent_window.filter_but.FlatStyle = FlatStyle.Flat;
                 parent_window.filter_but.BackColor = Color.Orange;
                 
@@ -641,22 +668,27 @@ namespace inf_system_airline_companies
             {
                 //ФИЛЬТРАЦИЯ ОТКЛЮЧЕНА
 
-            for (int row = 0; row < companies_list.Count; row++)
+                // отображаем все строки
+                for (int row = 0; row < companies_list.Count; row++)
                 {
                     gridforcompany.Rows[row].Visible = true;
                 }
 
+                //убираем подсветку кнопки фильтра
                 parent_window.filter_but.FlatStyle = FlatStyle.System;
                 parent_window.filter_but.BackColor = SystemColors.Control;
 
             }
 
+            //продолжаем биндинг, прячем форму (чтобы сохранить выбранные параметры), прячем информацию о выделенной компании (справа в главной форме)
             parent_window.hide_details_info();
             companyBindingSource.ResumeBinding();
 
             this.Hide();
         }
 
+
+        //однотипные функции, которые просто включают возможность настройки параметров определенного фильтра
         private void name_fil_CheckedChanged(object sender, EventArgs e)
         {
             groupBox1.Enabled = name_fil.Checked;

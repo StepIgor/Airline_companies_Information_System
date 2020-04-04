@@ -16,6 +16,7 @@ namespace inf_system_airline_companies
         {
             InitializeComponent();
 
+            //передаем в конструкторе список пунктов назначения, выбранную строку в списке combobox (чтобы обратиться по этому индексу к списку), флажок, редактируем ли пункт или создаем новый
             this.dest_list = dest_list;
             this.selected_row = selected_row;
             this.edit = edit;
@@ -29,13 +30,16 @@ namespace inf_system_airline_companies
         {
             if (edit == true)
             {
+                //если редактируем сущ. пункт назначения
                 this.Text = "Редактировать";
                 accept.Text = "Применить";
 
+                //предварительное заполнение
                 country.Text = dest_list[selected_row].Split(',')[1].Trim(' ');
                 city.Text = dest_list[selected_row].Split(',')[0];
             } else
             {
+                //если добавляем пункт
                 this.Text = "Добавить";
                 accept.Text = "Добавить";
             }
@@ -43,11 +47,15 @@ namespace inf_system_airline_companies
 
         private void cancel_Click(object sender, EventArgs e)
         {
+            //закрытие формы без изменений
             this.Close();
         }
 
         private void accept_Click(object sender, EventArgs e)
         {
+            //принимаем данные
+
+            //проверка на правильность данных
             if (!(country.Text.Length > 0 && country.Text.Length < 33 && country.Text.IndexOf(',') == -1))
             {
                 MessageBox.Show("Название страны должно быть по длине до 32 символов и не включать запятые.", "Обратите внимание!");
@@ -62,11 +70,14 @@ namespace inf_system_airline_companies
 
             if (edit == true)
             {
+                //если редактируем, то меняем элемент списка
                 dest_list[selected_row] = city.Text + ", " + country.Text;
             } else {
+                //если добавляем, то добавляем в конец списка
                 dest_list.Add(city.Text + ", " + country.Text);
             }
 
+            //флаг, что мы произвели изменения
             Program.anything_was_changed = true;
             this.Close();
         }

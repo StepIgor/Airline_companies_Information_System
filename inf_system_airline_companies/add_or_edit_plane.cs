@@ -16,6 +16,7 @@ namespace inf_system_airline_companies
         {
             InitializeComponent();
 
+            //передаем в конструкторе список самолетов, сетку самолетов, биндинг самолетов и флаг, изменяем ли существ. данные
             this.planes_list = lst;
             this.gridforplane = gridforplane;
             this.edit = edit;
@@ -38,6 +39,7 @@ namespace inf_system_airline_companies
 
                 apply_but.Text = "Сохранить изменения";
 
+                //поле варьируется в зависимости от типа самолета
                 if (planes_list[gridforplane.SelectedRows[0].Index].type == "Пассажирский")
                 {
                     volume_label.Text = "Вместимость (мест)";
@@ -46,6 +48,7 @@ namespace inf_system_airline_companies
                     volume_label.Text = "Вместимость (м³)";
                 }
 
+                //предварительное заполнение
                 model_name.Text = planes_list[gridforplane.SelectedRows[0].Index].name;
                 planes_count.Text = Convert.ToString(planes_list[gridforplane.SelectedRows[0].Index].count);
                 cost_of_plane.Text = Convert.ToString(planes_list[gridforplane.SelectedRows[0].Index].cost);
@@ -57,6 +60,8 @@ namespace inf_system_airline_companies
             }
             else
             {
+                //если добавляем новую модель самолета
+
                 this.Text = "Добавить модель самолета";
                 describe.Text = "В этом окне происходит добавление всей информации о новой модели самолета.";
 
@@ -66,13 +71,16 @@ namespace inf_system_airline_companies
 
         private void cancel_but_Click(object sender, EventArgs e)
         {
+            //закрытие формы без изменений
             this.Close();
         }
 
         private void type_of_plane_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //как уже было отмечено выше, два поле на форме варьируются в зависимости от типа самолета
             if (type_of_plane.Text == "Пассажирский")
             {
+                //у пассажирского самолета не указывают грузоподъемность
                 payload.Enabled = false;
                 payload.Text = "";
                 volume_label.Text = "Вместимость (мест)";
@@ -192,6 +200,7 @@ namespace inf_system_airline_companies
 
             if (edit == true)
             {
+                //если редактируем, то меняем просто элемент списка самолетов
                 planes_list[gridforplane.SelectedRows[0].Index].name = model_name.Text;
                 planes_list[gridforplane.SelectedRows[0].Index].count = int.Parse(planes_count.Text);
                 planes_list[gridforplane.SelectedRows[0].Index].cost = long.Parse(cost_of_plane.Text);
@@ -202,11 +211,14 @@ namespace inf_system_airline_companies
                 planes_list[gridforplane.SelectedRows[0].Index].payload_capacity = int.Parse(payload.Text);
             } else
             {
+                //иначе создаем новый объект и добавляем его в конец списка
                 Plane new_plane = new Plane(model_name.Text, int.Parse(planes_count.Text), int.Parse(plane_speed.Text), long.Parse(cost_of_plane.Text), type_of_plane.Text, int.Parse(volume.Text), int.Parse(distance.Text), int.Parse(payload.Text));
                 planes_list.Add(new_plane);
+                //очистка памяти
                 new_plane = null;
             }
 
+            //обновляем биндинг, ставим флаг изменений, закрываем форму
             bndsrc.ResetBindings(false);
             Program.anything_was_changed = true;
             this.Close();
