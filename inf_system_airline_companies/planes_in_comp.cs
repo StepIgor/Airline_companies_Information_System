@@ -26,10 +26,12 @@ namespace inf_system_airline_companies
         public DataGridView gridforcomp;
         public List<Company> companies_list;
         public int row_selected; //для фиксированного обращения к списку компаний (через него обращение к самолетам)
+        int start_length_for_comp_list; //стартовая длина списка компаний. для защиты программы от сбоев.
 
         private void planes_in_comp_Load(object sender, EventArgs e)
         {
             //предварительное заполнение + проверка прав админа + выделение строки
+            start_length_for_comp_list = companies_list.Count;
 
             if (Program.is_admin == false) add_plane.Enabled = false;
 
@@ -141,6 +143,12 @@ namespace inf_system_airline_companies
             { 
                 gridforplanes_CellClick(gridforplanes, null);
             } catch (Exception)
+            {
+                this.Close();
+            }
+
+            //защита от изменений списка компаний во время просмотра списка самолетов
+            if (companies_list.Count != start_length_for_comp_list)
             {
                 this.Close();
             }
