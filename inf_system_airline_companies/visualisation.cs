@@ -224,7 +224,7 @@ namespace inf_system_airline_companies
 
                     for (int elem = 0; elem < location_names.Count; elem++)
                     {
-                        out_put.Text += string.Format("{0,-35}{1,5}\n",location_names[elem], locations_count[elem]);
+                        out_put.Text += string.Format("{0,-40}{1,7}\n",location_names[elem], locations_count[elem]);
                     }
 
                 }
@@ -262,9 +262,9 @@ namespace inf_system_airline_companies
 
                     avg_sum = avg_sum / companies_list.Count;
 
-                    out_put.Text += string.Format("Минимальное кол-во сотрудников:\n{0,-25}{1,10} Чел.\n\n", min_name, min.ToString("N0", CultureInfo.GetCultureInfo("ru-RU")));
-                    out_put.Text += string.Format("Максимальное кол-во сотрудников:\n{0,-25}{1,10} Чел.\n\n", max_name, max.ToString("N0", CultureInfo.GetCultureInfo("ru-RU")));
-                    out_put.Text += string.Format("Среднее кол-во сотрудников:{0,8} Чел.",avg_sum.ToString("N0", CultureInfo.GetCultureInfo("ru-RU")));
+                    out_put.Text += string.Format("Минимальное кол-во сотрудников:\n{0,-25}{1,18} Чел.\n\n", min_name, min.ToString("N0", CultureInfo.GetCultureInfo("ru-RU")));
+                    out_put.Text += string.Format("Максимальное кол-во сотрудников:\n{0,-25}{1,18} Чел.\n\n", max_name, max.ToString("N0", CultureInfo.GetCultureInfo("ru-RU")));
+                    out_put.Text += string.Format("Среднее кол-во сотрудников:{0,16} Чел.",avg_sum.ToString("N0", CultureInfo.GetCultureInfo("ru-RU")));
                 }
 
 
