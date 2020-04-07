@@ -127,12 +127,21 @@ namespace inf_system_airline_companies
 
             //проверяем существования компании с таким же именем
 
+            //важно обеспечить возможность сохранения изменений для компании без изменения её текущего имени
+            string last_cmp_name = "";
+
+            if (edit == true)
+            {
+                last_cmp_name = companies_list[gridforcomp.SelectedRows[0].Index].name;
+            }
+
             bool already_has = false;
 
             foreach (Company cmp in companies_list)
             {
                 if (cmp.name.ToLower() == company_name.Text.ToLower())
                 {
+                    if (edit == true && last_cmp_name.ToLower() == cmp.name.ToLower()) continue; //если мы не меняем название редактируемой компании
                     already_has = true;
                     break;
                 }
