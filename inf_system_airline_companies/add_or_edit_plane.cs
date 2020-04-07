@@ -197,6 +197,35 @@ namespace inf_system_airline_companies
                 payload.Text = "0";
             }
 
+            //проверка на дублирование. мы не должны допускать те самолеты, у которых одинаковые НАЗВАНИЕ и ТИП.
+
+            bool already_plane_exists = false;
+
+            string last_plane_name = ""; //сохр. текущие значения имени и типа, чтобы разрешить изменение других хар-к (кроме имени и типа)
+            string last_plane_type = "";
+
+            if (edit == true)
+            {
+                last_plane_name = planes_list[gridforplane.SelectedRows[0].Index].name;
+                last_plane_type = planes_list[gridforplane.SelectedRows[0].Index].type;
+            }
+
+            foreach(Plane plane in planes_list)
+            {
+                if (model_name.Text.ToLower() == plane.name.ToLower() && type_of_plane.Text == plane.type)
+                {
+                    if (edit == true && model_name.Text.ToLower() == last_plane_name.ToLower() && type_of_plane.Text == last_plane_type) continue; //допустить текущее изменение на свое же имя и тип
+                    already_plane_exists = true;
+                    break;
+                }
+            }
+
+            if (already_plane_exists == true)
+            {
+                MessageBox.Show("Модель с таким названием и типом уже существует.","Обратите внимание");
+                return;
+            }
+
 
             if (edit == true)
             {
