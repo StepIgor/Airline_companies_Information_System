@@ -168,7 +168,7 @@ namespace inf_system_airline_companies
             }
 
             //подсчет сделан не только по моделям, но и по экземплярам
-            details_planes_count.Text = "моделей - " + Convert.ToString(details_planes_model_count) + "; всего - " + Convert.ToString(details_planes_all_count) + ";";
+            details_planes_count.Text = "М - " + Convert.ToString(details_planes_model_count) + "; Э - " + Convert.ToString(details_planes_all_count) + ";";
             details_planes_count.Visible = true;
             details_cat_planes_count.Visible = true;
 
@@ -611,7 +611,7 @@ namespace inf_system_airline_companies
                     details_planes_all_count += companies_list[gridforcomp.SelectedRows[0].Index].planes[step].count;
                 }
 
-                details_planes_count.Text = "моделей - " + Convert.ToString(details_planes_model_count) + "; всего - " + Convert.ToString(details_planes_all_count) + ";";
+                details_planes_count.Text = "М - " + Convert.ToString(details_planes_model_count) + "; Э - " + Convert.ToString(details_planes_all_count) + ";";
             }
 
         }

@@ -125,6 +125,25 @@ namespace inf_system_airline_companies
                 return;
             }
 
+            //проверяем существования компании с таким же именем
+
+            bool already_has = false;
+
+            foreach (Company cmp in companies_list)
+            {
+                if (cmp.name.ToLower() == company_name.Text.ToLower())
+                {
+                    already_has = true;
+                    break;
+                }
+            }
+
+            if (already_has == true)
+            {
+                MessageBox.Show("Компания с таким названием уже существует.","Обратите внимание");
+                return;
+            }
+
             if (edit == true)
             {
                 //если редактируем существующую компанию
