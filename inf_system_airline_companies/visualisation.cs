@@ -110,6 +110,26 @@ namespace inf_system_airline_companies
                     //по цене
 
                     out_put.Text += by_price_1.Text + "\n----------\n";
+                    out_put.Text += "ОБРАТИТЕ ВНИМАНИЕ:\nВ отчёт не включаются компании, находящиеся в гос. собственности (0 руб.)\n----------\n";
+
+                    //требуется предварительная проверка. у нас не должны быть в списке только компании, наход. в гос. собственности (угроза деления на 0!)
+
+                    int total_zero = 0;
+                    int total_cmp = companies_list.Count;
+
+                    foreach (Company cmp in companies_list)
+                    {
+                        if (cmp.cost == 0)
+                        {
+                            total_zero += 1;
+                        }
+                    }
+
+                    if (total_zero == total_cmp)
+                    {
+                        out_put.Text += "Этот тип отчета нельзя сформировать с текущими данными.";
+                        return;
+                    }
 
                     long min = 999999999999999;
                     string min_name = "";
@@ -119,6 +139,7 @@ namespace inf_system_airline_companies
 
                     foreach (Company cmp in companies_list)
                     {
+                        if (cmp.cost == 0) continue;
                         avg_sum += cmp.cost;
 
                         if (cmp.cost > max)
@@ -134,7 +155,7 @@ namespace inf_system_airline_companies
                         }
                     }
 
-                    avg_sum = avg_sum / companies_list.Count;
+                    avg_sum = avg_sum / (total_cmp - total_zero);
 
                     out_put.Text += string.Format("Самая дешевая компания:\n{0,-15}{1,20} Руб.\n\n", min_name, min.ToString("N0", CultureInfo.GetCultureInfo("ru-RU")));
                     out_put.Text += string.Format("Самая дорогая компания:\n{0,-15}{1,20} Руб.\n\n", max_name, max.ToString("N0", CultureInfo.GetCultureInfo("ru-RU")));
