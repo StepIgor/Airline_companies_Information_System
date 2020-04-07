@@ -125,6 +125,7 @@ namespace inf_system_airline_companies
                         }
                     }
 
+                    //если все компании в гос. собственности
                     if (total_zero == total_cmp)
                     {
                         out_put.Text += "Этот тип отчета нельзя сформировать с текущими данными.";
@@ -139,7 +140,7 @@ namespace inf_system_airline_companies
 
                     foreach (Company cmp in companies_list)
                     {
-                        if (cmp.cost == 0) continue;
+                        if (cmp.cost == 0) continue; //0 (гос. собственность) не берем в расчеты
                         avg_sum += cmp.cost;
 
                         if (cmp.cost > max)
@@ -157,8 +158,8 @@ namespace inf_system_airline_companies
 
                     avg_sum = avg_sum / (total_cmp - total_zero);
 
-                    out_put.Text += string.Format("Самая дешевая компания:\n{0,-15}{1,20} Руб.\n\n", min_name, min.ToString("N0", CultureInfo.GetCultureInfo("ru-RU")));
-                    out_put.Text += string.Format("Самая дорогая компания:\n{0,-15}{1,20} Руб.\n\n", max_name, max.ToString("N0", CultureInfo.GetCultureInfo("ru-RU")));
+                    out_put.Text += string.Format("Самая дешевая компания:\n{0,-24}{1,20} Руб.\n\n", min_name, min.ToString("N0", CultureInfo.GetCultureInfo("ru-RU")));
+                    out_put.Text += string.Format("Самая дорогая компания:\n{0,-24}{1,20} Руб.\n\n", max_name, max.ToString("N0", CultureInfo.GetCultureInfo("ru-RU")));
                     out_put.Text += string.Format("Средняя стоимость компании:\n{0,25} Руб.", avg_sum.ToString("N0", CultureInfo.GetCultureInfo("ru-RU")));
                 }
 
@@ -342,7 +343,7 @@ namespace inf_system_airline_companies
 
                     for (int elem = 0; elem < planes_names.Count; elem++)
                     {
-                        out_put.Text += String.Format("{0,-25}{1,15}\n", planes_names[elem], planes_count[elem]);
+                        out_put.Text += String.Format("{0,-24}{1,15}\n", planes_names[elem], planes_count[elem]);
                     }
 
                 }
@@ -411,8 +412,8 @@ namespace inf_system_airline_companies
 
                     avg_count = avg_count / total_planes;
 
-                    out_put.Text += string.Format("Самая дешевая модель:\n{0,-15}{1,20} Руб.\n\n", min_name, min.ToString("N0",CultureInfo.GetCultureInfo("ru-RU")));
-                    out_put.Text += string.Format("Самая дорогая модель:\n{0,-15}{1,20} Руб.\n\n", max_name, max.ToString("N0", CultureInfo.GetCultureInfo("ru-RU")));
+                    out_put.Text += string.Format("Самая дешевая модель:\n{0,-24}{1,20} Руб.\n\n", min_name, min.ToString("N0",CultureInfo.GetCultureInfo("ru-RU")));
+                    out_put.Text += string.Format("Самая дорогая модель:\n{0,-24}{1,20} Руб.\n\n", max_name, max.ToString("N0", CultureInfo.GetCultureInfo("ru-RU")));
                     out_put.Text += string.Format("Средняя стоимость самолета:\n{0,25} Руб.\n\n", avg_count.ToString("N0", CultureInfo.GetCultureInfo("ru-RU")));
                 }
 
@@ -431,7 +432,7 @@ namespace inf_system_airline_companies
 
                     foreach (Company cmp in companies_list)
                     {
-                        out_put.Text += string.Format("{0,-15}{1,20} Руб.\n",cmp.name, cmp.cost.ToString("N0",CultureInfo.GetCultureInfo("ru-RU")));
+                        out_put.Text += string.Format("{0,-24}{1,20} Руб.\n",cmp.name, cmp.cost.ToString("N0",CultureInfo.GetCultureInfo("ru-RU")));
                     }
                 }
 
@@ -443,7 +444,7 @@ namespace inf_system_airline_companies
 
                     foreach (Company cmp in companies_list)
                     {
-                        out_put.Text += string.Format("{0,-15}{1,20} Чел.\n", cmp.name, cmp.number_of_employees.ToString("N0", CultureInfo.GetCultureInfo("ru-RU")));
+                        out_put.Text += string.Format("{0,-24}{1,20} Чел.\n", cmp.name, cmp.number_of_employees.ToString("N0", CultureInfo.GetCultureInfo("ru-RU")));
                     }
                 }
 
@@ -498,7 +499,7 @@ namespace inf_system_airline_companies
                         }
                         
 
-                        out_put.Text += string.Format("{0,-15}{1,20} Руб.\n",cmp.name,avg_cost.ToString("N0",CultureInfo.GetCultureInfo("ru-RU")));
+                        out_put.Text += string.Format("{0,-24}{1,20} Руб.\n",cmp.name,avg_cost.ToString("N0",CultureInfo.GetCultureInfo("ru-RU")));
                     }
                 }
 
@@ -517,7 +518,7 @@ namespace inf_system_airline_companies
                             total_planes += plane.count;
                         }
 
-                        out_put.Text += string.Format("{0,-15}{1,20}\n", cmp.name, total_planes.ToString("N0",CultureInfo.GetCultureInfo("ru-RU")));
+                        out_put.Text += string.Format("{0,-24}{1,20}\n", cmp.name, total_planes.ToString("N0",CultureInfo.GetCultureInfo("ru-RU")));
                     }
                 }
 
@@ -546,7 +547,7 @@ namespace inf_system_airline_companies
                         }
                         
 
-                        out_put.Text += string.Format("{0,-15}{1,20} Км\n",cmp.name,avg_distance.ToString("N0",CultureInfo.GetCultureInfo("ru-RU")));
+                        out_put.Text += string.Format("{0,-24}{1,20} Км\n",cmp.name,avg_distance.ToString("N0",CultureInfo.GetCultureInfo("ru-RU")));
                     }
                 }
 

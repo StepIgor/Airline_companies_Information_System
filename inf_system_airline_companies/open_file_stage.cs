@@ -136,6 +136,8 @@ namespace inf_system_airline_companies
             {
                 last_opened_radio.Text = Registry.CurrentUser.OpenSubKey(@"Software\Airline_Inf_System").GetValue("last_opened").ToString();
                 last_opened_radio.Enabled = true;
+                last_opened_radio.Checked = true;
+                open_demo.Checked = false;
             } else
             {
                 last_opened_radio.Text = "Вы еще не открывали файлы";

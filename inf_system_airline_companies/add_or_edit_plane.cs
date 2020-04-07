@@ -96,9 +96,9 @@ namespace inf_system_airline_companies
 
             //блок валидации данных
 
-            if (!(model_name.Text.Length < 49 && model_name.Text.Length > 0))
+            if (!(model_name.Text.Length < 25 && model_name.Text.Length > 0))
             {
-                MessageBox.Show("Название модели не может быть пустым и содержать больше 48 символов.", "Обратите внимание");
+                MessageBox.Show("Название модели не может быть пустым и содержать больше 24 символов.", "Обратите внимание");
                 return;
             }
 
