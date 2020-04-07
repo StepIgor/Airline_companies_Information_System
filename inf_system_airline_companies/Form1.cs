@@ -103,7 +103,7 @@ namespace inf_system_airline_companies
 
         }
 
-        private void gridforcomp_CellClick(object sender, DataGridViewCellEventArgs e)
+        public void gridforcomp_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             //если выбираем какую-то компанию из списка (кликом)
 
@@ -283,6 +283,7 @@ namespace inf_system_airline_companies
             //редактировать компанию
 
             add_or_edit_company add_or_edit = new add_or_edit_company(companies_list, gridforcomp, companyBindingSource, true);
+            add_or_edit.parent_form = this;
             add_or_edit.ShowDialog();
             
         }

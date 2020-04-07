@@ -26,6 +26,7 @@ namespace inf_system_airline_companies
         public DataGridView gridforcomp;
         Boolean edit;
         BindingSource bndsrc;
+        public Form1 parent_form;
 
         private void add_or_edit_company_Load(object sender, EventArgs e)
         {
@@ -178,9 +179,11 @@ namespace inf_system_airline_companies
             }
 
             //обновляем биндинг, ставим флажок, что меняли данные (чтобы предупреждать пользователя о несохраненных изменениях)
-            this.Close();
+            
             Program.anything_was_changed = true;
             bndsrc.ResetBindings(false);
+            if (edit == true) parent_form.gridforcomp_CellClick(parent_form, null); //динамически отобразить изменения
+            this.Close();
         }
     }
 }
