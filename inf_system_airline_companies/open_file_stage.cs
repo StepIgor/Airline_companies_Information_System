@@ -39,7 +39,7 @@ namespace inf_system_airline_companies
                 Program.opened_file = "<new>";
             } else if(open_demo.Checked == true)
             {
-                Program.opened_file = "<sample>";
+                Program.opened_file = @"samples/sample.xml";
             } else if(select_my_file.Checked == true)
             {
                 Program.opened_file = file_name.Text;
@@ -65,7 +65,7 @@ namespace inf_system_airline_companies
 
             try
             {
-                if (Program.opened_file != "<sample>" && Program.opened_file != "<new>")
+                if (Program.opened_file != "<new>")
                 {
                     XmlSerializer xmlsrl = new XmlSerializer(typeof(Company[]));
 
