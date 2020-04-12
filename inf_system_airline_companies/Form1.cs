@@ -29,9 +29,11 @@ namespace inf_system_airline_companies
 
             try
             {
-                if (Program.opened_file == "<sample>")
+                if (Program.opened_file == @"samples/sample.xml")
                 {
                     //если это образец
+
+                    Program.opened_file = "<sample>";
 
                     XmlSerializer xmlsrl = new XmlSerializer(typeof(Company[]));
 
