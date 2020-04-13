@@ -13,9 +13,9 @@ using System.Windows.Forms.DataVisualization.Charting; //отображение 
 
 namespace inf_system_airline_companies
 {
-    public partial class visualisation : Form
+    public partial class visualization : Form
     {
-        public visualisation(List<Company> cmp_list)
+        public visualization(List<Company> cmp_list)
         {
             InitializeComponent();
 

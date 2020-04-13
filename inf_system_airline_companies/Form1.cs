@@ -664,7 +664,7 @@ namespace inf_system_airline_companies
         {
             //открываем окно отчетов
 
-            visualisation new_visual_windows = new visualisation(companies_list);
+            visualization new_visual_windows = new visualization(companies_list);
 
             new_visual_windows.ShowDialog();
         }
